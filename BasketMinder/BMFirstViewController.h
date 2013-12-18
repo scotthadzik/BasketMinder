@@ -1,4 +1,4 @@
-//
+ //
 //  BMFirstViewController.h
 //  BasketMinder
 //
@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface BMFirstViewController : UIViewController
+
+//for webviewer
+@property (strong, nonatomic) IBOutlet UIWebView *myWebView;
 
 @end

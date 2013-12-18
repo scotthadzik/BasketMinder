@@ -14,10 +14,21 @@
 
 @implementation BMFirstViewController
 
+@synthesize myWebView = _myWebView;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    //--------------webView  start -----------------//
+	
+    NSURL *myURL = [NSURL URLWithString:@"http://contributions4.bountifulbaskets.org"];
+    
+    NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL];
+    
+    [self.myWebView loadRequest:myRequest];
+
+    _myWebView.scalesPageToFit = YES;
 }
 
 - (void)didReceiveMemoryWarning
