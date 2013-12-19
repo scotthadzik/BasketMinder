@@ -12,5 +12,6 @@
 
 //for webviewer
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
+@property (nonatomic) BOOL isLoggedIn;
 
 @end

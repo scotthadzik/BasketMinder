@@ -10,4 +10,9 @@
 
 @interface BMSecondViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *userEmail;
+
+@property (strong, nonatomic) IBOutlet UITextField *userPassword;
+
+
 @end
