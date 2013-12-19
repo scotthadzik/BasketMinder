@@ -205,6 +205,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Bryan Hadzik";
 				TargetAttributes = {
+					B55CC2F118625A1D009F1895 = {
+						DevelopmentTeam = APZDN9T94Q;
+					};
 					B55CC31518625A1D009F1895 = {
 						TestTargetID = B55CC2F118625A1D009F1895;
 					};
@@ -385,10 +388,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bryan Hadzik (VMU7496JT5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
 				INFOPLIST_FILE = "BasketMinder/BasketMinder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -398,10 +405,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bryan Hadzik (APZDN9T94Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
 				INFOPLIST_FILE = "BasketMinder/BasketMinder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
