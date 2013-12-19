@@ -14,34 +14,54 @@
 
 @implementation BMFirstViewController
 
-@synthesize myWebView = _myWebView;
+@synthesize myWebView; //= _myWebView;
 @synthesize isLoggedIn = _isLoggedIn;
+
+
+
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     
+    [super viewDidLoad];
     //--------------webView  start -----------------//
 	
-    NSURL *myURL = [NSURL URLWithString:@"http://contributions4.bountifulbaskets.org"];
+    self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
+    
+    NSURL *myURL = [NSURL URLWithString:@"http://contributions4.bountifulbaskets.org"]; //start at this website
     
     NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL];
     
-    [self.myWebView loadRequest:myRequest];
-
-    _myWebView.scalesPageToFit = YES;
+    [self.myWebView loadRequest:myRequest]; //load the webview
+    
+    myWebView.scalesPageToFit = YES;
     //--------------webView  end -----------------//
+    
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+   [self sendLogin]; //call the login for the first load of the site
 }
 
+//This will run each time the view appears in case of new login
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self sendLogin];
+}
 
-//This will run each time the view appears
-- (void)viewWillAppear:(BOOL)animated {
-    
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (void) sendLogin{
     NSString *emailString   =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     
     NSString *passwordString =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
+    
     //Check to see if a value has been set for userEmail and password
-    if(emailString != nil && passwordString != nil ){
+    if(emailString != nil && passwordString != nil){
         
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", emailString];
         
@@ -51,24 +71,17 @@
         NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", passwordString];
         //here password is the id for password field in Login Form
         
-        //Now Call The Javascript for entring these Credential in login Form
-        [_myWebView stringByEvaluatingJavaScriptFromString:jScriptString1];
+        //Call The Javascript for entring these Credential in login Form
+        [myWebView stringByEvaluatingJavaScriptFromString:jScriptString1];
         
-        [_myWebView stringByEvaluatingJavaScriptFromString:jScriptString2];
-        //Further if you want to submit login Form Automatically then you may use below line
+        [myWebView stringByEvaluatingJavaScriptFromString:jScriptString2];
         
-        [_myWebView stringByEvaluatingJavaScriptFromString:@"document.forms['frm_login_form'].submit();"];
+        //Submit the form automatically
+        [myWebView stringByEvaluatingJavaScriptFromString:@"document.forms['frm_login_form'].submit();"];
         // here 'login_form' is the id name of LoginForm
         
     }
     _isLoggedIn=TRUE;
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

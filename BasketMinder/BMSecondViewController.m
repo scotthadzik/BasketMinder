@@ -22,7 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    userEmail.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
+    userPassword.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
 }
 
 - (void)didReceiveMemoryWarning
