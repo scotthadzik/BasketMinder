@@ -14,14 +14,25 @@
 		B55CC30218625A1D009F1895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC30118625A1D009F1895 /* main.m */; };
 		B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC30518625A1D009F1895 /* BMAppDelegate.m */; };
 		B55CC30918625A1D009F1895 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55CC30718625A1D009F1895 /* Main.storyboard */; };
-		B55CC30C18625A1D009F1895 /* BMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC30B18625A1D009F1895 /* BMFirstViewController.m */; };
-		B55CC30F18625A1D009F1895 /* BMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC30E18625A1D009F1895 /* BMSecondViewController.m */; };
 		B55CC31118625A1D009F1895 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55CC31018625A1D009F1895 /* Images.xcassets */; };
 		B55CC31818625A1D009F1895 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC31718625A1D009F1895 /* XCTest.framework */; };
 		B55CC31918625A1D009F1895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F518625A1D009F1895 /* Foundation.framework */; };
 		B55CC31A18625A1D009F1895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F918625A1D009F1895 /* UIKit.framework */; };
 		B55CC32218625A1D009F1895 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B55CC32018625A1D009F1895 /* InfoPlist.strings */; };
 		B55CC32418625A1D009F1895 /* BasketMinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC32318625A1D009F1895 /* BasketMinderTests.m */; };
+		B55CC32E1864C898009F1895 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
+		B55CC3381864C921009F1895 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32F1864C921009F1895 /* AudioToolbox.framework */; };
+		B55CC3391864C921009F1895 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3301864C921009F1895 /* CFNetwork.framework */; };
+		B55CC33A1864C921009F1895 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3311864C921009F1895 /* CoreLocation.framework */; };
+		B55CC33B1864C921009F1895 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3321864C921009F1895 /* libz.1.1.3.dylib */; };
+		B55CC33C1864C921009F1895 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3331864C921009F1895 /* MobileCoreServices.framework */; };
+		B55CC33D1864C921009F1895 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3341864C921009F1895 /* QuartzCore.framework */; };
+		B55CC33E1864C921009F1895 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3351864C921009F1895 /* Security.framework */; };
+		B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3361864C921009F1895 /* StoreKit.framework */; };
+		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
+		B55CC3431864CC9B009F1895 /* BMloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC3421864CC9B009F1895 /* BMloginViewController.m */; };
+		B55CC3461864CCF7009F1895 /* BMWebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC3451864CCF7009F1895 /* BMWebsiteViewController.m */; };
+		B55CC3491864CD0E009F1895 /* BMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC3481864CD0E009F1895 /* BMSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +57,28 @@
 		B55CC30418625A1D009F1895 /* BMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMAppDelegate.h; sourceTree = "<group>"; };
 		B55CC30518625A1D009F1895 /* BMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMAppDelegate.m; sourceTree = "<group>"; };
 		B55CC30818625A1D009F1895 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B55CC30A18625A1D009F1895 /* BMFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMFirstViewController.h; sourceTree = "<group>"; };
-		B55CC30B18625A1D009F1895 /* BMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMFirstViewController.m; sourceTree = "<group>"; };
-		B55CC30D18625A1D009F1895 /* BMSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMSecondViewController.h; sourceTree = "<group>"; };
-		B55CC30E18625A1D009F1895 /* BMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMSecondViewController.m; sourceTree = "<group>"; };
 		B55CC31018625A1D009F1895 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B55CC31618625A1D009F1895 /* BasketMinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BasketMinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55CC31718625A1D009F1895 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B55CC31F18625A1D009F1895 /* BasketMinderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BasketMinderTests-Info.plist"; sourceTree = "<group>"; };
 		B55CC32118625A1D009F1895 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B55CC32318625A1D009F1895 /* BasketMinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasketMinderTests.m; sourceTree = "<group>"; };
+		B55CC32D1864C898009F1895 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		B55CC32F1864C921009F1895 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B55CC3301864C921009F1895 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B55CC3311864C921009F1895 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B55CC3321864C921009F1895 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		B55CC3331864C921009F1895 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B55CC3341864C921009F1895 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B55CC3351864C921009F1895 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B55CC3361864C921009F1895 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B55CC3371864C921009F1895 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B55CC3411864CC9B009F1895 /* BMloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMloginViewController.h; sourceTree = "<group>"; };
+		B55CC3421864CC9B009F1895 /* BMloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMloginViewController.m; sourceTree = "<group>"; };
+		B55CC3441864CCF7009F1895 /* BMWebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWebsiteViewController.h; sourceTree = "<group>"; };
+		B55CC3451864CCF7009F1895 /* BMWebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWebsiteViewController.m; sourceTree = "<group>"; };
+		B55CC3471864CD0E009F1895 /* BMSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSignUpViewController.h; sourceTree = "<group>"; };
+		B55CC3481864CD0E009F1895 /* BMSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +86,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55CC3381864C921009F1895 /* AudioToolbox.framework in Frameworks */,
+				B55CC3391864C921009F1895 /* CFNetwork.framework in Frameworks */,
+				B55CC33A1864C921009F1895 /* CoreLocation.framework in Frameworks */,
+				B55CC33B1864C921009F1895 /* libz.1.1.3.dylib in Frameworks */,
+				B55CC33C1864C921009F1895 /* MobileCoreServices.framework in Frameworks */,
+				B55CC33D1864C921009F1895 /* QuartzCore.framework in Frameworks */,
+				B55CC33E1864C921009F1895 /* Security.framework in Frameworks */,
+				B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */,
+				B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */,
 				B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */,
 				B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */,
+				B55CC32E1864C898009F1895 /* Parse.framework in Frameworks */,
 				B55CC2F618625A1D009F1895 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +137,16 @@
 		B55CC2F418625A1D009F1895 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B55CC32F1864C921009F1895 /* AudioToolbox.framework */,
+				B55CC3301864C921009F1895 /* CFNetwork.framework */,
+				B55CC3311864C921009F1895 /* CoreLocation.framework */,
+				B55CC3321864C921009F1895 /* libz.1.1.3.dylib */,
+				B55CC3331864C921009F1895 /* MobileCoreServices.framework */,
+				B55CC3341864C921009F1895 /* QuartzCore.framework */,
+				B55CC3351864C921009F1895 /* Security.framework */,
+				B55CC3361864C921009F1895 /* StoreKit.framework */,
+				B55CC3371864C921009F1895 /* SystemConfiguration.framework */,
+				B55CC32D1864C898009F1895 /* Parse.framework */,
 				B55CC2F518625A1D009F1895 /* Foundation.framework */,
 				B55CC2F718625A1D009F1895 /* CoreGraphics.framework */,
 				B55CC2F918625A1D009F1895 /* UIKit.framework */,
@@ -118,10 +161,12 @@
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
-				B55CC30A18625A1D009F1895 /* BMFirstViewController.h */,
-				B55CC30B18625A1D009F1895 /* BMFirstViewController.m */,
-				B55CC30D18625A1D009F1895 /* BMSecondViewController.h */,
-				B55CC30E18625A1D009F1895 /* BMSecondViewController.m */,
+				B55CC3411864CC9B009F1895 /* BMloginViewController.h */,
+				B55CC3421864CC9B009F1895 /* BMloginViewController.m */,
+				B55CC3441864CCF7009F1895 /* BMWebsiteViewController.h */,
+				B55CC3451864CCF7009F1895 /* BMWebsiteViewController.m */,
+				B55CC3471864CD0E009F1895 /* BMSignUpViewController.h */,
+				B55CC3481864CD0E009F1895 /* BMSignUpViewController.m */,
 				B55CC31018625A1D009F1895 /* Images.xcassets */,
 				B55CC2FC18625A1D009F1895 /* Supporting Files */,
 			);
@@ -258,10 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55CC30C18625A1D009F1895 /* BMFirstViewController.m in Sources */,
-				B55CC30F18625A1D009F1895 /* BMSecondViewController.m in Sources */,
+				B55CC3431864CC9B009F1895 /* BMloginViewController.m in Sources */,
+				B55CC3461864CCF7009F1895 /* BMWebsiteViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
+				B55CC3491864CD0E009F1895 /* BMSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +436,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bryan Hadzik (VMU7496JT5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/bryanhadzik/Desktop/Applications/BasketMinder,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
 				INFOPLIST_FILE = "BasketMinder/BasketMinder-Info.plist";
@@ -407,6 +457,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bryan Hadzik (APZDN9T94Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/bryanhadzik/Desktop/Applications/BasketMinder,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
 				INFOPLIST_FILE = "BasketMinder/BasketMinder-Info.plist";
@@ -478,6 +532,7 @@
 				B55CC32918625A1D009F1895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B55CC32A18625A1D009F1895 /* Build configuration list for PBXNativeTarget "BasketMinderTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +541,7 @@
 				B55CC32C18625A1D009F1895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
