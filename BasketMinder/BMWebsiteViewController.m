@@ -27,27 +27,25 @@
     [super viewDidLoad];
     //--------------webView  start -----------------//
     
+    self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
+    
+    NSURL *myURL = [NSURL URLWithString:@"http://contributions4.bountifulbaskets.org"]; //start at this website
+    
+    NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL];
+    
+    [self.myWebView loadRequest:myRequest]; //load the webview
+    
+    self.myWebView.scalesPageToFit = YES;
+    
     PFUser *currentUser = [PFUser currentUser];
     
     if (currentUser) {
         
-        self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
-        
-        NSURL *myURL = [NSURL URLWithString:@"http://contributions4.bountifulbaskets.org"]; //start at this website
-        
-        NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL];
-        
-        [self.myWebView loadRequest:myRequest]; //load the webview
-        
-        myWebView.scalesPageToFit = YES;
+        // here 'login_form' is the id name of LoginForm
     }
     else{
         [self performSegueWithIdentifier:@"showLogin" sender:self];
     }
-    
-    
-    
-    
     
     //--------------webView  end -----------------//
     
@@ -55,43 +53,34 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    //[self sendLogin]; //call the login for the first load of the site
+    [self sendLogin]; //call the login for the first load of the site
 }
 
 //This will run each time the view appears in case of new login
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-   // [self sendLogin];
+    [self sendLogin];
 }
 
 
 - (void) sendLogin{
-  //  NSString *emailString   =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
+  
+    PFUser *currentUser = [PFUser currentUser];
     
-  //  NSString *passwordString =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
+    NSString *jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", currentUser.email];
     
-    //Check to see if a value has been set for userEmail and password
-  //  if(emailString != nil && passwordString != nil){
-        
-    //    NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", emailString];
-        
-        
-        //username is the id for username field in Login form
-        
-    //    NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", passwordString];
-        //here password is the id for password field in Login Form
-        
-        //Call The Javascript for entring these Credential in login Form
-   //     [myWebView stringByEvaluatingJavaScriptFromString:jScriptString1];
-        
-     //   [myWebView stringByEvaluatingJavaScriptFromString:jScriptString2];
-        
-        //Submit the form automatically
-    //    [myWebView stringByEvaluatingJavaScriptFromString:@"document.forms['frm_login_form'].submit();"];
-        // here 'login_form' is the id name of LoginForm
-        
- //   }
-  //  _isLoggedIn=TRUE;
+    //username is the id for username field in Login form
+    
+    NSString *jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", currentUser.password];
+    //here password is the id for password field in Login Form
+    
+    //Call The Javascript for entering these Credential in login Form
+    [myWebView stringByEvaluatingJavaScriptFromString:jScriptString1];
+    
+    [myWebView stringByEvaluatingJavaScriptFromString:jScriptString2];
+    
+    //Submit the form automatically
+    [myWebView stringByEvaluatingJavaScriptFromString:@"document.forms['frm_login_form'].submit();"];
 }
 
 - (IBAction)logoutButton:(id)sender {
