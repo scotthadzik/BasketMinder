@@ -15,5 +15,6 @@
 @property (nonatomic) BOOL isLoggedIn;
 
 - (void) sendLogin;
+- (IBAction)logoutButton:(id)sender;
 
 @end

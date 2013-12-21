@@ -10,8 +10,12 @@
 
 @interface BMloginViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *userEmail;
+@property (strong, nonatomic) IBOutlet UITextField *emailField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordField;
 
-@property (strong, nonatomic) IBOutlet UITextField *userPassword;
+
+
+- (IBAction)loginButton:(id)sender;
+
 
 @end

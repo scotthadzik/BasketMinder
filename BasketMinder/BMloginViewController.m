@@ -7,25 +7,23 @@
 //
 
 #import "BMloginViewController.h"
+#import <Parse/Parse.h>
 
-@interface BMloginViewController () <UITextFieldDelegate>
+@interface BMloginViewController () 
 
 @end
 
 @implementation BMloginViewController
 
-@synthesize userEmail;
-@synthesize userPassword;
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.hidesBackButton = YES;
     
     
-    
-    userEmail.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
-    userPassword.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
+     PFUser *currentUser = [PFUser currentUser];
+    _emailField.text = currentUser.email;
+    _passwordField.text = currentUser.password;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,23 +38,33 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-//Change the value of the prefered email stored in user defaults
-- (IBAction)changeValue:(id)sender {
+- (IBAction)loginButton:(id)sender {
     
-    NSString *Email = userEmail.text; //convert the textfield into a string
     
-    //adds the string data to the defaults with key preferEmail
-    [[NSUserDefaults standardUserDefaults] setObject:Email forKey:@"preferEmail"];
+    NSString *email = [self.emailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //convert the textfield into a string and trim white space
+    email = [email lowercaseString];
+    NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //convert the textfield into a string
+    
+    
+    if([email length] == 0 || [password length] == 0){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Make sure you enter an E-mail and Password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        
+        [alertView show];
+    }
+    else{
+        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            if (error) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry" message: [error.userInfo objectForKey:@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alertView show];
+            }
+            else{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+            
+    
+        }];
+    }
+    
     
 }
-//Change the value of the prefered passsword stored in user defaults
-- (IBAction)changePassword:(id)sender {
-    NSString *password = userPassword.text; //convert the textfield into a string
-    
-    //adds the string data to the defaults with key preferPassword
-    [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"preferPassword"];
-}
-
-
-
 @end

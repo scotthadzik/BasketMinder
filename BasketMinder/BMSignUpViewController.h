@@ -10,4 +10,9 @@
 
 @interface BMSignUpViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *emailField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+
+- (IBAction)signUp:(id)sender;
+
 @end
