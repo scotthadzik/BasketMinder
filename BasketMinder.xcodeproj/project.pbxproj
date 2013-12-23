@@ -30,9 +30,11 @@
 		B55CC33E1864C921009F1895 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3351864C921009F1895 /* Security.framework */; };
 		B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3361864C921009F1895 /* StoreKit.framework */; };
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
-		B55CC3431864CC9B009F1895 /* BMloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC3421864CC9B009F1895 /* BMloginViewController.m */; };
-		B55CC3461864CCF7009F1895 /* BMWebsiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC3451864CCF7009F1895 /* BMWebsiteViewController.m */; };
-		B55CC3491864CD0E009F1895 /* BMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC3481864CD0E009F1895 /* BMSignUpViewController.m */; };
+		B5DCE9DB1867A13E00F7197C /* BMBlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9DA1867A13E00F7197C /* BMBlogPost.m */; };
+		B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9E71868A7CE00F7197C /* LoginViewController.m */; };
+		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
+		B5DCE9EF1868B04100F7197C /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EE1868B04100F7197C /* LocationViewController.m */; };
+		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,12 +75,16 @@
 		B55CC3351864C921009F1895 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B55CC3361864C921009F1895 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B55CC3371864C921009F1895 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B55CC3411864CC9B009F1895 /* BMloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMloginViewController.h; sourceTree = "<group>"; };
-		B55CC3421864CC9B009F1895 /* BMloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMloginViewController.m; sourceTree = "<group>"; };
-		B55CC3441864CCF7009F1895 /* BMWebsiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWebsiteViewController.h; sourceTree = "<group>"; };
-		B55CC3451864CCF7009F1895 /* BMWebsiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWebsiteViewController.m; sourceTree = "<group>"; };
-		B55CC3471864CD0E009F1895 /* BMSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSignUpViewController.h; sourceTree = "<group>"; };
-		B55CC3481864CD0E009F1895 /* BMSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSignUpViewController.m; sourceTree = "<group>"; };
+		B5DCE9D91867A13D00F7197C /* BMBlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMBlogPost.h; sourceTree = "<group>"; };
+		B5DCE9DA1867A13E00F7197C /* BMBlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMBlogPost.m; sourceTree = "<group>"; };
+		B5DCE9E61868A7CE00F7197C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B5DCE9E71868A7CE00F7197C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		B5DCE9EB1868A92F00F7197C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		B5DCE9ED1868B04100F7197C /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		B5DCE9EE1868B04100F7197C /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		B5DCE9F01868B15500F7197C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		B5DCE9F11868B15500F7197C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,14 +167,18 @@
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
-				B55CC3411864CC9B009F1895 /* BMloginViewController.h */,
-				B55CC3421864CC9B009F1895 /* BMloginViewController.m */,
-				B55CC3441864CCF7009F1895 /* BMWebsiteViewController.h */,
-				B55CC3451864CCF7009F1895 /* BMWebsiteViewController.m */,
-				B55CC3471864CD0E009F1895 /* BMSignUpViewController.h */,
-				B55CC3481864CD0E009F1895 /* BMSignUpViewController.m */,
+				B5DCE9ED1868B04100F7197C /* LocationViewController.h */,
+				B5DCE9EE1868B04100F7197C /* LocationViewController.m */,
+				B5DCE9EA1868A92F00F7197C /* WebViewController.h */,
+				B5DCE9EB1868A92F00F7197C /* WebViewController.m */,
+				B5DCE9E61868A7CE00F7197C /* LoginViewController.h */,
+				B5DCE9E71868A7CE00F7197C /* LoginViewController.m */,
+				B5DCE9F01868B15500F7197C /* User.h */,
+				B5DCE9F11868B15500F7197C /* User.m */,
 				B55CC31018625A1D009F1895 /* Images.xcassets */,
 				B55CC2FC18625A1D009F1895 /* Supporting Files */,
+				B5DCE9D91867A13D00F7197C /* BMBlogPost.h */,
+				B5DCE9DA1867A13E00F7197C /* BMBlogPost.m */,
 			);
 			path = BasketMinder;
 			sourceTree = "<group>";
@@ -303,11 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55CC3431864CC9B009F1895 /* BMloginViewController.m in Sources */,
-				B55CC3461864CCF7009F1895 /* BMWebsiteViewController.m in Sources */,
+				B5DCE9DB1867A13E00F7197C /* BMBlogPost.m in Sources */,
+				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
+				B5DCE9F21868B15500F7197C /* User.m in Sources */,
+				B5DCE9EF1868B04100F7197C /* LocationViewController.m in Sources */,
+				B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
-				B55CC3491864CD0E009F1895 /* BMSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
