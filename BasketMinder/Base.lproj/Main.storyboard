@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CmA-sk-00a">
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CmA-sk-00a">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -24,19 +24,8 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="CmA-sk-00a" secondAttribute="centerY" constant="-32" id="BKJ-nD-6ge"/>
-                            <constraint firstItem="CmA-sk-00a" firstAttribute="top" secondItem="C1Y-SM-VMO" secondAttribute="bottom" id="BZR-mT-1mD"/>
-                            <constraint firstAttribute="centerX" secondItem="CmA-sk-00a" secondAttribute="centerX" id="ztD-Fr-tNu"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="BasketMinder" id="eUo-3u-NPw">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Yi4-ll-KzC">
-                            <connections>
-                                <action selector="logoutButton:" destination="CZ4-MO-1fc" id="vqF-xA-DKj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="BasketMinder" id="eUo-3u-NPw"/>
                     <connections>
                         <outlet property="myWebView" destination="CmA-sk-00a" id="qkt-QK-qES"/>
                     </connections>
@@ -98,7 +87,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1TL-2R-XRB">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1TL-2R-XRB">
                                 <rect key="frame" x="20" y="117" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -111,7 +100,6 @@
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="loginButton:" destination="QUy-BD-bpt" eventType="touchUpInside" id="dQu-HY-5DQ"/>
-                                    <segue destination="z4r-Q7-3Mh" kind="push" id="LKX-7D-OA6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,6 +110,7 @@
                         <outlet property="emailField" destination="IP6-tW-ugC" id="NgY-GI-Rfb"/>
                         <outlet property="passwordField" destination="1TL-2R-XRB" id="Oma-9z-Bdh"/>
                         <segue destination="CZ4-MO-1fc" kind="push" identifier="ShowWebView" id="d6L-qd-flk"/>
+                        <segue destination="z4r-Q7-3Mh" kind="push" identifier="ShowLocations" id="AMd-5l-DcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>

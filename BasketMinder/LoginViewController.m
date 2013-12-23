@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "User.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
@@ -18,13 +18,17 @@
 {
     [super viewDidLoad];
 
+    self.emailField.delegate = self;
+    self.passwordField.delegate = self;
+    
+
     //prefill text field with users information
     self.emailField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
    
+    //Check to see if user has already logged in
     if (self.emailField.hasText){
-        NSLog(@"current user");
-        [self performSegueWithIdentifier:@"ShowWebView" sender:self];
+        [self performSegueWithIdentifier:@"ShowWebView" sender:self];//go to web view user already logged in
     }
 }
 
@@ -43,6 +47,20 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Make sure you enter an E-mail and Password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         
         [alertView show];
+        
+    }
+    else{
+        [self performSegueWithIdentifier:@"ShowLocations" sender:self];
     }
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if(theTextField==self.emailField){
+        [self.passwordField becomeFirstResponder];
+    }
+    if(theTextField==self.passwordField){
+        [theTextField resignFirstResponder];
+    }
+    return YES;
+}
+
 @end

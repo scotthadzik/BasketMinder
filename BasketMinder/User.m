@@ -33,7 +33,7 @@
     return self;
     
 }
-//Convienance constructor
+//Convenience constructor
 + (id) userWithEmail:(NSString *) email{
     return [[self alloc] initWithEmail:email];//calls initializer and then allocates what is returned
 }

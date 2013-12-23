@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController
+@interface WebViewController : UIViewController <UIWebViewDelegate>
 
 //for webviewer
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
 @property (nonatomic) BOOL isLoggedIn;
 
 - (void) sendLogin;
-- (IBAction)settings:(id)sender;
 
 @end
