@@ -30,6 +30,8 @@
     if (self.emailField.hasText){
         [self performSegueWithIdentifier:@"ShowWebView" sender:self];//go to web view user already logged in
     }
+    
+    
 }
 
 //dismiss the keyboard when touched outside of text field

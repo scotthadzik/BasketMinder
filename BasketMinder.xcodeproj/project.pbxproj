@@ -30,7 +30,6 @@
 		B55CC33E1864C921009F1895 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3351864C921009F1895 /* Security.framework */; };
 		B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3361864C921009F1895 /* StoreKit.framework */; };
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
-		B5DCE9DB1867A13E00F7197C /* BMBlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9DA1867A13E00F7197C /* BMBlogPost.m */; };
 		B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9E71868A7CE00F7197C /* LoginViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
 		B5DCE9EF1868B04100F7197C /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EE1868B04100F7197C /* LocationViewController.m */; };
@@ -75,8 +74,6 @@
 		B55CC3351864C921009F1895 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B55CC3361864C921009F1895 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B55CC3371864C921009F1895 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B5DCE9D91867A13D00F7197C /* BMBlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMBlogPost.h; sourceTree = "<group>"; };
-		B5DCE9DA1867A13E00F7197C /* BMBlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMBlogPost.m; sourceTree = "<group>"; };
 		B5DCE9E61868A7CE00F7197C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B5DCE9E71868A7CE00F7197C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -177,8 +174,6 @@
 				B5DCE9F11868B15500F7197C /* User.m */,
 				B55CC31018625A1D009F1895 /* Images.xcassets */,
 				B55CC2FC18625A1D009F1895 /* Supporting Files */,
-				B5DCE9D91867A13D00F7197C /* BMBlogPost.h */,
-				B5DCE9DA1867A13E00F7197C /* BMBlogPost.m */,
 			);
 			path = BasketMinder;
 			sourceTree = "<group>";
@@ -313,7 +308,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5DCE9DB1867A13E00F7197C /* BMBlogPost.m in Sources */,
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
 				B5DCE9F21868B15500F7197C /* User.m in Sources */,
 				B5DCE9EF1868B04100F7197C /* LocationViewController.m in Sources */,
@@ -386,7 +380,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -425,7 +420,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -446,7 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryan Hadzik (VMU7496JT5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,7 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bryan Hadzik (APZDN9T94Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

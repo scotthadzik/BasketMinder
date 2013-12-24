@@ -48,11 +48,8 @@
     NSString *emailString   =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     NSString *passwordString =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
     
-   
-    
     //Check to see if a value has been set for userEmail and password
     if(emailString != nil && passwordString != nil){
-         NSLog(@"emailString: %@", emailString);
             //username is the id for username field in Login form
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", emailString];
             //here password is the id for password field in Login Form
