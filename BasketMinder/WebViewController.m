@@ -17,6 +17,7 @@
 
 @synthesize myWebView; //= _myWebView;
 @synthesize backendWebView;
+@synthesize confirmationNumber;
 
 - (void)viewDidLoad
 {
@@ -44,7 +45,7 @@
     //string of html page
     NSString *htmlString = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
     NSString *matchDate;
-    NSString *confirmationNumber;
+    //NSString *confirmationNumber;
     NSString *month,*day,*year,*time;
     //count the number of times key found on page
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:htmlString options:0 range:NSMakeRange(0, [htmlString length])];
@@ -57,11 +58,10 @@
             confirmationNumber = [htmlString substringWithRange:ntcr.range];
         }
         
-        NSLog(@"Confirmation: %@", confirmationNumber);
-        
-        //find the date of pickup
+        //------------------------find the date of pickup---------------------------
         matchDate = [self regexTheString:htmlString pattern:@"pickup \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)"];
-        //find the year day month and time from the date matched
+        
+        //----------find the year day month and time from the date matched----------
         year = [self regexTheString:matchDate pattern:@"\\d\\d\\d\\d"];
         day = [self regexTheString:matchDate pattern:@" \\d{1,2}, "];
         month = [self regexTheString:matchDate pattern:@", \\w{1,10} "];
@@ -69,27 +69,18 @@
         
         //----------------------get the detail time for am or pm--------------------------------/
         NSString *detailURL = [self regexTheString:htmlString pattern:@"href=.{1,200}location details"];
-        NSLog(@"detailURL: %@", detailURL);
         //trim URL
         detailURL = [detailURL stringByReplacingOccurrencesOfString:@"\">location details" withString:@""];
         detailURL = [detailURL stringByReplacingOccurrencesOfString:@"href=\"" withString:@""];
         detailURL = [detailURL stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
-        NSLog(@"detailURL: %@", detailURL);
-        
+        //go to URL
         NSError *error = nil;
         NSURL *url = [NSURL URLWithString:detailURL];
         NSString *webData= [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
         NSString *amORpm = [self regexTheString:webData pattern:@"Pickup Time:</span>\\d{1,2}:\\d\\d \\w{1,2}"];
-
-        NSLog(@"%@",amORpm);
-        
+        //////NSLog(@"%@",amORpm);
         amORpm = [amORpm substringFromIndex:amORpm.length - 2];
-        NSLog(@"%@",amORpm);
-       // amORpm = [amORpm capitalizedString];
-        
-   
-        
-        
+
         //-------------------trim the day and month-----------------------
         day = [day stringByReplacingOccurrencesOfString:@" " withString:@""];//delete spaces and ,
         day = [day stringByReplacingOccurrencesOfString:@"," withString:@""];
@@ -108,26 +99,57 @@
         dateString = [dateString stringByAppendingString:@" "];
         dateString = [dateString stringByAppendingString:amORpm];
         
-        NSLog(@"%@", dateString);
-        
-        //convert string to date
+        //------------------convert string to date------------------------
         NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
         [longDate setDateFormat:@"MMM-dd-yyyy-hh:mm a"];
         NSDate *pickupDate = [longDate dateFromString:dateString];
         
-        NSLog(@"date is %@",[longDate stringFromDate:pickupDate]);
+        //------------------find location address-------------------------
+        //get location detail code
+        NSString *locationDetail = [self regexTheString:htmlString pattern:@";details=.{1,20}&"];
+        locationDetail = [locationDetail stringByReplacingOccurrencesOfString:@";" withString:@"?"];
+        locationDetail = [locationDetail stringByAppendingString:@"query=location_address"];
         
+        //-----------------go to address site to get address--------------
+        //get street address
+        NSString *addressURL = @"http://162.243.202.112/locationinfo.php";
+        addressURL = [addressURL stringByAppendingString:locationDetail];
+        NSURL *urlForAddress = [NSURL URLWithString:addressURL];
+        NSString *addressDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
+        addressDetail = [[addressDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "]; //trim off new line
+        //get city
+        addressURL = [addressURL stringByReplacingOccurrencesOfString:@"location_address" withString:@"city"];
+        urlForAddress = [NSURL URLWithString:addressURL];
+        NSString *cityDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
+        addressDetail = [addressDetail stringByAppendingString:cityDetail];
+        addressDetail = [[addressDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@", "]; //trim off new line
+        //get state
+        addressURL = [addressURL stringByReplacingOccurrencesOfString:@"city" withString:@"state"];
+        urlForAddress = [NSURL URLWithString:addressURL];
+        NSString *stateDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
+        addressDetail = [addressDetail stringByAppendingString:stateDetail];
         
+        //get location name
+        addressURL = [addressURL stringByReplacingOccurrencesOfString:@"state" withString:@"location_name"];
+        urlForAddress = [NSURL URLWithString:addressURL];
+        NSString *nameDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
+        nameDetail = [[nameDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@", "]; //trim off new line
         
-        //store event
+    
+        //-------------------store event----------------------------------
         EKEventStore *store = [[EKEventStore alloc] init];
         [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
             if (!granted) {
                 return;
             }
+            NSString *titleString = @"Basket Pickup at ";
+            titleString = [titleString stringByAppendingString:nameDetail];
             EKEvent *event = [EKEvent eventWithEventStore:store];
-            event.title = @"Bountiful Basket Pickup";
-            event.startDate = pickupDate; //today
+            event.title = titleString;
+            
+            event.startDate = pickupDate; //day of pickup
+            event.location = addressDetail;
+            
             event.endDate = [event.startDate dateByAddingTimeInterval:60*60];  //set 1 hour meeting
                 NSMutableArray *alarmsArray = [[NSMutableArray alloc] init];
                 EKAlarm *alarm1 = [EKAlarm alarmWithRelativeOffset:-3600]; // 1 Hour

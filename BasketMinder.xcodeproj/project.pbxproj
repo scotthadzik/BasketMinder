@@ -30,8 +30,8 @@
 		B55CC33E1864C921009F1895 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3351864C921009F1895 /* Security.framework */; };
 		B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3361864C921009F1895 /* StoreKit.framework */; };
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
-		B5721C60186CA3D60028B9A5 /* Locations.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C5F186CA3D60028B9A5 /* Locations.m */; };
-		B5721C63186CAFDA0028B9A5 /* LocTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C62186CAFDA0028B9A5 /* LocTableViewController.m */; };
+		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
+		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
 		B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9E71868A7CE00F7197C /* LoginViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
 		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
@@ -75,10 +75,10 @@
 		B55CC3351864C921009F1895 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B55CC3361864C921009F1895 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B55CC3371864C921009F1895 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B5721C5E186CA3D60028B9A5 /* Locations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locations.h; sourceTree = "<group>"; };
-		B5721C5F186CA3D60028B9A5 /* Locations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locations.m; sourceTree = "<group>"; };
-		B5721C61186CAFDA0028B9A5 /* LocTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocTableViewController.h; sourceTree = "<group>"; };
-		B5721C62186CAFDA0028B9A5 /* LocTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocTableViewController.m; sourceTree = "<group>"; };
+		B5721C67186E12B60028B9A5 /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
+		B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
+		B5721C70186E2CA80028B9A5 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = ../LocationViewController.h; sourceTree = "<group>"; };
+		B5721C71186E2CA80028B9A5 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = ../LocationViewController.m; sourceTree = "<group>"; };
 		B5DCE9E61868A7CE00F7197C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B5DCE9E71868A7CE00F7197C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -165,16 +165,16 @@
 			isa = PBXGroup;
 			children = (
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
+				B5721C70186E2CA80028B9A5 /* LocationViewController.h */,
+				B5721C71186E2CA80028B9A5 /* LocationViewController.m */,
+				B5721C67186E12B60028B9A5 /* ConfirmationViewController.h */,
+				B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */,
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
-				B5721C61186CAFDA0028B9A5 /* LocTableViewController.h */,
-				B5721C62186CAFDA0028B9A5 /* LocTableViewController.m */,
 				B5DCE9EA1868A92F00F7197C /* WebViewController.h */,
 				B5DCE9EB1868A92F00F7197C /* WebViewController.m */,
 				B5DCE9E61868A7CE00F7197C /* LoginViewController.h */,
 				B5DCE9E71868A7CE00F7197C /* LoginViewController.m */,
-				B5721C5E186CA3D60028B9A5 /* Locations.h */,
-				B5721C5F186CA3D60028B9A5 /* Locations.m */,
 				B5DCE9F01868B15500F7197C /* User.h */,
 				B5DCE9F11868B15500F7197C /* User.m */,
 				B55CC31018625A1D009F1895 /* Images.xcassets */,
@@ -313,13 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5721C63186CAFDA0028B9A5 /* LocTableViewController.m in Sources */,
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
 				B5DCE9F21868B15500F7197C /* User.m in Sources */,
+				B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */,
 				B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
-				B5721C60186CA3D60028B9A5 /* Locations.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
+				B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
