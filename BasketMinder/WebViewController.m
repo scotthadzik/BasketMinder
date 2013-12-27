@@ -16,6 +16,7 @@
 @implementation WebViewController
 
 @synthesize myWebView; //= _myWebView;
+@synthesize backendWebView;
 
 - (void)viewDidLoad
 {
@@ -24,9 +25,10 @@
     //--------------webView  start -----------------//
     
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
+    self.backendWebView.delegate = self;
     //NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
     NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
-    http://hadzik.dyndns.org/bb/livepurchase/1.htm
+    //http://hadzik.dyndns.org/bb/livepurchase/1.htm
     [self displayWebView:urlAddress];
     
     //--------------webView  end -----------------//
@@ -43,98 +45,81 @@
     NSString *htmlString = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
     NSString *matchDate;
     NSString *confirmationNumber;
-    NSString *month,*day,*year,*time, *amORpm;
+    NSString *month,*day,*year,*time;
     //count the number of times key found on page
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:htmlString options:0 range:NSMakeRange(0, [htmlString length])];
     
     NSArray *results = [regex matchesInString:htmlString options: 0 range:NSMakeRange(0, [htmlString length])];
-    
+
+    //Check for the reciept page showing
     if(numberOfMatches > 0){
         for (NSTextCheckingResult *ntcr in results) {
             confirmationNumber = [htmlString substringWithRange:ntcr.range];
         }
         
+        NSLog(@"Confirmation: %@", confirmationNumber);
+        
         //find the date of pickup
-        NSRegularExpression *regex2 = [[NSRegularExpression alloc] initWithPattern:@"pickup \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)" options:NSRegularExpressionCaseInsensitive error:&error];
-        NSArray *resultsdate = [regex2 matchesInString:htmlString options: 0 range:NSMakeRange(0, [htmlString length])];
-        for (NSTextCheckingResult *ntcr in resultsdate) {
-            matchDate = [htmlString substringWithRange:ntcr.range];
-        }
+        matchDate = [self regexTheString:htmlString pattern:@"pickup \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)"];
+        //find the year day month and time from the date matched
+        year = [self regexTheString:matchDate pattern:@"\\d\\d\\d\\d"];
+        day = [self regexTheString:matchDate pattern:@" \\d{1,2}, "];
+        month = [self regexTheString:matchDate pattern:@", \\w{1,10} "];
+        time = [self regexTheString:matchDate pattern:@"\\d{1,2}:\\d\\d"];
         
-            //get the month
-            NSRegularExpression *regexMonth = [[NSRegularExpression alloc] initWithPattern:@", \\w{1,10} " options:NSRegularExpressionCaseInsensitive error:&error];
-            NSArray *resultsMonth = [regexMonth matchesInString:matchDate options: 0 range:NSMakeRange(0, [matchDate length])];
-            for (NSTextCheckingResult *ntcr in resultsMonth) {
-                month = [matchDate substringWithRange:ntcr.range];
-                month = [month stringByReplacingOccurrencesOfString:@" " withString:@""]; //delete spaces and ,
-                month = [month stringByReplacingOccurrencesOfString:@"," withString:@""];
-                month = [month substringToIndex:3]; //only use the first 3 letters of month
-            }
+        //----------------------get the detail time for am or pm--------------------------------/
+        NSString *detailURL = [self regexTheString:htmlString pattern:@"href=.{1,200}location details"];
+        NSLog(@"detailURL: %@", detailURL);
+        //trim URL
+        detailURL = [detailURL stringByReplacingOccurrencesOfString:@"\">location details" withString:@""];
+        detailURL = [detailURL stringByReplacingOccurrencesOfString:@"href=\"" withString:@""];
+        detailURL = [detailURL stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
+        NSLog(@"detailURL: %@", detailURL);
+        
+        NSError *error = nil;
+        NSURL *url = [NSURL URLWithString:detailURL];
+        NSString *webData= [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
+        NSString *amORpm = [self regexTheString:webData pattern:@"Pickup Time:</span>\\d{1,2}:\\d\\d \\w{1,2}"];
 
-            //get the day
-            NSRegularExpression *regexDay = [[NSRegularExpression alloc] initWithPattern:@" \\d{1,2}, " options:NSRegularExpressionCaseInsensitive error:&error];
-            NSArray *resultsDay = [regexDay matchesInString:matchDate options: 0 range:NSMakeRange(0, [matchDate length])];
-            for (NSTextCheckingResult *ntcr in resultsDay) {
-                day = [matchDate substringWithRange:ntcr.range];
-                day = [day stringByReplacingOccurrencesOfString:@" " withString:@""];//delete spaces and ,
-                day = [day stringByReplacingOccurrencesOfString:@"," withString:@""];
-            }
-            
-            //get the year
-            NSRegularExpression *regexYear = [[NSRegularExpression alloc] initWithPattern:@"\\d\\d\\d\\d" options:NSRegularExpressionCaseInsensitive error:&error];
-            NSArray *resultsYear = [regexYear matchesInString:matchDate options: 0 range:NSMakeRange(0, [matchDate length])];
-            for (NSTextCheckingResult *ntcr in resultsYear) {
-                year = [matchDate substringWithRange:ntcr.range];
-            }
-            
-            //get the time
-            NSRegularExpression *regexTime = [[NSRegularExpression alloc] initWithPattern:@"\\d{1,2}:\\d\\d" options:NSRegularExpressionCaseInsensitive error:&error];
-            NSArray *resultsTime = [regexTime matchesInString:matchDate options: 0 range:NSMakeRange(0, [matchDate length])];
-            for (NSTextCheckingResult *ntcr in resultsTime) {
-                time = [matchDate substringWithRange:ntcr.range];
-                NSString *timeOfDay = time;
-               
-                //determine if it is AM or PM
-                if(time.length == 4){//hour is single digit
-                    timeOfDay = [timeOfDay substringToIndex:1];
-                }else{
-                    timeOfDay = [timeOfDay substringToIndex:2];
-                }
-                NSLog(@"timeOfDay: %@", timeOfDay);
-                int hour = [timeOfDay intValue];
-                if (hour >= 1 && hour <= 5) {//this is an afternoon value
-                    amORpm = @" PM";
-                }
-                else if(hour == 12){    //this is an afternoon value
-                    amORpm = @" PM";
-                }
-                else{                   //this is an morning value
-                    amORpm = @" AM";
-                }
-            }
+        NSLog(@"%@",amORpm);
         
-            //setup day string
-            NSString *dateString = month;
-            dateString = [dateString stringByAppendingString:@"-"];
-            dateString = [dateString stringByAppendingString:day];
-            dateString = [dateString stringByAppendingString:@"-"];
-            dateString = [dateString stringByAppendingString:year];
-            dateString = [dateString stringByAppendingString:@"-"];
-            dateString = [dateString stringByAppendingString:time];
-            dateString = [dateString stringByAppendingString:amORpm];
-            NSLog(@"%@", dateString);
+        amORpm = [amORpm substringFromIndex:amORpm.length - 2];
+        NSLog(@"%@",amORpm);
+       // amORpm = [amORpm capitalizedString];
+        
+   
+        
+        
+        //-------------------trim the day and month-----------------------
+        day = [day stringByReplacingOccurrencesOfString:@" " withString:@""];//delete spaces and ,
+        day = [day stringByReplacingOccurrencesOfString:@"," withString:@""];
+        month = [month stringByReplacingOccurrencesOfString:@" " withString:@""]; //delete spaces and ,
+        month = [month stringByReplacingOccurrencesOfString:@"," withString:@""];
+        month = [month substringToIndex:3]; //only use the first 3 letters of month
+
+        //-------------------setup day string-----------------------------
+        NSString *dateString = month;
+        dateString = [dateString stringByAppendingString:@"-"];
+        dateString = [dateString stringByAppendingString:day];
+        dateString = [dateString stringByAppendingString:@"-"];
+        dateString = [dateString stringByAppendingString:year];
+        dateString = [dateString stringByAppendingString:@"-"];
+        dateString = [dateString stringByAppendingString:time];
+        dateString = [dateString stringByAppendingString:@" "];
+        dateString = [dateString stringByAppendingString:amORpm];
+        
+        NSLog(@"%@", dateString);
+        
+        //convert string to date
+        NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
+        [longDate setDateFormat:@"MMM-dd-yyyy-hh:mm a"];
+        NSDate *pickupDate = [longDate dateFromString:dateString];
+        
+        NSLog(@"date is %@",[longDate stringFromDate:pickupDate]);
         
         
         
-        
-            //convert string to date
-            NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
-            [longDate setDateFormat:@"MMM-dd-yyyy-hh:mm a"];
-            NSDate *pickupDate = [longDate dateFromString:dateString];
-            NSLog(@"date is %@",[longDate stringFromDate:pickupDate]);
-        
-        
-            //store event
+        //store event
         EKEventStore *store = [[EKEventStore alloc] init];
         [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
             if (!granted) {
@@ -157,10 +142,23 @@
             [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
             NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
-        
     }
     
     
+}
+
+
+- (NSString *)regexTheString:(NSString*)string pattern:(NSString*)pattern{
+    NSString *returnString;
+     NSError *error = NULL;
+    
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:&error];
+    NSArray *results = [regex matchesInString:string options: 0 range:NSMakeRange(0, [string length])];
+    for (NSTextCheckingResult *ntcr in results) {
+        returnString = [string substringWithRange:ntcr.range];
+    }
+    
+    return returnString;
 }
 
 - (void) displayWebView: (NSString *) urlToLoad{
@@ -190,5 +188,39 @@
         [myWebView stringByEvaluatingJavaScriptFromString:@"document.forms['frm_login_form'].submit();"];
     }
 }
+
+#pragma mark NSURLConnection Delegate Methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // A response has been received, this is where we initialize the instance var you created
+    // so that we can append data to it in the didReceiveData method
+    // Furthermore, this method is called each time there is a redirect so reinitializing it
+    // also serves to clear it
+    _responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // Append the new data to the instance variable you declared
+    [_responseData appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+    // Return nil to indicate not necessary to store a cached response for this connection
+    return nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // The request is complete and data has been received
+    // You can parse the stuff in your instance variable now
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // The request has failed for some reason!
+    // Check the error var
+}
+
+
 
 @end

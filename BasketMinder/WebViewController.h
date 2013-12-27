@@ -10,11 +10,16 @@
 #import <EventKit/EventKit.h>
 
 
-@interface WebViewController : UIViewController <UIWebViewDelegate>
+@interface WebViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
 
 //for webviewer
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
+@property (strong, nonatomic)UIWebView *backendWebView;
 @property (strong, nonatomic) EKEventStore *eventStore;
+@property (strong, nonatomic) NSMutableData *responseData;
+
+
+- (NSString *)regexTheString:(NSString*)string pattern:(NSString*)pattern;
 
 - (void) sendLogin;
 
