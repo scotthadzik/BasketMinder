@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+
 
 @interface WebViewController : UIViewController <UIWebViewDelegate>
 
 //for webviewer
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
-@property (nonatomic) BOOL isLoggedIn;
+@property (strong, nonatomic) EKEventStore *eventStore;
 
 - (void) sendLogin;
 
