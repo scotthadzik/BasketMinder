@@ -14,25 +14,29 @@
 
 @implementation LocationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize locationWebView;
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.locationWebView.delegate = self;
 	// Do any additional setup after loading the view.
+    NSString *urlAddress = @"http://162.243.202.112/locations.php";
+    NSURL *locationsURL = [NSURL URLWithString:urlAddress]; //start at this website
+    NSURLRequest *webRequest = [NSURLRequest requestWithURL:locationsURL];
+    [self.locationWebView loadRequest:webRequest]; //load the webview
+    self.locationWebView.scalesPageToFit = YES;
+    
 }
 
-- (void)didReceiveMemoryWarning
+- (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    
 }
+
+
 
 @end

@@ -15,8 +15,8 @@
 
 @implementation WebViewController
 
-@synthesize myWebView; //= _myWebView;
-@synthesize backendWebView;
+@synthesize myWebView;
+
 @synthesize confirmationNumber;
 
 - (void)viewDidLoad
@@ -26,7 +26,6 @@
     //--------------webView  start -----------------//
     
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
-    self.backendWebView.delegate = self;
     //NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
     NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
     //http://hadzik.dyndns.org/bb/livepurchase/1.htm

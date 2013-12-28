@@ -14,7 +14,6 @@
 
 //for webviewer
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
-@property (strong, nonatomic)UIWebView *backendWebView;
 @property (strong, nonatomic) EKEventStore *eventStore;
 @property (strong, nonatomic) NSMutableData *responseData;
 @property (nonatomic)NSString *confirmationNumber;

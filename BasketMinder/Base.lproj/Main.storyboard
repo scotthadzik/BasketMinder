@@ -9,7 +9,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="H9N-eb-DJY" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Pfb-um-X2G"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="CrV-Pz-2RB">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="3894" y="-573"/>
         </scene>
-        <!--View Controller - Locations-->
+        <!--Location View Controller - Locations-->
         <scene sceneID="Nog-jx-bIC">
             <objects>
-                <viewController id="z4r-Q7-3Mh" sceneMemberID="viewController">
+                <viewController id="z4r-Q7-3Mh" customClass="LocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iMm-JN-5b0"/>
                         <viewControllerLayoutGuide type="bottom" id="Ci7-FN-mIa"/>
@@ -122,6 +122,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Locations" id="GYY-nF-k0G"/>
+                    <connections>
+                        <outlet property="locationWebView" destination="9mR-hq-UIO" id="w86-Ty-j73"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHC-HP-jrh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
