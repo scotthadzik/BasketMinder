@@ -17,6 +17,7 @@
 
 @synthesize confirmationLabel;
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,15 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    confirmationLabel.text = @"test";
-	// Do any additional setup after loading the view.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    WebViewController *webViewVariables = (WebViewController *)[self.tabBarController.viewControllers objectAtIndex:0];
+    
+    NSString *temp = webViewVariables.confirmationNumber;
+    if (temp != NULL){
+        self.confirmationLabel.text = temp;
+    }
 }
 
 @end

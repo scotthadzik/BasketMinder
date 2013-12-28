@@ -16,7 +16,8 @@
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
 @property (strong, nonatomic) EKEventStore *eventStore;
 @property (strong, nonatomic) NSMutableData *responseData;
-@property (nonatomic)NSString *confirmationNumber;
+@property (strong, nonatomic) NSString *confirmationNumber;
+
 
 
 - (NSString *)regexTheString:(NSString*)string pattern:(NSString*)pattern;

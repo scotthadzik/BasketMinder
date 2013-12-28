@@ -32,7 +32,7 @@
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
-		B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9E71868A7CE00F7197C /* LoginViewController.m */; };
+		B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E3186E7D4700825593 /* SettingsViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
 		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
 /* End PBXBuildFile section */
@@ -79,8 +79,8 @@
 		B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		B5721C70186E2CA80028B9A5 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = ../LocationViewController.h; sourceTree = "<group>"; };
 		B5721C71186E2CA80028B9A5 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = ../LocationViewController.m; sourceTree = "<group>"; };
-		B5DCE9E61868A7CE00F7197C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		B5DCE9E71868A7CE00F7197C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B5CC44E2186E7D4700825593 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		B5CC44E3186E7D4700825593 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B5DCE9EB1868A92F00F7197C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		B5DCE9F01868B15500F7197C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -165,16 +165,16 @@
 			isa = PBXGroup;
 			children = (
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
+				B5CC44E2186E7D4700825593 /* SettingsViewController.h */,
+				B5CC44E3186E7D4700825593 /* SettingsViewController.m */,
 				B5721C70186E2CA80028B9A5 /* LocationViewController.h */,
 				B5721C71186E2CA80028B9A5 /* LocationViewController.m */,
-				B5721C67186E12B60028B9A5 /* ConfirmationViewController.h */,
-				B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */,
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
+				B5721C67186E12B60028B9A5 /* ConfirmationViewController.h */,
+				B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */,
 				B5DCE9EA1868A92F00F7197C /* WebViewController.h */,
 				B5DCE9EB1868A92F00F7197C /* WebViewController.m */,
-				B5DCE9E61868A7CE00F7197C /* LoginViewController.h */,
-				B5DCE9E71868A7CE00F7197C /* LoginViewController.m */,
 				B5DCE9F01868B15500F7197C /* User.h */,
 				B5DCE9F11868B15500F7197C /* User.m */,
 				B55CC31018625A1D009F1895 /* Images.xcassets */,
@@ -316,7 +316,7 @@
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
 				B5DCE9F21868B15500F7197C /* User.m in Sources */,
 				B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */,
-				B5DCE9E81868A7CE00F7197C /* LoginViewController.m in Sources */,
+				B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
 				B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */,

@@ -1,35 +1,36 @@
 //
-//  LoginViewController.m
+//  SettingsViewController.m
 //  BasketMinder
 //
-//  Created by Bryan Hadzik on 12/23/13.
+//  Created by Bryan Hadzik on 12/27/13.
 //  Copyright (c) 2013 Bryan Hadzik. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "SettingsViewController.h"
 #import "User.h"
 
-@interface LoginViewController () <UITextFieldDelegate>
+@interface SettingsViewController () <UITextFieldDelegate>
 
 @end
 
-@implementation LoginViewController
+@implementation SettingsViewController
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
-
+    
     //prefill text field with users information
     self.emailField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
-   
+    
     //Check to see if user has already logged in
-    if (self.emailField.hasText){
-        [self performSegueWithIdentifier:@"ShowWebView" sender:self];//go to web view user already logged in
-    }
+//    if (self.emailField.hasText){
+//        [self performSegueWithIdentifier:@"ShowWebView" sender:self];//go to web view user already logged in
+//    }
     
     
 }

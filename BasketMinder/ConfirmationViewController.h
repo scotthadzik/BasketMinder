@@ -11,7 +11,7 @@
 @interface ConfirmationViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
-
+@property (strong, nonatomic)NSString *WebconfirmationNumber;
 
 
 

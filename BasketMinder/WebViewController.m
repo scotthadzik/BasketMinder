@@ -8,6 +8,7 @@
 
 #import "WebViewController.h"
 #import <EventKit/EventKit.h>
+#import "ConfirmationViewController.h"
 
 @interface WebViewController ()
 
@@ -163,9 +164,7 @@
             [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
             NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
-    }
-    
-    
+    }    
 }
 
 
@@ -242,6 +241,13 @@
     // Check the error var
 }
 
-
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+//    if ([segue.identifier isEqualToString:@"mySegue"])
+//    {
+//        ConfirmationViewController *targetVC = (ViewController2*)segue.destinationViewController;
+//        targetVC.received = self;
+//    }
+    NSLog(@"seque");
+}
 @end
