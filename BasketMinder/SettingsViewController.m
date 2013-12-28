@@ -13,7 +13,9 @@
 
 @end
 
-@implementation SettingsViewController
+@implementation SettingsViewController{
+    NSString *_alert;
+}
 
 - (void)viewDidLoad
 {
@@ -26,6 +28,8 @@
     //prefill text field with users information
     self.emailField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
+    
+    self.detailLabel.text = _alert;
     
     //Check to see if user has already logged in
 //    if (self.emailField.hasText){
@@ -64,6 +68,43 @@
         [theTextField resignFirstResponder];
     }
     return YES;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder])) {
+        NSLog(@"init SettingsViewController");
+        _alert = @"None";
+    }
+    return self;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Pick2ndAlert"]) {
+        SecAlertViewController *secAlertViewController = segue.destinationViewController;
+        secAlertViewController.delegate = self;
+        secAlertViewController.alert = _alert;
+    }
+    if ([segue.identifier isEqualToString:@"Pick1stAlert"]) {
+        SecAlertViewController *secAlertViewController = segue.destinationViewController;
+        secAlertViewController.delegate = self;
+        secAlertViewController.alert = _alert;
+    }
+}
+- (void)secAlertViewController:(SecAlertViewController *)controller didSelectAlert:(NSString *)alert
+{
+    _alert = alert;
+    self.detailLabel.text = _alert;
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)firstAlertViewController:(FirstAlertViewController *)controller didSelectAlert:(NSString *)alert
+{
+    _alert = alert;
+    self.firstDetailLabel.text = _alert;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
