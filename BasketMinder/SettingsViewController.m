@@ -9,13 +9,15 @@
 #import "SettingsViewController.h"
 #import "User.h"
 
-@interface SettingsViewController () <UITextFieldDelegate>
+@interface SettingsViewController () <UITextFieldDelegate, NSURLConnectionDelegate>
 
 @end
 
 @implementation SettingsViewController{
     NSString *_alert;
 }
+
+@synthesize emailField, passwordField;
 
 - (void)viewDidLoad
 {
@@ -24,20 +26,12 @@
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
-    
     //prefill text field with users information
     self.emailField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
-    
     self.detailLabel.text = _alert;
     
-    //Check to see if user has already logged in
-//    if (self.emailField.hasText){
-//        [self performSegueWithIdentifier:@"ShowWebView" sender:self];//go to web view user already logged in
-//    }
-    
-    
-}
+   }
 
 //dismiss the keyboard when touched outside of text field
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -60,6 +54,10 @@
         [self performSegueWithIdentifier:@"ShowLocations" sender:self];
     }
 }
+
+//- (void)textFieldDidEndEditing:(UIText
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if(theTextField==self.emailField){
         [self.passwordField becomeFirstResponder];
@@ -91,6 +89,7 @@
         secAlertViewController.delegate = self;
         secAlertViewController.alert = _alert;
     }
+    
 }
 - (void)secAlertViewController:(SecAlertViewController *)controller didSelectAlert:(NSString *)alert
 {

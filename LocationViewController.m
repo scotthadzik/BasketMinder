@@ -23,12 +23,15 @@
     [super viewDidLoad];
     self.locationWebView.delegate = self;
 	// Do any additional setup after loading the view.
-    NSString *urlAddress = @"http://162.243.202.112/locations.php";
+    NSString *urlAddress = @"http://162.243.202.112/locations.php?phoneid=";
+    
+    NSString *token=  [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
+    NSLog(@"token %@", token);
+    urlAddress = [urlAddress stringByAppendingString:token];
     NSURL *locationsURL = [NSURL URLWithString:urlAddress]; //start at this website
     NSURLRequest *webRequest = [NSURLRequest requestWithURL:locationsURL];
     [self.locationWebView loadRequest:webRequest]; //load the webview
     self.locationWebView.scalesPageToFit = YES;
-    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

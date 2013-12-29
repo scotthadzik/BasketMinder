@@ -22,9 +22,15 @@
     //for push notifications
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
     // Override point for customization after application launch.
+    
+    
+    
+    
     return YES;
 }
-							
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -58,7 +64,20 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:newDeviceToken];
     [currentInstallation saveInBackground];
+    
+    
+    NSString *token = [[[[newDeviceToken description]
+              stringByReplacingOccurrencesOfString:@"<"withString:@""]
+             stringByReplacingOccurrencesOfString:@">" withString:@""]
+            stringByReplacingOccurrencesOfString: @" " withString: @""];
+    NSLog(@"token %@",token);
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
 }
+
+
 
 //if app is open and notification sent
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
