@@ -15,6 +15,8 @@
 
 @implementation SettingsViewController{
     NSString *_alert;
+    NSString *_email;
+    NSString *_password;
 }
 
 @synthesize emailField, passwordField;
@@ -31,13 +33,18 @@
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
     self.detailLabel.text = _alert;
     
-   }
-
-//dismiss the keyboard when touched outside of text field
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.view endEditing:YES];
-    [super touchesBegan:touches withEvent:event];
+    //dismiss keyboard
+    UIToolbar* doneToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    doneToolbar.barStyle = UIBarStyleBlackTranslucent;
+    doneToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelPassword)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithPassword)],
+                           nil];
+    [doneToolbar sizeToFit];
+    passwordField.inputAccessoryView = doneToolbar;
 }
+
 
 - (IBAction)loginButton:(id)sender {
     
@@ -55,9 +62,6 @@
     }
 }
 
-//- (void)textFieldDidEndEditing:(UIText
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if(theTextField==self.emailField){
         [self.passwordField becomeFirstResponder];
@@ -67,6 +71,32 @@
     }
     return YES;
 }
+-(void)cancelPassword{
+    [passwordField resignFirstResponder];
+    passwordField.text = @"";
+}
+
+-(void)doneWithPassword{
+    [self textFieldDidEndEditing:passwordField];
+    [passwordField resignFirstResponder];
+}
+
+
+
+-(void) textFieldDidEndEditing:(UITextField *)textField{
+    
+    if(textField == emailField){
+        _email = self.emailField.text;
+        _email = [_email lowercaseString];
+        [[NSUserDefaults standardUserDefaults] setObject:_email forKey:@"preferEmail"];
+    }
+    if(textField == passwordField){
+        _password = self.passwordField.text;
+        _password = [_password lowercaseString];
+        [[NSUserDefaults standardUserDefaults] setObject:_password forKey:@"preferPassword"];
+    }
+}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
