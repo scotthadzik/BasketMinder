@@ -283,8 +283,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="15 minutes before  " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvY-Ec-Z34">
-                                                    <rect key="frame" x="137" y="11" width="148" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvY-Ec-Z34">
+                                                    <rect key="frame" x="244" y="11" width="41" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -362,10 +362,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="waf-oo-1mb"/>
                     <connections>
-                        <outlet property="detailLabel" destination="uwn-mR-6Fv" id="2gi-7F-D4r"/>
                         <outlet property="emailField" destination="ooL-XZ-teL" id="74Y-JK-ZiQ"/>
                         <outlet property="firstDetailLabel" destination="wvY-Ec-Z34" id="Hci-9a-WeK"/>
                         <outlet property="passwordField" destination="NDX-O9-xLA" id="Dzj-PN-OZo"/>
+                        <outlet property="secDetailLabel" destination="uwn-mR-6Fv" id="71h-wr-sEG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r08-hF-PI9" userLabel="First Responder" sceneMemberID="firstResponder"/>

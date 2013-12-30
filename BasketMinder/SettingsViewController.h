@@ -10,12 +10,14 @@
 #import "SecAlertViewController.h"
 #import "FirstAlertViewController.h"
 
-@interface SettingsViewController : UITableViewController <SecAlertViewControllerDelegate>
+@interface SettingsViewController : UITableViewController <SecAlertViewControllerDelegate, FirstAlertViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *firstDetailLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *firstDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secDetailLabel;
+
+- (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert;
 
 @end
