@@ -23,13 +23,13 @@
 }
 
 @synthesize emailField, passwordField, setEventSwitch;
-@synthesize firstDetailLabel, secDetailLabel;
 @synthesize firstAlertCell, secAlertCell;
 @synthesize firstAlertTimeLabel, secAlertTimeLabel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
@@ -42,8 +42,8 @@
     NSString *setEventAlertSwitch = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
     if ([setEventAlertSwitch isEqualToString:@"no"]){
         [setEventSwitch setOn:NO];
-        self.firstDetailLabel.text = @"";
-        secDetailLabel.text=@"";
+        firstAlertCell.detailTextLabel.text = @"";
+        secAlertCell.detailTextLabel.text=@"";
         [self changeCellColor:YES];
     }else{
         [self changeCellColor:NO];
@@ -51,8 +51,8 @@
         NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
         NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
         
-        [self checkForDefaultSet:self.firstDetailLabel setLabel:firstAlertDefault alertDefault:_1stAlert];
-        [self checkForDefaultSet:self.secDetailLabel setLabel:secAlertDefault alertDefault:_2ndAlert];
+        [self checkForDefaultSet:firstAlertCell.detailTextLabel setLabel:firstAlertDefault alertDefault:_1stAlert];
+        [self checkForDefaultSet:secAlertCell.detailTextLabel setLabel:secAlertDefault alertDefault:_2ndAlert];
     }
     
     //For dismiss keyboard addded toolbar
@@ -65,6 +65,11 @@
                            nil];
     [doneToolbar sizeToFit];
     passwordField.inputAccessoryView = doneToolbar;
+}
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.tabBarController.tabBar setHidden:NO];
+    [self changeCellColor:NO];
 }
 
 - (IBAction)loginButton:(id)sender {
@@ -120,7 +125,7 @@
     }
     
     if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
-        NSLog(@"both fields contain info");
+        
         
         [self checkForValidLogin];
     }
@@ -164,12 +169,18 @@
     if(eventSwitch.on){
         _setAlertEvent = @"yes";
         [self changeCellColor:NO];
+        //firstDetailLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
+        firstAlertCell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
+        secAlertCell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
+        [self.tableView reloadData];
     }
     else{
         _setAlertEvent = @"no";
-        self.firstDetailLabel.text = @"";
-        secDetailLabel.text=@"";
+        firstAlertCell.detailTextLabel.text = @"";
+        secAlertCell.detailTextLabel.text=@"";
         [self changeCellColor:YES];
+        [[NSUserDefaults standardUserDefaults] setObject:@"None" forKey:@"1stAlert"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"None" forKey:@"2ndAlert"];
     }
     [[NSUserDefaults standardUserDefaults] setObject:_setAlertEvent forKey:@"setAlertEvent"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -204,8 +215,8 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!setEventSwitch.on) {
-        self.firstDetailLabel.text = @"";
-        secDetailLabel.text=@"";
+        firstAlertCell.detailTextLabel.text = @"";
+        secAlertCell.detailTextLabel.text=@"";
         [self changeCellColor:YES];
         return nil;
     }
@@ -221,11 +232,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
 }
-
-
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert{
     
@@ -247,13 +254,11 @@
         //check for defaults set
         NSString *setEventAlertSwitch = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
         if ([setEventAlertSwitch isEqualToString:@"yes"] ||setEventAlertSwitch == NULL){//check for switch yes or first time loading
-            NSLog(@"Switch state on inside set defaults");
             if (firstAlertDefault == NULL){
                 _1stAlert = @"15 minutes before";
                 [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];//set this as initial default
             }
             else{
-                NSLog(@"Switch state on inside set defaults");
                 _1stAlert = firstAlertDefault;
             }
             if (secAlertDefault == NULL){
@@ -287,8 +292,7 @@
 - (void)firstAlertViewController:(FirstAlertViewController *)controller didSelectAlert:(NSString *)alert
 {
     _1stAlert = alert;
-    NSLog(@"Switch state off did select alert");
-    self.firstDetailLabel.text = _1stAlert;
+    firstAlertCell.detailTextLabel.text = _1stAlert;
     [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -297,7 +301,7 @@
 - (void)secAlertViewController:(SecAlertViewController *)controller didSelectAlert:(NSString *)alert
 {
     _2ndAlert = alert;
-    self.secDetailLabel.text = _2ndAlert;
+    secAlertCell.detailTextLabel.text = _2ndAlert;
     [[NSUserDefaults standardUserDefaults] setObject:_2ndAlert forKey:@"2ndAlert"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

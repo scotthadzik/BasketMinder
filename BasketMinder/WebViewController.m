@@ -342,6 +342,5 @@
 //        ConfirmationViewController *targetVC = (ViewController2*)segue.destinationViewController;
 //        targetVC.received = self;
 //    }
-    NSLog(@"seque");
 }
 @end

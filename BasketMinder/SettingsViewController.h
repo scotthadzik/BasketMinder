@@ -19,9 +19,6 @@ static id gGlobalInstanceTabBar = nil;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UISwitch *setEventSwitch;
 
-
-@property (weak, nonatomic) IBOutlet UILabel *firstDetailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secDetailLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *firstAlertCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *secAlertCell;
 @property (weak, nonatomic) IBOutlet UILabel *firstAlertTimeLabel;

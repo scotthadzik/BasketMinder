@@ -14,7 +14,6 @@
 		B55CC30218625A1D009F1895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC30118625A1D009F1895 /* main.m */; };
 		B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B55CC30518625A1D009F1895 /* BMAppDelegate.m */; };
 		B55CC30918625A1D009F1895 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55CC30718625A1D009F1895 /* Main.storyboard */; };
-		B55CC31118625A1D009F1895 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55CC31018625A1D009F1895 /* Images.xcassets */; };
 		B55CC31818625A1D009F1895 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC31718625A1D009F1895 /* XCTest.framework */; };
 		B55CC31918625A1D009F1895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F518625A1D009F1895 /* Foundation.framework */; };
 		B55CC31A18625A1D009F1895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F918625A1D009F1895 /* UIKit.framework */; };
@@ -32,6 +31,7 @@
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
+		B5ADD5E618733BAE00337716 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5ADD5E518733BAE00337716 /* Images.xcassets */; };
 		B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E3186E7D4700825593 /* SettingsViewController.m */; };
 		B5CC44E7186F3F5C00825593 /* SecAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E6186F3F5C00825593 /* SecAlertViewController.m */; };
 		B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */; };
@@ -61,7 +61,6 @@
 		B55CC30418625A1D009F1895 /* BMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMAppDelegate.h; sourceTree = "<group>"; };
 		B55CC30518625A1D009F1895 /* BMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMAppDelegate.m; sourceTree = "<group>"; };
 		B55CC30818625A1D009F1895 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B55CC31018625A1D009F1895 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B55CC31618625A1D009F1895 /* BasketMinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BasketMinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55CC31718625A1D009F1895 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B55CC31F18625A1D009F1895 /* BasketMinderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BasketMinderTests-Info.plist"; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		B5721C70186E2CA80028B9A5 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = ../LocationViewController.h; sourceTree = "<group>"; };
 		B5721C71186E2CA80028B9A5 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = ../LocationViewController.m; sourceTree = "<group>"; };
+		B5ADD5E518733BAE00337716 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B5CC44E2186E7D4700825593 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B5CC44E3186E7D4700825593 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B5CC44E5186F3F5C00825593 /* SecAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAlertViewController.h; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				B5CC44EB186F64BD00825593 /* Settings */,
 				B5CC44EC186F64DC00825593 /* Confirmation Page */,
 				B5CC44ED186F64EB00825593 /* Basket WebView */,
-				B55CC31018625A1D009F1895 /* Images.xcassets */,
+				B5ADD5E518733BAE00337716 /* Images.xcassets */,
 				B55CC2FC18625A1D009F1895 /* Supporting Files */,
 			);
 			path = BasketMinder;
@@ -326,9 +326,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55CC31118625A1D009F1895 /* Images.xcassets in Resources */,
 				B55CC30018625A1D009F1895 /* InfoPlist.strings in Resources */,
 				B55CC30918625A1D009F1895 /* Main.storyboard in Resources */,
+				B5ADD5E618733BAE00337716 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

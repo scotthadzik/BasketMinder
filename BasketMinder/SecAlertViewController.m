@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tabBarController.tabBar setHidden:YES];
+
 
     _alerts = @[@"None",
                @"At time of event",

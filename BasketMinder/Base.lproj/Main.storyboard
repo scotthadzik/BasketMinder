@@ -138,6 +138,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Second Event Alert" id="HGs-rE-KvU"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZV6-ai-F2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,15 +156,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEQ-wk-oCO">
-                                <rect key="frame" x="268" y="527" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mR-hq-UIO">
-                                <rect key="frame" x="0.0" y="63" width="352" height="467"/>
+                                <rect key="frame" x="0.0" y="63" width="352" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
@@ -171,6 +165,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Locations" id="GYY-nF-k0G"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="locationWebView" destination="9mR-hq-UIO" id="w86-Ty-j73"/>
                     </connections>
@@ -384,11 +379,9 @@
                         <outlet property="emailField" destination="ooL-XZ-teL" id="74Y-JK-ZiQ"/>
                         <outlet property="firstAlertCell" destination="Ut3-cL-jrj" id="G2z-GA-pyZ"/>
                         <outlet property="firstAlertTimeLabel" destination="Qdj-3Q-zCN" id="lXo-o3-6Fb"/>
-                        <outlet property="firstDetailLabel" destination="wvY-Ec-Z34" id="Hci-9a-WeK"/>
                         <outlet property="passwordField" destination="NDX-O9-xLA" id="Dzj-PN-OZo"/>
                         <outlet property="secAlertCell" destination="RFN-hR-EzW" id="qxS-8A-WH5"/>
                         <outlet property="secAlertTimeLabel" destination="LXF-Ur-GLB" id="9Dg-gK-Qcf"/>
-                        <outlet property="secDetailLabel" destination="uwn-mR-6Fv" id="71h-wr-sEG"/>
                         <outlet property="setEventSwitch" destination="oN4-kl-OEf" id="B8r-Vc-w32"/>
                     </connections>
                 </tableViewController>
@@ -430,6 +423,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Event Alert" id="GDf-If-ml4"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1m-vU-6QQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
