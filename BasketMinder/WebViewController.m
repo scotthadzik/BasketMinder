@@ -150,13 +150,15 @@
         addressURL = [addressURL stringByReplacingOccurrencesOfString:@"state" withString:@"location_name"];
         urlForAddress = [NSURL URLWithString:addressURL];
         NSString *nameDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
-        nameDetail = [[nameDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@", "]; //trim off new line
+        nameDetail = [[nameDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "]; //trim off new line
         
     
         //-------------------store event----------------------------------
         EKEventStore *store = [[EKEventStore alloc] init];
         [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-            if (!granted) {
+            NSString *setEventAlert = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
+            
+            if (!granted || [setEventAlert isEqualToString:@"no"]) { //check for popu permission granted and setting view permissions granted
                 return;
             }
             NSString *titleString = @"Basket Pickup at ";

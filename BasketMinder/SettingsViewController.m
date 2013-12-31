@@ -19,9 +19,13 @@
     NSString *_email;
     NSString *_password;
     NSString *_loggedIn;
+    NSString *_setAlertEvent;
 }
 
-@synthesize emailField, passwordField;
+@synthesize emailField, passwordField, setEventSwitch;
+@synthesize firstDetailLabel, secDetailLabel;
+@synthesize firstAlertCell, secAlertCell;
+@synthesize firstAlertTimeLabel, secAlertTimeLabel;
 
 - (void)viewDidLoad
 {
@@ -34,12 +38,23 @@
     self.emailField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
     
-    //Prefill the 1st and second default times if set by user
-    NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
-    NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
-    [self checkForDefaultSet:self.firstDetailLabel setLabel:firstAlertDefault alertDefault:_1stAlert];
-    [self checkForDefaultSet:self.secDetailLabel setLabel:secAlertDefault alertDefault:_2ndAlert];
-
+    //preselect the Set Event Alert Switch
+    NSString *setEventAlertSwitch = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
+    if ([setEventAlertSwitch isEqualToString:@"no"]){
+        [setEventSwitch setOn:NO];
+        self.firstDetailLabel.text = @"";
+        secDetailLabel.text=@"";
+        [self changeCellColor:YES];
+    }else{
+        [self changeCellColor:NO];
+        //Prefill the 1st and second default times if set by user
+        NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
+        NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
+        
+        [self checkForDefaultSet:self.firstDetailLabel setLabel:firstAlertDefault alertDefault:_1stAlert];
+        [self checkForDefaultSet:self.secDetailLabel setLabel:secAlertDefault alertDefault:_2ndAlert];
+    }
+    
     //For dismiss keyboard addded toolbar
     UIToolbar* doneToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     doneToolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -67,6 +82,7 @@
         [self performSegueWithIdentifier:@"ShowLocations" sender:self];
     }
 }
+
 #pragma mark - Email and Password
 
 //for moving to the next textfield when return pressed on keyboard
@@ -142,10 +158,79 @@
 }
 
 #pragma mark - First and Second Alert Settings
+//switch Event alert
+- (IBAction)setEventSwitch:(id)sender{
+    UISwitch *eventSwitch = (UISwitch *) sender;
+    if(eventSwitch.on){
+        _setAlertEvent = @"yes";
+        [self changeCellColor:NO];
+    }
+    else{
+        _setAlertEvent = @"no";
+        self.firstDetailLabel.text = @"";
+        secDetailLabel.text=@"";
+        [self changeCellColor:YES];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:_setAlertEvent forKey:@"setAlertEvent"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)changeCellColor:(BOOL) grey{
+    
+    firstAlertTimeLabel.backgroundColor = [UIColor clearColor];
+    secAlertTimeLabel.backgroundColor = [UIColor clearColor];
+    firstAlertCell.contentView.backgroundColor = [UIColor clearColor];
+    secAlertCell.contentView.backgroundColor = [UIColor clearColor];
+    firstAlertTimeLabel.textColor = [UIColor clearColor];
+    secAlertTimeLabel.textColor = [UIColor clearColor];
+    
+    if (grey){
+        //firstAlertTimeLabel.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
+        firstAlertTimeLabel.textColor = [UIColor colorWithWhite:.5 alpha:.1];
+        firstAlertCell.contentView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
+        
+        //secAlertTimeLabel.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
+        secAlertTimeLabel.textColor = [UIColor colorWithWhite:.5 alpha:.1];
+        secAlertCell.contentView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
+    }
+    else{
+        firstAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
+        secAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
+    }
+}
+
+
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!setEventSwitch.on) {
+        self.firstDetailLabel.text = @"";
+        secDetailLabel.text=@"";
+        [self changeCellColor:YES];
+        return nil;
+    }
+    else{
+        NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
+        NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
+        _1stAlert = firstAlertDefault;
+        _2ndAlert = secAlertDefault;
+        [self changeCellColor:NO];
+        return indexPath;
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+}
+
+
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert{
     
     if(string != NULL){
+        
         label.text = string;
     }
     else{
@@ -160,43 +245,49 @@
         NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
         NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
         //check for defaults set
-        if (firstAlertDefault == NULL){
-            _1stAlert = @"15 minutes before";
-            [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];//set this as initial default
-        }
-        else{
-            _1stAlert = firstAlertDefault;
-        }
-        if (secAlertDefault == NULL){
-            _2ndAlert = @"None";
-            [[NSUserDefaults standardUserDefaults] setObject:_2ndAlert forKey:@"2ndAlert"];//set this as initial default
-        }
-        else{
-            _2ndAlert = secAlertDefault;
+        NSString *setEventAlertSwitch = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
+        if ([setEventAlertSwitch isEqualToString:@"yes"] ||setEventAlertSwitch == NULL){//check for switch yes or first time loading
+            NSLog(@"Switch state on inside set defaults");
+            if (firstAlertDefault == NULL){
+                _1stAlert = @"15 minutes before";
+                [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];//set this as initial default
+            }
+            else{
+                NSLog(@"Switch state on inside set defaults");
+                _1stAlert = firstAlertDefault;
+            }
+            if (secAlertDefault == NULL){
+                _2ndAlert = @"None";
+                [[NSUserDefaults standardUserDefaults] setObject:_2ndAlert forKey:@"2ndAlert"];//set this as initial default
+            }
+            else{
+                _2ndAlert = secAlertDefault;
+            }
         }
     }
     return self;
 }
 
+
+
+//transition between master and detail view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
-    if ([segue.identifier isEqualToString:@"Pick1stAlert"]) {
-        FirstAlertViewController *firstAlertViewController = segue.destinationViewController;
-        firstAlertViewController.delegate = self;
-        firstAlertViewController.alert = _1stAlert;
-    }
-    if ([segue.identifier isEqualToString:@"Pick2ndAlert"]) {
-        SecAlertViewController *secAlertViewController = segue.destinationViewController;
-        secAlertViewController.delegate = self;
-        secAlertViewController.alert = _2ndAlert;
-    }
-    
+        if ([segue.identifier isEqualToString:@"Pick1stAlert"]) {
+            FirstAlertViewController *firstAlertViewController = segue.destinationViewController;
+            firstAlertViewController.delegate = self;
+            firstAlertViewController.alert = _1stAlert;
+        }
+        if ([segue.identifier isEqualToString:@"Pick2ndAlert"]) {
+            SecAlertViewController *secAlertViewController = segue.destinationViewController;
+            secAlertViewController.delegate = self;
+            secAlertViewController.alert = _2ndAlert;
+        }
 }
-
 - (void)firstAlertViewController:(FirstAlertViewController *)controller didSelectAlert:(NSString *)alert
 {
     _1stAlert = alert;
+    NSLog(@"Switch state off did select alert");
     self.firstDetailLabel.text = _1stAlert;
     [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -221,5 +312,4 @@
     }
     return gGlobalInstanceTabBar;
 }
-
 @end
