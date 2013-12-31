@@ -10,6 +10,9 @@
 #import "SecAlertViewController.h"
 #import "FirstAlertViewController.h"
 
+static id gGlobalInstanceTabBar = nil;
+
+
 @interface SettingsViewController : UITableViewController <SecAlertViewControllerDelegate, FirstAlertViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -19,5 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *secDetailLabel;
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert;
+- (void)checkForValidLogin;
+
++ (UITabBarController *) tabBarController;
 
 @end

@@ -18,6 +18,7 @@
     NSString *_2ndAlert;
     NSString *_email;
     NSString *_password;
+    NSString *_loggedIn;
 }
 
 @synthesize emailField, passwordField;
@@ -101,7 +102,45 @@
         [[NSUserDefaults standardUserDefaults] setObject:_password forKey:@"preferPassword"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
+        NSLog(@"both fields contain info");
+        
+        [self checkForValidLogin];
+    }
 }
+
+- (void)checkForValidLogin{
+//    NSLog(@"checking for valid login");
+//    
+//     NSString *post = @"email=sgthad@gmail.com&password=meinusch";
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//    
+//    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://accounts.google.com/ServiceLogin?"]]];
+//    [request setHTTPMethod:@"POST"];
+//    NSString *json = @"{}";
+//    NSMutableData *body = [[NSMutableData alloc] init];
+//    
+//     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
+//     [request setHTTPBody:postData];
+//     //get response
+//     NSHTTPURLResponse* urlResponse = nil;
+//     NSError *error = [[NSError alloc] init];
+//     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+//     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+//     NSLog(@"Response Code: %ld", (long)[urlResponse statusCode]);
+//     
+//     if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300)
+//    {
+//        NSLog(@"Response: %@", result);
+//    }
+//    
+//
+}
+
 #pragma mark - First and Second Alert Settings
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert{
@@ -172,6 +211,15 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
++ (UITabBarController *) tabBarController
+{
+    if (!gGlobalInstanceTabBar)
+    {
+        gGlobalInstanceTabBar = [[UITabBarController alloc] init];
+    }
+    return gGlobalInstanceTabBar;
 }
 
 @end

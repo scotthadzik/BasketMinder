@@ -9,6 +9,7 @@
 #import "WebViewController.h"
 #import <EventKit/EventKit.h>
 #import "ConfirmationViewController.h"
+#import "SettingsViewController.h"
 
 @interface WebViewController ()
 
@@ -24,8 +25,24 @@
 {
     
     [super viewDidLoad];
-    //--------------webView  start -----------------//
     
+   // UITabBarController *tabBarController = [SettingsViewController tabBarController];
+   // UITabBarController *tabBar = [SettingsViewController tabBarController];
+    
+//    NSString *validLogin = [[NSUserDefaults standardUserDefaults] stringForKey:@"validLogin"];
+//    if (![validLogin  isEqual: @"valid"]) {
+//        NSLog(@"not a valid login go to settings");
+//        [tabBarController setSelectedIndex:1];
+//    }
+    
+    //[self.tabBarController.delegate tabBarController:self.tabBarController animationControllerForTransitionFromViewController: self toViewController: (U)SettingsViewController;
+    //[self.tabBarController.delegate tabBarController:self.tabBarController shouldSelectViewController: objectAtIndex:2]];
+    //[tabBar setSelectedIndex:2];
+    
+   // [self performSegueWithIdentifier:@"showSettings" sender:self];
+
+    
+    //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
     //NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
     NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
@@ -148,26 +165,100 @@
             event.title = titleString;
             
             event.startDate = pickupDate; //day of pickup
-            event.location = addressDetail;
+            event.location = addressDetail;//address of pickup
+            event.endDate = [event.startDate dateByAddingTimeInterval:60*20];  //20 minute window
             
-            event.endDate = [event.startDate dateByAddingTimeInterval:60*60];  //set 1 hour meeting
-                NSMutableArray *alarmsArray = [[NSMutableArray alloc] init];
-                EKAlarm *alarm1 = [EKAlarm alarmWithRelativeOffset:-3600]; // 1 Hour
-                EKAlarm *alarm2 = [EKAlarm alarmWithRelativeOffset:-86400]; // 1 Day
-                
+            NSMutableArray *alarmsArray = [[NSMutableArray alloc] init];
+            
+            //1st Alarm
+            NSString *alertTime = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
+            NSTimeInterval alarmTimeInMinutes = [self calcAlarmTime:alertTime]; //first Alert Time
+            if (alarmTimeInMinutes != 1) { //if the alarm was set to anything but None send alarm to array
+                EKAlarm *alarm1 = [EKAlarm alarmWithRelativeOffset:alarmTimeInMinutes];
                 [alarmsArray addObject:alarm1];
+            }
+            //2nd Alarm
+            alertTime = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
+            alarmTimeInMinutes = [self calcAlarmTime:alertTime]; //first Alert Time
+            if (alarmTimeInMinutes != 1) {//if the alarm was set to anything but None send alarm to array
+                EKAlarm *alarm2 = [EKAlarm alarmWithRelativeOffset:alarmTimeInMinutes]; // 1 Day
                 [alarmsArray addObject:alarm2];
-                event.alarms = alarmsArray;
+            }
+
+            event.alarms = alarmsArray;
                 
             [event setCalendar:[store defaultCalendarForNewEvents]];
             NSError *err = nil;
             [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
-            NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
+            //NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
     }    
 }
 
+#pragma mark - alert time function
+- (NSTimeInterval)calcAlarmTime:(NSString *) alarmTime{
+    
+    NSArray *_alerts = @[@"None",
+                         @"At time of event",
+                         @"5 minutes before",
+                         @"15 minutes before",
+                         @"30 minutes before",
+                         @"1 hour before",
+                         @"2 hours before",
+                         @"1 day before",
+                         @"2 days before",
+                         @"1 week before"];
+    
+    NSTimeInterval returnedTime;
+    int matchingMinutes = 0;
+    for (int i = 0; i<_alerts.count; i++) {
+        if ([alarmTime isEqualToString:_alerts[i]]){
+            matchingMinutes = i;
+        }
+    };
+    if (matchingMinutes == 0) {
+        return 1;               //None
+    }
+    switch (matchingMinutes) {
+       
+        case 1:
+            returnedTime = 0; //time in seconds before event
+            break;
+        case 2:
+            returnedTime = -300;//5 minutes before
+            break;
+        case 3:
+            returnedTime = -900;//15 minutes before
+            break;
+        case 4:
+            returnedTime = -1800;//30 minutes before
+            break;
+        case 5:
+            returnedTime = -3600;//1 hour before
+            break;
+        case 6:
+            returnedTime = -7200;//2 hours before
+            break;
+        case 7:
+            returnedTime = -86400;//1 day before
+            break;
+        case 8:
+            returnedTime = -172800;//2 days before
+            break;
+        case 9:
+            returnedTime = -604800;//1 week before
+            break;
+        default:
+            returnedTime = 1;
+            break;
+    }
+    
+    return returnedTime;
+}
 
+
+
+#pragma mark - regex function
 - (NSString *)regexTheString:(NSString*)string pattern:(NSString*)pattern{
     NSString *returnString;
      NSError *error = NULL;
@@ -180,6 +271,7 @@
     
     return returnString;
 }
+#pragma mark - webview functions
 
 - (void) displayWebView: (NSString *) urlToLoad{
     

@@ -10,7 +10,7 @@
 #import <EventKit/EventKit.h>
 
 
-@interface WebViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
+@interface WebViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, UITabBarControllerDelegate>
 
 //for webviewer
 @property (strong, nonatomic) IBOutlet UIWebView *myWebView;
@@ -21,6 +21,8 @@
 
 
 - (NSString *)regexTheString:(NSString*)string pattern:(NSString*)pattern;
+
+- (NSTimeInterval)calcAlarmTime:(NSString *) alarmTime;
 
 - (void) sendLogin;
 
