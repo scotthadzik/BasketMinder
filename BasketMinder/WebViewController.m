@@ -25,6 +25,11 @@
 {
     
     [super viewDidLoad];
+    self.tabBarController.delegate = self;
+    
+   // tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
+    
     
     //this is a test of the github used on another computer
     
