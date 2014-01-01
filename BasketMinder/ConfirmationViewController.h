@@ -11,5 +11,6 @@
 @interface ConfirmationViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
