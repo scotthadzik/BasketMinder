@@ -26,6 +26,8 @@
     
     [super viewDidLoad];
     
+    //this is a test of the github used on another computer
+    
    // UITabBarController *tabBarController = [SettingsViewController tabBarController];
    // UITabBarController *tabBar = [SettingsViewController tabBarController];
     
