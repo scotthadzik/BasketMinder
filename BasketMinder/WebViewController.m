@@ -23,31 +23,7 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
-    self.tabBarController.delegate = self;
-    
-   // tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
-    
-    
-    //this is a test of the github used on another computer
-    
-   // UITabBarController *tabBarController = [SettingsViewController tabBarController];
-   // UITabBarController *tabBar = [SettingsViewController tabBarController];
-    
-//    NSString *validLogin = [[NSUserDefaults standardUserDefaults] stringForKey:@"validLogin"];
-//    if (![validLogin  isEqual: @"valid"]) {
-//        NSLog(@"not a valid login go to settings");
-//        [tabBarController setSelectedIndex:1];
-//    }
-    
-    //[self.tabBarController.delegate tabBarController:self.tabBarController animationControllerForTransitionFromViewController: self toViewController: (U)SettingsViewController;
-    //[self.tabBarController.delegate tabBarController:self.tabBarController shouldSelectViewController: objectAtIndex:2]];
-    //[tabBar setSelectedIndex:2];
-    
-   // [self performSegueWithIdentifier:@"showSettings" sender:self];
-
     
     //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
@@ -57,7 +33,9 @@
     [self displayWebView:urlAddress];
     
     //--------------webView  end -----------------//
-
+}
+- (void) viewDidAppear:(BOOL)animated{
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
