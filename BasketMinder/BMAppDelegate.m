@@ -25,7 +25,7 @@
     // Override point for customization after application launch.
     
     
-    
+    [self customizeUserInterface];
     
     return YES;
 }
@@ -83,6 +83,37 @@
 //if app is open and notification sent
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
+}
+
+#pragma mark - Helper methods
+-(void)customizeUserInterface{
+    //Customize the Nav Bar
+   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.553 green:0.435 blue:0.718 alpha:1.0]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navBarBackground"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    //Customize the tab bar
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    
+    UITabBarItem *tabWebView = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabSettings= [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabBlog= [tabBar.items objectAtIndex:3];
+    
+    tabWebView = [[UITabBarItem alloc] initWithTitle:@"Basket" image:[UIImage imageNamed:@"inbox"] selectedImage:[UIImage imageNamed:@"inbox"]];
+    tabConfirmation = [[UITabBarItem alloc] initWithTitle:@"Confirmation" image:[UIImage imageNamed:@"friends"] selectedImage:[UIImage imageNamed:@"friends"]];
+    tabSettings = [[UITabBarItem alloc] initWithTitle:@"Settings" image:[UIImage imageNamed:@"camera"] selectedImage:[UIImage imageNamed:@"camera"]];
+    tabBlog = [[UITabBarItem alloc] initWithTitle:@"Blog" image:[UIImage imageNamed:@"inbox"] selectedImage:[UIImage imageNamed:@"inbox"]];
+    
+    //for pageview tutorial
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor whiteColor];
 }
 
 @end

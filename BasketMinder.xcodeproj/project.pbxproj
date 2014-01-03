@@ -31,6 +31,11 @@
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
 		B5ADD5E618733BAE00337716 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5ADD5E518733BAE00337716 /* Images.xcassets */; };
+		B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5EF1875E9C800337716 /* PageContentViewController.m */; };
+		B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F21875EAF600337716 /* LoginViewController.m */; };
+		B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F51875EC8400337716 /* PageRootViewController.m */; };
+		B5ADD5FA1876116800337716 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F91876116800337716 /* TPKeyboardAvoidingScrollView.m */; };
+		B5ADD5FD187611E700337716 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5FC187611E700337716 /* SignupViewController.m */; };
 		B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E3186E7D4700825593 /* SettingsViewController.m */; };
 		B5CC44E7186F3F5C00825593 /* SecAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E6186F3F5C00825593 /* SecAlertViewController.m */; };
 		B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */; };
@@ -81,6 +86,16 @@
 		B5721C70186E2CA80028B9A5 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = ../LocationViewController.h; sourceTree = "<group>"; };
 		B5721C71186E2CA80028B9A5 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = ../LocationViewController.m; sourceTree = "<group>"; };
 		B5ADD5E518733BAE00337716 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B5ADD5EE1875E9C800337716 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = ../PageContentViewController.h; sourceTree = "<group>"; };
+		B5ADD5EF1875E9C800337716 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = ../PageContentViewController.m; sourceTree = "<group>"; };
+		B5ADD5F11875EAF600337716 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B5ADD5F21875EAF600337716 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B5ADD5F41875EC8400337716 /* PageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRootViewController.h; sourceTree = "<group>"; };
+		B5ADD5F51875EC8400337716 /* PageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRootViewController.m; sourceTree = "<group>"; };
+		B5ADD5F81876116800337716 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		B5ADD5F91876116800337716 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		B5ADD5FB187611E700337716 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		B5ADD5FC187611E700337716 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		B5CC44E2186E7D4700825593 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B5CC44E3186E7D4700825593 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B5CC44E5186F3F5C00825593 /* SecAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAlertViewController.h; sourceTree = "<group>"; };
@@ -173,6 +188,7 @@
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
+				B5ADD5F71875FAB700337716 /* Initial Setup */,
 				B5CC44EB186F64BD00825593 /* Settings */,
 				B5CC44EC186F64DC00825593 /* Confirmation Page */,
 				B5CC44ED186F64EB00825593 /* Basket WebView */,
@@ -189,6 +205,8 @@
 				B55CC2FE18625A1D009F1895 /* InfoPlist.strings */,
 				B55CC30118625A1D009F1895 /* main.m */,
 				B55CC30318625A1D009F1895 /* BasketMinder-Prefix.pch */,
+				B5ADD5F81876116800337716 /* TPKeyboardAvoidingScrollView.h */,
+				B5ADD5F91876116800337716 /* TPKeyboardAvoidingScrollView.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -209,6 +227,29 @@
 				B55CC32018625A1D009F1895 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5ADD5ED1875E79E00337716 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				B5ADD5F41875EC8400337716 /* PageRootViewController.h */,
+				B5ADD5F51875EC8400337716 /* PageRootViewController.m */,
+				B5ADD5EE1875E9C800337716 /* PageContentViewController.h */,
+				B5ADD5EF1875E9C800337716 /* PageContentViewController.m */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		B5ADD5F71875FAB700337716 /* Initial Setup */ = {
+			isa = PBXGroup;
+			children = (
+				B5ADD5ED1875E79E00337716 /* Tutorial */,
+				B5ADD5F11875EAF600337716 /* LoginViewController.h */,
+				B5ADD5F21875EAF600337716 /* LoginViewController.m */,
+				B5ADD5FB187611E700337716 /* SignupViewController.h */,
+				B5ADD5FC187611E700337716 /* SignupViewController.m */,
+			);
+			name = "Initial Setup";
 			sourceTree = "<group>";
 		};
 		B5CC44EB186F64BD00825593 /* Settings */ = {
@@ -347,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5ADD5FA1876116800337716 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
 				B5DCE9F21868B15500F7197C /* User.m in Sources */,
 				B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */,
@@ -354,7 +396,11 @@
 				B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
 				B5CC44E7186F3F5C00825593 /* SecAlertViewController.m in Sources */,
+				B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */,
+				B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
+				B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */,
+				B5ADD5FD187611E700337716 /* SignupViewController.m in Sources */,
 				B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,8 @@
 
 @interface ConfirmationViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *confirmationLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UILabel *pickupDateLabel;
 
 @end

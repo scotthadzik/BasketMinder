@@ -69,22 +69,10 @@
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self.tabBarController.tabBar setHidden:NO];
-    [self changeCellColor:NO];
-}
-
-- (IBAction)loginButton:(id)sender {
-    
-    User *newUser = [User userWithEmail:self.emailField.text];
-    newUser.password = self.passwordField.text;
-    
-    if(newUser.email.length == 0 || newUser.password.length == 0){
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Make sure you enter an E-mail and Password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
-        [alertView show];
-        
-    }
-    else{
-        [self performSegueWithIdentifier:@"ShowLocations" sender:self];
+    if(setEventSwitch.on){
+        [self changeCellColor:NO];
+    }else{
+        [self changeCellColor:YES];
     }
 }
 
@@ -127,7 +115,9 @@
     if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
         
         
-        [self checkForValidLogin];
+        //[self checkForValidLogin];
+        [[NSUserDefaults standardUserDefaults] setObject:@"validLogin" forKey:@"validLogin"];
+        
     }
 }
 
@@ -194,20 +184,26 @@
     secAlertCell.contentView.backgroundColor = [UIColor clearColor];
     firstAlertTimeLabel.textColor = [UIColor clearColor];
     secAlertTimeLabel.textColor = [UIColor clearColor];
+    firstAlertCell.accessoryView.backgroundColor = [UIColor clearColor];
+    secAlertCell.accessoryView.backgroundColor = [UIColor clearColor];
+    
     
     if (grey){
         //firstAlertTimeLabel.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
         firstAlertTimeLabel.textColor = [UIColor colorWithWhite:.5 alpha:.1];
         firstAlertCell.contentView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
+        firstAlertCell.accessoryView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
         
         //secAlertTimeLabel.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
         secAlertTimeLabel.textColor = [UIColor colorWithWhite:.5 alpha:.1];
         secAlertCell.contentView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
+        secAlertCell.accessoryView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
     }
     else{
         firstAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
         secAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
     }
+    [self.tableView reloadData];
 }
 
 

@@ -21,6 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tabBarController.tabBar setHidden:YES];
+    
     self.locationWebView.delegate = self;
 	// Do any additional setup after loading the view.
     NSString *urlAddress = @"http://162.243.202.112/locations.php?phoneid=";

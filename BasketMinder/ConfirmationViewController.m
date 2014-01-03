@@ -16,19 +16,23 @@
 @implementation ConfirmationViewController
 
 @synthesize confirmationLabel;
+@synthesize pickupDateLabel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self checkForConfirmationNumber];
 }
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    WebViewController *webViewVariables = (WebViewController *)[self.tabBarController.viewControllers objectAtIndex:0];
-    
-    NSString *temp = webViewVariables.confirmationNumber;
+    [self checkForConfirmationNumber];
+}
+- (void)checkForConfirmationNumber{
+    NSString *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"confirmationNumber"];
+    NSString *date = [[NSUserDefaults standardUserDefaults] objectForKey:@"pickupDate"];
     if (temp != NULL){
         self.confirmationLabel.text = temp;
+        self.pickupDateLabel.text = date;
     }
 }
 

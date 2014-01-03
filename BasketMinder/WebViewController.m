@@ -24,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setHidden:YES];
     
     //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
@@ -35,12 +36,30 @@
     //--------------webView  end -----------------//
 }
 - (void) viewDidAppear:(BOOL)animated{
-    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
+    [super viewDidAppear:YES];
+    [self.tabBarController.tabBar setHidden:NO];
+    BOOL initailSetup = [[NSUserDefaults standardUserDefaults] boolForKey:@"initialSetup"];
+    if (!initailSetup) {
+        UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
+//    NSString *checkForValidLogin = [[NSUserDefaults standardUserDefaults] stringForKey:@"validLogin"];
+//    if (checkForValidLogin == NULL) {
+//        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
+//    }
+    
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    //show indicator while loading website
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    
     [self sendLogin]; //call the login for the first load of the site
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     NSError *error = NULL;
     NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"Contribution confirmation number: \\d{10}" options:NSRegularExpressionCaseInsensitive error:&error];
@@ -59,7 +78,7 @@
         for (NSTextCheckingResult *ntcr in results) {
             confirmationNumber = [htmlString substringWithRange:ntcr.range];
         }
-        
+        [[NSUserDefaults standardUserDefaults] setObject:confirmationNumber forKey:@"confirmationNumber"];
         //------------------------find the date of pickup---------------------------
         matchDate = [self regexTheString:htmlString pattern:@"pickup \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)"];
         
@@ -100,6 +119,7 @@
         dateString = [dateString stringByAppendingString:time];
         dateString = [dateString stringByAppendingString:@" "];
         dateString = [dateString stringByAppendingString:amORpm];
+        [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"pickupDate"];
         
         //------------------convert string to date------------------------
         NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
