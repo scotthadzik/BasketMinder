@@ -36,8 +36,8 @@
 		B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F51875EC8400337716 /* PageRootViewController.m */; };
 		B5ADD5FA1876116800337716 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F91876116800337716 /* TPKeyboardAvoidingScrollView.m */; };
 		B5ADD5FD187611E700337716 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5FC187611E700337716 /* SignupViewController.m */; };
+		B5AFEC1818787FC9001BD16D /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AFEC1718787FC9001BD16D /* FeedbackViewController.m */; };
 		B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E3186E7D4700825593 /* SettingsViewController.m */; };
-		B5CC44E7186F3F5C00825593 /* SecAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E6186F3F5C00825593 /* SecAlertViewController.m */; };
 		B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
 		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
@@ -96,10 +96,10 @@
 		B5ADD5F91876116800337716 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		B5ADD5FB187611E700337716 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		B5ADD5FC187611E700337716 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		B5AFEC1618787FC9001BD16D /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		B5AFEC1718787FC9001BD16D /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		B5CC44E2186E7D4700825593 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B5CC44E3186E7D4700825593 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		B5CC44E5186F3F5C00825593 /* SecAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecAlertViewController.h; sourceTree = "<group>"; };
-		B5CC44E6186F3F5C00825593 /* SecAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecAlertViewController.m; sourceTree = "<group>"; };
 		B5CC44E8186F64AC00825593 /* FirstAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAlertViewController.h; sourceTree = "<group>"; };
 		B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstAlertViewController.m; sourceTree = "<group>"; };
 		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -188,6 +188,7 @@
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
+				B5AFEC1918787FD3001BD16D /* Feedback */,
 				B5ADD5F71875FAB700337716 /* Initial Setup */,
 				B5CC44EB186F64BD00825593 /* Settings */,
 				B5CC44EC186F64DC00825593 /* Confirmation Page */,
@@ -252,6 +253,15 @@
 			name = "Initial Setup";
 			sourceTree = "<group>";
 		};
+		B5AFEC1918787FD3001BD16D /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				B5AFEC1618787FC9001BD16D /* FeedbackViewController.h */,
+				B5AFEC1718787FC9001BD16D /* FeedbackViewController.m */,
+			);
+			name = Feedback;
+			sourceTree = "<group>";
+		};
 		B5CC44EB186F64BD00825593 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,8 +269,6 @@
 				B5DCE9F01868B15500F7197C /* User.h */,
 				B5CC44E8186F64AC00825593 /* FirstAlertViewController.h */,
 				B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */,
-				B5CC44E5186F3F5C00825593 /* SecAlertViewController.h */,
-				B5CC44E6186F3F5C00825593 /* SecAlertViewController.m */,
 				B5CC44E2186E7D4700825593 /* SettingsViewController.h */,
 				B5CC44E3186E7D4700825593 /* SettingsViewController.m */,
 				B5721C70186E2CA80028B9A5 /* LocationViewController.h */,
@@ -391,11 +399,11 @@
 				B5ADD5FA1876116800337716 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
 				B5DCE9F21868B15500F7197C /* User.m in Sources */,
+				B5AFEC1818787FC9001BD16D /* FeedbackViewController.m in Sources */,
 				B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */,
 				B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */,
 				B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
-				B5CC44E7186F3F5C00825593 /* SecAlertViewController.m in Sources */,
 				B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */,
 				B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,

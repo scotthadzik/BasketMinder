@@ -15,7 +15,6 @@
 
 @implementation SettingsViewController{
     NSString *_1stAlert;
-    NSString *_2ndAlert;
     NSString *_email;
     NSString *_password;
     NSString *_loggedIn;
@@ -23,8 +22,8 @@
 }
 
 @synthesize emailField, passwordField, setEventSwitch;
-@synthesize firstAlertCell, secAlertCell;
-@synthesize firstAlertTimeLabel, secAlertTimeLabel;
+@synthesize firstAlertCell;
+@synthesize firstAlertTimeLabel;
 
 - (void)viewDidLoad
 {
@@ -43,16 +42,12 @@
     if ([setEventAlertSwitch isEqualToString:@"no"]){
         [setEventSwitch setOn:NO];
         firstAlertCell.detailTextLabel.text = @"";
-        secAlertCell.detailTextLabel.text=@"";
         [self changeCellColor:YES];
     }else{
         [self changeCellColor:NO];
         //Prefill the 1st and second default times if set by user
         NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
-        NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
-        
         [self checkForDefaultSet:firstAlertCell.detailTextLabel setLabel:firstAlertDefault alertDefault:_1stAlert];
-        [self checkForDefaultSet:secAlertCell.detailTextLabel setLabel:secAlertDefault alertDefault:_2ndAlert];
     }
     
     //For dismiss keyboard addded toolbar
@@ -122,34 +117,34 @@
 }
 
 - (void)checkForValidLogin{
-//    NSLog(@"checking for valid login");
-//    
-//     NSString *post = @"email=sgthad@gmail.com&password=meinusch";
-//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//    
-//    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://accounts.google.com/ServiceLogin?"]]];
-//    [request setHTTPMethod:@"POST"];
-//    NSString *json = @"{}";
-//    NSMutableData *body = [[NSMutableData alloc] init];
-//    
-//     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
-//     [request setHTTPBody:postData];
-//     //get response
-//     NSHTTPURLResponse* urlResponse = nil;
-//     NSError *error = [[NSError alloc] init];
-//     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-//     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//     NSLog(@"Response Code: %ld", (long)[urlResponse statusCode]);
-//     
-//     if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300)
-//    {
-//        NSLog(@"Response: %@", result);
-//    }
-//    
-//
+    NSLog(@"checking for valid login");
+    
+     NSString *post = @"email=sgthad@gmail.com&password=";
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://accounts.google.com/ServiceLogin?"]]];
+    [request setHTTPMethod:@"POST"];
+    NSString *json = @"{}";
+    NSMutableData *body = [[NSMutableData alloc] init];
+    
+     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
+     [request setHTTPBody:postData];
+     //get response
+     NSHTTPURLResponse* urlResponse = nil;
+     NSError *error = [[NSError alloc] init];
+     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+     NSLog(@"Response Code: %ld", (long)[urlResponse statusCode]);
+     
+     if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300)
+    {
+        NSLog(@"Response: %@", result);
+    }
+    
+
 }
 
 #pragma mark - First and Second Alert Settings
@@ -159,18 +154,14 @@
     if(eventSwitch.on){
         _setAlertEvent = @"yes";
         [self changeCellColor:NO];
-        //firstDetailLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
         firstAlertCell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
-        secAlertCell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
         [self.tableView reloadData];
     }
     else{
         _setAlertEvent = @"no";
         firstAlertCell.detailTextLabel.text = @"";
-        secAlertCell.detailTextLabel.text=@"";
         [self changeCellColor:YES];
         [[NSUserDefaults standardUserDefaults] setObject:@"None" forKey:@"1stAlert"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"None" forKey:@"2ndAlert"];
     }
     [[NSUserDefaults standardUserDefaults] setObject:_setAlertEvent forKey:@"setAlertEvent"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -179,29 +170,18 @@
 - (void)changeCellColor:(BOOL) grey{
     
     firstAlertTimeLabel.backgroundColor = [UIColor clearColor];
-    secAlertTimeLabel.backgroundColor = [UIColor clearColor];
     firstAlertCell.contentView.backgroundColor = [UIColor clearColor];
-    secAlertCell.contentView.backgroundColor = [UIColor clearColor];
     firstAlertTimeLabel.textColor = [UIColor clearColor];
-    secAlertTimeLabel.textColor = [UIColor clearColor];
     firstAlertCell.accessoryView.backgroundColor = [UIColor clearColor];
-    secAlertCell.accessoryView.backgroundColor = [UIColor clearColor];
     
     
     if (grey){
-        //firstAlertTimeLabel.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
         firstAlertTimeLabel.textColor = [UIColor colorWithWhite:.5 alpha:.1];
         firstAlertCell.contentView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
         firstAlertCell.accessoryView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
-        
-        //secAlertTimeLabel.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
-        secAlertTimeLabel.textColor = [UIColor colorWithWhite:.5 alpha:.1];
-        secAlertCell.contentView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
-        secAlertCell.accessoryView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
     }
     else{
         firstAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
-        secAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
     }
     [self.tableView reloadData];
 }
@@ -212,15 +192,12 @@
 {
     if (!setEventSwitch.on) {
         firstAlertCell.detailTextLabel.text = @"";
-        secAlertCell.detailTextLabel.text=@"";
         [self changeCellColor:YES];
         return nil;
     }
     else{
         NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
-        NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
         _1stAlert = firstAlertDefault;
-        _2ndAlert = secAlertDefault;
         [self changeCellColor:NO];
         return indexPath;
     }
@@ -246,7 +223,6 @@
     if ((self = [super initWithCoder:aDecoder])) {
         
         NSString *firstAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"1stAlert"];
-        NSString *secAlertDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"2ndAlert"];
         //check for defaults set
         NSString *setEventAlertSwitch = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
         if ([setEventAlertSwitch isEqualToString:@"yes"] ||setEventAlertSwitch == NULL){//check for switch yes or first time loading
@@ -257,48 +233,25 @@
             else{
                 _1stAlert = firstAlertDefault;
             }
-            if (secAlertDefault == NULL){
-                _2ndAlert = @"None";
-                [[NSUserDefaults standardUserDefaults] setObject:_2ndAlert forKey:@"2ndAlert"];//set this as initial default
-            }
-            else{
-                _2ndAlert = secAlertDefault;
-            }
         }
     }
     return self;
 }
 
-
-
 //transition between master and detail view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-        if ([segue.identifier isEqualToString:@"Pick1stAlert"]) {
-            FirstAlertViewController *firstAlertViewController = segue.destinationViewController;
-            firstAlertViewController.delegate = self;
-            firstAlertViewController.alert = _1stAlert;
-        }
-        if ([segue.identifier isEqualToString:@"Pick2ndAlert"]) {
-            SecAlertViewController *secAlertViewController = segue.destinationViewController;
-            secAlertViewController.delegate = self;
-            secAlertViewController.alert = _2ndAlert;
-        }
+    if ([segue.identifier isEqualToString:@"Pick1stAlert"]) {
+        FirstAlertViewController *firstAlertViewController = segue.destinationViewController;
+        firstAlertViewController.delegate = self;
+        firstAlertViewController.alert = _1stAlert;
+    }
 }
 - (void)firstAlertViewController:(FirstAlertViewController *)controller didSelectAlert:(NSString *)alert
 {
     _1stAlert = alert;
     firstAlertCell.detailTextLabel.text = _1stAlert;
     [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-- (void)secAlertViewController:(SecAlertViewController *)controller didSelectAlert:(NSString *)alert
-{
-    _2ndAlert = alert;
-    secAlertCell.detailTextLabel.text = _2ndAlert;
-    [[NSUserDefaults standardUserDefaults] setObject:_2ndAlert forKey:@"2ndAlert"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self.navigationController popViewControllerAnimated:YES];

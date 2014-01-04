@@ -25,7 +25,7 @@
     
     self.locationWebView.delegate = self;
 	// Do any additional setup after loading the view.
-    NSString *urlAddress = @"http://162.243.202.112/locations.php?phoneid=";
+    NSString *urlAddress = @"http://www.tankjig.com/locations.php?phoneid=";
     //append the token to the urladdress
     NSString *token=  [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
     NSLog(@"token %@", token);

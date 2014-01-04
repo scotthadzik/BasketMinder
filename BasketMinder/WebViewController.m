@@ -15,11 +15,14 @@
 
 @end
 
-@implementation WebViewController
+@implementation WebViewController{
+    NSDate *timeAppResignedActive; //for webview refresh
+    NSDate *timeAppBecameActive;
+}
 
 @synthesize myWebView;
 
-@synthesize confirmationNumber;
+@synthesize confirmationNumber,navigationToolBar;
 
 - (void)viewDidLoad
 {
@@ -30,10 +33,14 @@
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
     //NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
     NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
-    //http://hadzik.dyndns.org/bb/livepurchase/1.htm
     [self displayWebView:urlAddress];
     
     //--------------webView  end -----------------//
+    
+    //for refreshing the webview if the user leaves the app for more than 24 hours
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTheWebview) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeLeftActive) name:UIApplicationWillResignActiveNotification object:nil];
+    
 }
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
@@ -43,11 +50,22 @@
         UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
-//    NSString *checkForValidLogin = [[NSUserDefaults standardUserDefaults] stringForKey:@"validLogin"];
-//    if (checkForValidLogin == NULL) {
-//        self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2];
-//    }
-    
+}
+
+//see when the app left active
+-(void)timeLeftActive{
+    timeAppResignedActive = [NSDate date];
+}
+
+//see when the app became active
+- (void)refreshTheWebview{
+    timeAppBecameActive = [NSDate date];
+    NSTimeInterval timeDifferenceBetweenDates = [timeAppResignedActive timeIntervalSinceDate:timeAppBecameActive];
+    NSInteger timeAway = timeDifferenceBetweenDates;
+    if (timeAway < -86400 ) {  //refresh the webview when inactive for more than 24 hours
+        NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
+        [self displayWebView:urlAddress];
+    }
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -55,6 +73,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
 }
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
@@ -99,7 +118,6 @@
         NSURL *url = [NSURL URLWithString:detailURL];
         NSString *webData= [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
         NSString *amORpm = [self regexTheString:webData pattern:@"Pickup Time:</span>\\d{1,2}:\\d\\d \\w{1,2}"];
-        //////NSLog(@"%@",amORpm);
         amORpm = [amORpm substringFromIndex:amORpm.length - 2];
 
         //-------------------trim the day and month-----------------------
@@ -134,7 +152,7 @@
         
         //-----------------go to address site to get address--------------
         //get street address
-        NSString *addressURL = @"http://162.243.202.112/locationinfo.php";
+        NSString *addressURL = @"http://www.tankjig.com/locationinfo.php";
         addressURL = [addressURL stringByAppendingString:locationDetail];
         NSURL *urlForAddress = [NSURL URLWithString:addressURL];
         NSString *addressDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
@@ -157,7 +175,6 @@
         NSString *nameDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
         nameDetail = [[nameDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "]; //trim off new line
         
-    
         //-------------------store event----------------------------------
         EKEventStore *store = [[EKEventStore alloc] init];
         [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
@@ -262,10 +279,8 @@
     
     return returnedTime;
 }
-
-
-
 #pragma mark - regex function
+
 - (NSString *)regexTheString:(NSString*)string pattern:(NSString*)pattern{
     NSString *returnString;
      NSError *error = NULL;
@@ -342,10 +357,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    if ([segue.identifier isEqualToString:@"mySegue"])
-//    {
-//        ConfirmationViewController *targetVC = (ViewController2*)segue.destinationViewController;
-//        targetVC.received = self;
-//    }
+
 }
 @end

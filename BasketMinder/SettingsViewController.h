@@ -7,22 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SecAlertViewController.h"
 #import "FirstAlertViewController.h"
 
 static id gGlobalInstanceTabBar = nil;
 
 
-@interface SettingsViewController : UITableViewController <SecAlertViewControllerDelegate, FirstAlertViewControllerDelegate>
+@interface SettingsViewController : UITableViewController <FirstAlertViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UISwitch *setEventSwitch;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *firstAlertCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *secAlertCell;
 @property (weak, nonatomic) IBOutlet UILabel *firstAlertTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secAlertTimeLabel;
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert;
 - (void)checkForValidLogin;

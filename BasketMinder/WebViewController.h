@@ -17,6 +17,8 @@
 @property (strong, nonatomic) EKEventStore *eventStore;
 @property (strong, nonatomic) NSMutableData *responseData;
 @property (strong, nonatomic) NSString *confirmationNumber;
+@property (weak, nonatomic) IBOutlet UIToolbar *navigationToolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *back;
 
 
 
