@@ -28,12 +28,12 @@
     // Email Content
     NSString *messageBody = @"\n\n\n\n\n";
     NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
-    NSString *phoneModel = [self IphoneModel];
+//    NSString *phoneModel = [self IphoneModel];
     messageBody = [messageBody stringByAppendingString:@"Application Version: "];
     messageBody = [messageBody stringByAppendingString:appVersion];
     messageBody = [messageBody stringByAppendingString:@"\n" ];
     messageBody = [messageBody stringByAppendingString:@"Phone Model: " ];
-    messageBody = [messageBody stringByAppendingString:phoneModel];
+//    messageBody = [messageBody stringByAppendingString:phoneModel];
     
     // To address
     NSArray *toRecipents = [NSArray arrayWithObject:@"support@tankjig.com"];
@@ -73,15 +73,15 @@
 
 }
 
-- (NSString *) IphoneModel {
-    size_t size;
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-    char *machine = (char*)malloc(size);
-    sysctlbyname("hw.machine", machine, &size, NULL, 0);
-    NSString *platform = [NSString stringWithCString:machine encoding: NSUTF8StringEncoding];
-    free(machine);
-    
-    return platform;
-}
+//- (NSString *) IphoneModel {
+//    size_t size;
+//    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+//    char *machine = (char*)malloc(size);
+//    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+//    NSString *platform = [NSString stringWithCString:machine encoding: NSUTF8StringEncoding];
+//    free(machine);
+//    
+//    return platform;
+//}
 
 @end

@@ -26,7 +26,6 @@
 		B55CC33C1864C921009F1895 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3331864C921009F1895 /* MobileCoreServices.framework */; };
 		B55CC33D1864C921009F1895 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3341864C921009F1895 /* QuartzCore.framework */; };
 		B55CC33E1864C921009F1895 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3351864C921009F1895 /* Security.framework */; };
-		B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3361864C921009F1895 /* StoreKit.framework */; };
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
@@ -39,6 +38,7 @@
 		B5AFEC1818787FC9001BD16D /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AFEC1718787FC9001BD16D /* FeedbackViewController.m */; };
 		B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E3186E7D4700825593 /* SettingsViewController.m */; };
 		B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */; };
+		B5D3330F1878F69F000D5FFF /* BillingInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
 		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
 		EDF00C1F1873EC9500C3EF4E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
@@ -79,7 +79,6 @@
 		B55CC3331864C921009F1895 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B55CC3341864C921009F1895 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B55CC3351864C921009F1895 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		B55CC3361864C921009F1895 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B55CC3371864C921009F1895 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B5721C67186E12B60028B9A5 /* ConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationViewController.h; sourceTree = "<group>"; };
 		B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
@@ -102,6 +101,8 @@
 		B5CC44E3186E7D4700825593 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B5CC44E8186F64AC00825593 /* FirstAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstAlertViewController.h; sourceTree = "<group>"; };
 		B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstAlertViewController.m; sourceTree = "<group>"; };
+		B5D3330D1878F69F000D5FFF /* BillingInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillingInformationViewController.h; sourceTree = "<group>"; };
+		B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillingInformationViewController.m; sourceTree = "<group>"; };
 		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B5DCE9EB1868A92F00F7197C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		B5DCE9F01868B15500F7197C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 				B55CC33D1864C921009F1895 /* QuartzCore.framework in Frameworks */,
 				EDF00C1F1873EC9500C3EF4E /* Parse.framework in Frameworks */,
 				B55CC33E1864C921009F1895 /* Security.framework in Frameworks */,
-				B55CC33F1864C921009F1895 /* StoreKit.framework in Frameworks */,
 				B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */,
 				B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */,
 				B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */,
@@ -171,7 +171,6 @@
 				B55CC3331864C921009F1895 /* MobileCoreServices.framework */,
 				B55CC3341864C921009F1895 /* QuartzCore.framework */,
 				B55CC3351864C921009F1895 /* Security.framework */,
-				B55CC3361864C921009F1895 /* StoreKit.framework */,
 				B55CC3371864C921009F1895 /* SystemConfiguration.framework */,
 				B55CC32D1864C898009F1895 /* Parse.framework */,
 				B55CC2F518625A1D009F1895 /* Foundation.framework */,
@@ -265,6 +264,8 @@
 		B5CC44EB186F64BD00825593 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B5D3330D1878F69F000D5FFF /* BillingInformationViewController.h */,
+				B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */,
 				B5DCE9F11868B15500F7197C /* User.m */,
 				B5DCE9F01868B15500F7197C /* User.h */,
 				B5CC44E8186F64AC00825593 /* FirstAlertViewController.h */,
@@ -345,6 +346,14 @@
 				TargetAttributes = {
 					B55CC2F118625A1D009F1895 = {
 						DevelopmentTeam = APZDN9T94Q;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					B55CC31518625A1D009F1895 = {
 						TestTargetID = B55CC2F118625A1D009F1895;
@@ -408,6 +417,7 @@
 				B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
 				B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */,
+				B5D3330F1878F69F000D5FFF /* BillingInformationViewController.m in Sources */,
 				B5ADD5FD187611E700337716 /* SignupViewController.m in Sources */,
 				B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */,
 			);

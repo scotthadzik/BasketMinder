@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    
+    [self.navigationController.navigationBar setHidden:YES];
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
