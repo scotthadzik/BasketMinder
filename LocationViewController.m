@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tabBarController.tabBar setHidden:YES];
+    [self.tabBarController.tabBar setHidden:NO];
     
     self.locationWebView.delegate = self;
 	// Do any additional setup after loading the view.

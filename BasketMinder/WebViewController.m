@@ -31,8 +31,8 @@
     
     //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
-    //NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
-    NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
+    NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
+    //NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
     [self displayWebView:urlAddress];
     
     //--------------webView  end -----------------//
