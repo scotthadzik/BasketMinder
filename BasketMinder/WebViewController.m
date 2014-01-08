@@ -116,7 +116,7 @@
         }
         [[NSUserDefaults standardUserDefaults] setObject:confirmationNumber forKey:@"confirmationNumber"];
         //------------------------find the date of pickup---------------------------
-        matchDate = [self regexTheString:htmlString pattern:@"pickup \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)"];
+        matchDate = [self regexTheString:htmlString pattern:@"Basket Pickup Week Ending \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)"];
         
         //----------find the year day month and time from the date matched----------
         year = [self regexTheString:matchDate pattern:@"\\d\\d\\d\\d"];
@@ -234,6 +234,11 @@
             //NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
     }    
+}
+
+#pragma mark -get web data
+-(void)readConfirmationNumber{
+    
 }
 
 #pragma mark - alert time function

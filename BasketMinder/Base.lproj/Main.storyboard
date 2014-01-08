@@ -9,7 +9,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="rootViewController" definesPresentationContext="YES" id="H9N-eb-DJY" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Pfb-um-X2G"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" barStyle="black" translucent="NO" backgroundImage="footer" selectionIndicatorImage="backgroundSelected" itemPositioning="fill" id="CrV-Pz-2RB">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -20,9 +20,9 @@
                         <segue destination="EAD-IM-bJD" kind="relationship" relationship="viewControllers" id="X72-0Y-QNz"/>
                         <segue destination="TFM-qJ-XB7" kind="relationship" relationship="viewControllers" id="1IR-ho-po5"/>
                         <segue destination="Uy1-oO-6Y2" kind="relationship" relationship="viewControllers" id="JlK-6C-V6Q"/>
+                        <segue destination="kMw-WF-g4Y" kind="relationship" relationship="viewControllers" id="b1C-dV-3SY"/>
                         <segue destination="tjt-vV-kdd" kind="relationship" relationship="viewControllers" id="zTa-NL-EWq"/>
                         <segue destination="oEO-ZJ-nAH" kind="relationship" relationship="viewControllers" id="tKT-vx-rLu"/>
-                        <segue destination="kMw-WF-g4Y" kind="relationship" relationship="viewControllers" id="b1C-dV-3SY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PiL-un-hF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,7 +66,7 @@
                                     <constraint firstAttribute="width" constant="267" id="fXN-o1-qbJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.9960784912109375" blue="0.90980398654937744" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.50196081399917603" green="0.0078431377187371254" blue="0.027450982481241226" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONFIRMATION NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwB-YX-dTy">
@@ -609,11 +609,11 @@
             </objects>
             <point key="canvasLocation" x="3143" y="2602"/>
         </scene>
-        <!--Navigation Controller - Blog-->
+        <!--Navigation Controller - Tutorial-->
         <scene sceneID="nWc-lU-RVz">
             <objects>
                 <navigationController storyboardIdentifier="LoginViewController" definesPresentationContext="YES" id="oEO-ZJ-nAH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Blog" image="friends" id="o3u-sa-gAg"/>
+                    <tabBarItem key="tabBarItem" title="Tutorial" image="moreInfo" id="o3u-sa-gAg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S5C-sg-8iW">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -625,21 +625,21 @@
             </objects>
             <point key="canvasLocation" x="2260" y="1254"/>
         </scene>
-        <!--Page View Controller - Item-->
+        <!--Page View Controller - Blog-->
         <scene sceneID="k6t-3b-sfI">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="kMw-WF-g4Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="camera" id="nXo-4b-x4u"/>
+                    <tabBarItem key="tabBarItem" title="Blog" image="moreInfo" id="nXo-4b-x4u"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2y-Zh-SyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2254" y="2602"/>
         </scene>
-        <!--Navigation Controller - Blog-->
+        <!--Navigation Controller - Contact Us-->
         <scene sceneID="k8s-7p-3hf">
             <objects>
                 <navigationController definesPresentationContext="YES" id="tjt-vV-kdd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Blog" image="moreInfo" id="ovS-4c-t8m"/>
+                    <tabBarItem key="tabBarItem" title="Contact Us" image="moreInfo" id="ovS-4c-t8m"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O3E-3g-Ed2">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -734,7 +734,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Vb1-yX-ofe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Vb1-yX-ofe">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -906,7 +906,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="te3-az-qIN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="te3-az-qIN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1063,12 +1063,9 @@
         <image name="background" width="1" height="1"/>
         <image name="backgroundSelected" width="120" height="60"/>
         <image name="basket" width="30" height="30"/>
-        <image name="camera" width="33" height="24"/>
         <image name="confirmation" width="32" height="32"/>
         <image name="footer" width="320" height="83"/>
-        <image name="friends" width="40" height="24"/>
         <image name="icon_x" width="11" height="11"/>
-        <image name="loginBackground" width="320" height="480"/>
         <image name="moreInfo" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
     </resources>

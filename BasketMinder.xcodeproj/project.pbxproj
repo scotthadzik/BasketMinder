@@ -46,7 +46,7 @@
 		B5D3330F1878F69F000D5FFF /* BillingInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
 		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
-		EDF00C1F1873EC9500C3EF4E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
+		F4A440E0187DC4A700941E64 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,11 +130,11 @@
 				B55CC33B1864C921009F1895 /* libz.1.1.3.dylib in Frameworks */,
 				B55CC33C1864C921009F1895 /* MobileCoreServices.framework in Frameworks */,
 				B55CC33D1864C921009F1895 /* QuartzCore.framework in Frameworks */,
-				EDF00C1F1873EC9500C3EF4E /* Parse.framework in Frameworks */,
 				B55CC33E1864C921009F1895 /* Security.framework in Frameworks */,
 				B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */,
 				B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */,
 				B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */,
+				F4A440E0187DC4A700941E64 /* Parse.framework in Frameworks */,
 				B55CC2F618625A1D009F1895 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +582,7 @@
 					"$(inherited)",
 					/Users/bryanhadzik/Desktop/Applications/BasketMinder,
 					/Users/johnsullivan/BasketMinder,
+					"$(SYSTEM_APPS_DIR)/BasketMinder",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
@@ -604,6 +605,7 @@
 					"$(inherited)",
 					/Users/bryanhadzik/Desktop/Applications/BasketMinder,
 					/Users/johnsullivan/BasketMinder,
+					"$(SYSTEM_APPS_DIR)/BasketMinder",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
