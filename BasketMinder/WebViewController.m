@@ -63,7 +63,8 @@
     NSTimeInterval timeDifferenceBetweenDates = [timeAppResignedActive timeIntervalSinceDate:timeAppBecameActive];
     NSInteger timeAway = timeDifferenceBetweenDates;
     if (timeAway < -86400 ) {  //refresh the webview when inactive for more than 24 hours
-        NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
+       // NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
+        NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
         [self displayWebView:urlAddress];
     }
 }
