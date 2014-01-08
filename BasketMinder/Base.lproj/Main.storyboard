@@ -9,12 +9,12 @@
             <objects>
                 <tabBarController storyboardIdentifier="rootViewController" definesPresentationContext="YES" id="H9N-eb-DJY" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Pfb-um-X2G"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" backgroundImage="tabBarBackground" selectionIndicatorImage="tabBarSelectedBackground" itemPositioning="fill" id="CrV-Pz-2RB">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" barStyle="black" translucent="NO" backgroundImage="footer" selectionIndicatorImage="backgroundSelected" itemPositioning="fill" id="CrV-Pz-2RB">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="EAD-IM-bJD" kind="relationship" relationship="viewControllers" id="X72-0Y-QNz"/>
@@ -38,46 +38,44 @@
                         <viewControllerLayoutGuide type="bottom" id="YYD-pq-GVH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Wdu-W1-WhW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oRi-MN-wOf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="oRi-MN-wOf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="578-0M-CRy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="578-0M-CRy">
+                                <rect key="frame" x="7" y="154" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no confirmation numbers" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="4va-Ew-mYx">
-                                        <rect key="frame" x="27" y="223" width="267" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="73" id="0IT-HB-WD4"/>
-                                            <constraint firstAttribute="width" constant="267" id="fXN-o1-qbJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="0.9960784912109375" blue="0.90980398654937744" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="RmG-Oj-Hbe">
-                                        <rect key="frame" x="27" y="323" width="267" height="0.0"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="RmG-Oj-Hbe">
+                                        <rect key="frame" x="20" y="120" width="0.0" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="4va-Ew-mYx" firstAttribute="leading" secondItem="RmG-Oj-Hbe" secondAttribute="leading" id="1pQ-Sl-HHQ"/>
-                                    <constraint firstItem="4va-Ew-mYx" firstAttribute="centerX" secondItem="578-0M-CRy" secondAttribute="centerX" id="EPE-f5-6DB"/>
-                                    <constraint firstItem="4va-Ew-mYx" firstAttribute="trailing" secondItem="RmG-Oj-Hbe" secondAttribute="trailing" id="a62-nI-8cq"/>
-                                    <constraint firstItem="RmG-Oj-Hbe" firstAttribute="top" secondItem="4va-Ew-mYx" secondAttribute="bottom" constant="27" id="nwx-vp-equ"/>
-                                    <constraint firstAttribute="bottom" secondItem="4va-Ew-mYx" secondAttribute="bottom" constant="241" id="yUZ-Y8-aL5"/>
-                                    <constraint firstAttribute="trailing" secondItem="4va-Ew-mYx" secondAttribute="trailing" constant="26" id="zFc-Ui-SOG"/>
-                                    <constraint firstAttribute="centerY" secondItem="4va-Ew-mYx" secondAttribute="centerY" id="zrP-KA-IAs"/>
-                                </constraints>
                             </scrollView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You have no confirmation numbers" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="4va-Ew-mYx">
+                                <rect key="frame" x="33" y="78" width="267" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="0IT-HB-WD4"/>
+                                    <constraint firstAttribute="width" constant="267" id="fXN-o1-qbJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.9960784912109375" blue="0.90980398654937744" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONFIRMATION NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwB-YX-dTy">
+                                <rect key="frame" x="20" y="65" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.58039218187332153" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -91,10 +89,11 @@
                             <constraint firstItem="oRi-MN-wOf" firstAttribute="leading" secondItem="Wdu-W1-WhW" secondAttribute="leading" id="pz3-fN-Azs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Confirmation Number" image="friends" id="ywG-1e-AKk"/>
+                    <tabBarItem key="tabBarItem" title="Confirmation" image="confirmation" id="ywG-1e-AKk"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="oRi-MN-wOf" id="pwj-iX-x57"/>
                         <outlet property="confirmationLabel" destination="4va-Ew-mYx" id="Eoz-yq-nIA"/>
+                        <outlet property="confirmationTitle" destination="CwB-YX-dTy" id="S6k-FW-0ia"/>
                         <outlet property="pickupDateLabel" destination="RmG-Oj-Hbe" id="T5p-q5-Bkm"/>
                     </connections>
                 </viewController>
@@ -138,8 +137,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BasketMinder" id="eUo-3u-NPw"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="BasketMinder" id="Ug4-FE-LuS"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="back" destination="B8t-iZ-PVA" id="d7w-jM-jFZ"/>
                         <outlet property="myWebView" destination="CmA-sk-00a" id="qkt-QK-qES"/>
@@ -584,7 +583,7 @@
         <scene sceneID="YGA-PO-0a9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uy1-oO-6Y2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="camera" id="2yy-MS-hF3"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="2yy-MS-hF3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4TP-K3-c3q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -610,11 +609,11 @@
             </objects>
             <point key="canvasLocation" x="3143" y="2602"/>
         </scene>
-        <!--Navigation Controller - Help-->
+        <!--Navigation Controller - Blog-->
         <scene sceneID="nWc-lU-RVz">
             <objects>
                 <navigationController storyboardIdentifier="LoginViewController" definesPresentationContext="YES" id="oEO-ZJ-nAH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Help" image="friends" id="o3u-sa-gAg"/>
+                    <tabBarItem key="tabBarItem" title="Blog" image="friends" id="o3u-sa-gAg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S5C-sg-8iW">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -636,11 +635,11 @@
             </objects>
             <point key="canvasLocation" x="2254" y="2602"/>
         </scene>
-        <!--Navigation Controller - Feedback-->
+        <!--Navigation Controller - Blog-->
         <scene sceneID="k8s-7p-3hf">
             <objects>
                 <navigationController definesPresentationContext="YES" id="tjt-vV-kdd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feedback" image="inbox" id="ovS-4c-t8m"/>
+                    <tabBarItem key="tabBarItem" title="Blog" image="moreInfo" id="ovS-4c-t8m"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O3E-3g-Ed2">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -661,18 +660,18 @@
                         <viewControllerLayoutGuide type="bottom" id="YTp-5O-a4w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sh0-QA-wgk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send us feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jg-Pc-xZo">
-                                <rect key="frame" x="91" y="228" width="139" height="21"/>
+                                <rect key="frame" x="91" y="204" width="139" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbA-by-P7N">
-                                <rect key="frame" x="121" y="269" width="78" height="30"/>
+                                <rect key="frame" x="121" y="245" width="78" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Contact Us">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -702,7 +701,7 @@
         <scene sceneID="CI2-O9-ztE">
             <objects>
                 <navigationController storyboardIdentifier="WebViewController" automaticallyAdjustsScrollViewInsets="NO" id="EAD-IM-bJD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Basket" image="inbox" id="4fD-cu-WF7"/>
+                    <tabBarItem key="tabBarItem" title="Basket" image="basket" id="4fD-cu-WF7"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="fBc-BH-gvo"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1061,13 +1060,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="1" height="1"/>
+        <image name="backgroundSelected" width="120" height="60"/>
+        <image name="basket" width="30" height="30"/>
         <image name="camera" width="33" height="24"/>
+        <image name="confirmation" width="32" height="32"/>
+        <image name="footer" width="320" height="83"/>
         <image name="friends" width="40" height="24"/>
         <image name="icon_x" width="11" height="11"/>
-        <image name="inbox" width="32" height="21"/>
         <image name="loginBackground" width="320" height="480"/>
-        <image name="tabBarBackground" width="1" height="1"/>
-        <image name="tabBarSelectedBackground" width="49" height="49"/>
+        <image name="moreInfo" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1075,8 +1078,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bUA-hQ-tDN"/>
+        <segue reference="X72-0Y-QNz"/>
+        <segue reference="X8w-B0-VLn"/>
         <segue reference="DhF-D2-Bab"/>
-        <segue reference="ai3-CO-25i"/>
     </inferredMetricsTieBreakers>
 </document>

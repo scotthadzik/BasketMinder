@@ -17,10 +17,12 @@
 
 @synthesize confirmationLabel;
 @synthesize pickupDateLabel;
+@synthesize confirmationTitle;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self customizePage];
     [self checkForConfirmationNumber];
 }
 - (void) viewWillAppear:(BOOL)animated {
@@ -34,6 +36,12 @@
         self.confirmationLabel.text = temp;
         self.pickupDateLabel.text = date;
     }
+}
+- (void)customizePage{
+    
+    confirmationLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+    pickupDateLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+    confirmationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
 }
 
 @end

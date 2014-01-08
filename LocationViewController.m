@@ -12,7 +12,9 @@
 
 @end
 
-@implementation LocationViewController
+@implementation LocationViewController{
+    NSString *urlAddress;
+}
 
 @synthesize locationWebView;
 
@@ -25,7 +27,11 @@
     
     self.locationWebView.delegate = self;
 	// Do any additional setup after loading the view.
-    NSString *urlAddress = @"http://www.tankjig.com/locations.php?phoneid=";
+    
+    
+    [self checkForTestLogin];
+    
+    
     //append the token to the urladdress
     NSString *token=  [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
     NSLog(@"token %@", token);
@@ -42,7 +48,19 @@
     
     
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [self checkForTestLogin];
+}
+- (void)checkForTestLogin{
+    NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:@"preferEmail"];
+    if ([email isEqualToString:@"tester1234"]) {
+        urlAddress = @"http://www.tankjig.com/dev/locations.php?phoneid=";
+    }
+    else{
+        urlAddress = @"http://www.tankjig.com/locations.php?phoneid=";
+    }
+}
 
 
 @end

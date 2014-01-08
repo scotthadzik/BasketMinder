@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B54D3535187CF7BA003824E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54D3534187CF7BA003824E1 /* Images.xcassets */; };
+		B54D3542187D1F17003824E1 /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D353D187D1F17003824E1 /* IstokWeb-Bold.ttf */; };
+		B54D3543187D1F17003824E1 /* IstokWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D353E187D1F17003824E1 /* IstokWeb-BoldItalic.ttf */; };
+		B54D3544187D1F17003824E1 /* IstokWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D353F187D1F17003824E1 /* IstokWeb-Italic.ttf */; };
+		B54D3545187D1F17003824E1 /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D3540187D1F17003824E1 /* IstokWeb-Regular.ttf */; };
+		B54D3546187D1F17003824E1 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B54D3541187D1F17003824E1 /* OFL.txt */; };
 		B55CC2F618625A1D009F1895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F518625A1D009F1895 /* Foundation.framework */; };
 		B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F718625A1D009F1895 /* CoreGraphics.framework */; };
 		B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F918625A1D009F1895 /* UIKit.framework */; };
@@ -29,7 +35,6 @@
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
-		B5ADD5E618733BAE00337716 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5ADD5E518733BAE00337716 /* Images.xcassets */; };
 		B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5EF1875E9C800337716 /* PageContentViewController.m */; };
 		B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F21875EAF600337716 /* LoginViewController.m */; };
 		B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F51875EC8400337716 /* PageRootViewController.m */; };
@@ -55,6 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B54D3534187CF7BA003824E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B54D353D187D1F17003824E1 /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
+		B54D353E187D1F17003824E1 /* IstokWeb-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B54D353F187D1F17003824E1 /* IstokWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Italic.ttf"; sourceTree = "<group>"; };
+		B54D3540187D1F17003824E1 /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
+		B54D3541187D1F17003824E1 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		B55CC2F218625A1D009F1895 /* BasketMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55CC2F518625A1D009F1895 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B55CC2F718625A1D009F1895 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,7 +95,6 @@
 		B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		B5721C70186E2CA80028B9A5 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = ../LocationViewController.h; sourceTree = "<group>"; };
 		B5721C71186E2CA80028B9A5 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = ../LocationViewController.m; sourceTree = "<group>"; };
-		B5ADD5E518733BAE00337716 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B5ADD5EE1875E9C800337716 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = ../PageContentViewController.h; sourceTree = "<group>"; };
 		B5ADD5EF1875E9C800337716 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = ../PageContentViewController.m; sourceTree = "<group>"; };
 		B5ADD5F11875EAF600337716 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -142,6 +152,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B54D353C187D1EF1003824E1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				B54D353D187D1F17003824E1 /* IstokWeb-Bold.ttf */,
+				B54D353E187D1F17003824E1 /* IstokWeb-BoldItalic.ttf */,
+				B54D353F187D1F17003824E1 /* IstokWeb-Italic.ttf */,
+				B54D3540187D1F17003824E1 /* IstokWeb-Regular.ttf */,
+				B54D3541187D1F17003824E1 /* OFL.txt */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
 		B55CC2E918625A1D009F1895 = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +214,7 @@
 				B5CC44EB186F64BD00825593 /* Settings */,
 				B5CC44EC186F64DC00825593 /* Confirmation Page */,
 				B5CC44ED186F64EB00825593 /* Basket WebView */,
-				B5ADD5E518733BAE00337716 /* Images.xcassets */,
+				B54D3534187CF7BA003824E1 /* Images.xcassets */,
 				B55CC2FC18625A1D009F1895 /* Supporting Files */,
 			);
 			path = BasketMinder;
@@ -201,6 +223,7 @@
 		B55CC2FC18625A1D009F1895 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B54D353C187D1EF1003824E1 /* Font */,
 				B55CC2FD18625A1D009F1895 /* BasketMinder-Info.plist */,
 				B55CC2FE18625A1D009F1895 /* InfoPlist.strings */,
 				B55CC30118625A1D009F1895 /* main.m */,
@@ -384,9 +407,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54D3543187D1F17003824E1 /* IstokWeb-BoldItalic.ttf in Resources */,
+				B54D3545187D1F17003824E1 /* IstokWeb-Regular.ttf in Resources */,
+				B54D3535187CF7BA003824E1 /* Images.xcassets in Resources */,
+				B54D3544187D1F17003824E1 /* IstokWeb-Italic.ttf in Resources */,
 				B55CC30018625A1D009F1895 /* InfoPlist.strings in Resources */,
 				B55CC30918625A1D009F1895 /* Main.storyboard in Resources */,
-				B5ADD5E618733BAE00337716 /* Images.xcassets in Resources */,
+				B54D3546187D1F17003824E1 /* OFL.txt in Resources */,
+				B54D3542187D1F17003824E1 /* IstokWeb-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

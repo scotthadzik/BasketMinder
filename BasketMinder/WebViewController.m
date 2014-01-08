@@ -18,6 +18,7 @@
 @implementation WebViewController{
     NSDate *timeAppResignedActive; //for webview refresh
     NSDate *timeAppBecameActive;
+    NSString *urlAddress;
 }
 
 @synthesize myWebView;
@@ -31,8 +32,8 @@
     
     //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
-    NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
-    //NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
+    
+    [self checkForTestLogin];
     [self displayWebView:urlAddress];
     
     //--------------webView  end -----------------//
@@ -50,6 +51,22 @@
         UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
+    BOOL newLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
+    if(newLogin){
+        [self checkForTestLogin];
+        [self displayWebView:urlAddress];
+    }
+}
+-(void)checkForTestLogin{
+    NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:@"preferEmail"];
+    if ([email isEqualToString:@"tester1234"]) {
+        urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
+    }
+    else{
+        urlAddress = @"http://contributions4.bountifulbaskets.org";
+    }
+
+    
 }
 
 //see when the app left active
@@ -63,8 +80,7 @@
     NSTimeInterval timeDifferenceBetweenDates = [timeAppResignedActive timeIntervalSinceDate:timeAppBecameActive];
     NSInteger timeAway = timeDifferenceBetweenDates;
     if (timeAway < -86400 ) {  //refresh the webview when inactive for more than 24 hours
-       // NSString *urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
-        NSString *urlAddress = @"http://contributions4.bountifulbaskets.org";
+        [self checkForTestLogin];
         [self displayWebView:urlAddress];
     }
 }

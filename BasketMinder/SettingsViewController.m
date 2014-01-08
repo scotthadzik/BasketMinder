@@ -114,6 +114,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"validLogin" forKey:@"validLogin"];
         
     }
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];
 }
 
 - (void)checkForValidLogin{
