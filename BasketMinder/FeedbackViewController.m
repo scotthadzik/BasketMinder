@@ -18,7 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:NO];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (IBAction)sendFeedback:(id)sender {

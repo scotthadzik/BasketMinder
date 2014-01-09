@@ -95,31 +95,45 @@
 //    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
 //    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 //    
-//    //Customize the tab bar
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.608 green:0.22 blue:0.22 alpha:1.0], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-
-    UITabBar *tabBar = tabBarController.tabBar;
-    [tabBar setTranslucent:NO];
-   // [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:0.212 green:0.537 blue:0.427 alpha:1.0]];
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:1 green:0.98 blue:0.894 alpha:1.0]];
-    
-    UITabBarItem *tabWebView = [tabBar.items objectAtIndex:0];
-    UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];
-    UITabBarItem *tabSettings= [tabBar.items objectAtIndex:2];
-    UITabBarItem *tabBlog= [tabBar.items objectAtIndex:3];
-    
-    
-    tabWebView = [[UITabBarItem alloc] initWithTitle:@"Basket" image:[UIImage imageNamed:@"basket"] selectedImage:[UIImage imageNamed:@"basket"]];
-    tabConfirmation = [[UITabBarItem alloc] initWithTitle:@"Confirmation" image:[UIImage imageNamed:@"confirmation"] selectedImage:[UIImage imageNamed:@"confirmation"]];
-    tabSettings = [[UITabBarItem alloc] initWithTitle:@"Settings" image:[UIImage imageNamed:@"settings"] selectedImage:[UIImage imageNamed:@"settings"]];
-    tabBlog = [[UITabBarItem alloc] initWithTitle:@"Blog" image:[UIImage imageNamed:@"moreInfo"] selectedImage:[UIImage imageNamed:@"moreInfo"]];
-    
+//
+    [self customizeTabBar];
     //for pageview tutorial
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
 }
+
+-(void)customizeTabBar{
+    //Customize the tab bar text color
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.608 green:0.22 blue:0.22 alpha:1.0], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    [tabBar setTranslucent:NO];
+    
+    UITabBarItem *tabBasket = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabSettings= [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabBlog= [tabBar.items objectAtIndex:3];
+    //Basket
+    tabBasket.selectedImage = [[UIImage imageNamed:@"basket_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBasket.image = [[UIImage imageNamed:@"basket"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBasket.title = @"Basket";
+    //Confirmation
+    tabConfirmation.selectedImage = [[UIImage imageNamed:@"confirmation_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabConfirmation.image = [[UIImage imageNamed:@"confirmation"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabConfirmation.title = @"Confirmation";
+    //Settings
+    tabSettings.selectedImage = [[UIImage imageNamed:@"settings_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabSettings.image = [[UIImage imageNamed:@"settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabSettings.title = @"Settings";
+    //Blog
+    tabBlog.selectedImage = [[UIImage imageNamed:@"moreInfo_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBlog.image = [[UIImage imageNamed:@"moreInfo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBlog.title = @"Blog";
+    
+}
+
 
 @end

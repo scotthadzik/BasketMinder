@@ -10,11 +10,13 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Background320.png"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Background960.png"
     },
     {
       "idiom" : "iphone",
