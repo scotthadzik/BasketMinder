@@ -7,16 +7,24 @@
 //
 
 #import "LoginViewController.h"
+#import "globals.h"
 
 @interface LoginViewController ()
 
 @end
 
+
 @implementation LoginViewController
+
+@synthesize loginButton;
+@synthesize passwordField;
+@synthesize usernameField;
+@synthesize bbTitle;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self customizeLoginScreen];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,6 +59,24 @@
     [self presentViewController:loginViewController animated:YES completion:nil];
 }
 
+-(void)customizeLoginScreen{
+    globals *sharedData = [globals sharedData];
+    
+    loginButton.titleLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+    bbTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+    
+    passwordField.layer.cornerRadius = 5;
+    passwordField.layer.borderWidth = 1.5;
+    passwordField.layer.borderColor = sharedData.redColor.CGColor;
+    
+    usernameField.layer.cornerRadius = 5;
+    usernameField.layer.borderWidth = 1.5;
+    usernameField.layer.borderColor = sharedData.redColor.CGColor;
+    
+    loginButton.layer.cornerRadius = 5;
+    loginButton.layer.borderWidth = 1.5;
+    loginButton.layer.borderColor = sharedData.redColor.CGColor;
+}
 
 @end
 

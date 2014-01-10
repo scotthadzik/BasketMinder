@@ -27,6 +27,7 @@
     NSString *dayRegexPattern;
     NSString *monthRegexPattern;
     NSString *timeRegexPattern;
+    NSString *locationDetailPattern;
     NSString *month,*day,*year,*time;
     
 }
@@ -112,6 +113,7 @@
     dayRegexPattern = @" \\d{1,2}, ";
     monthRegexPattern = @"Ending \\w{1,20} ";
     timeRegexPattern = @"\\d{1,2}:\\d\\d \\w\\w";
+    locationDetailPattern = @";details=.{1,20}&";
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -137,13 +139,14 @@
         }
         confirmationNumber = [confirmationNumber stringByReplacingOccurrencesOfString:@"Contribution confirmation number: " withString:@""];
         [[NSUserDefaults standardUserDefaults] setObject:confirmationNumber forKey:@"confirmationNumber"];
+        
         //------------------------find the date of pickup---------------------------
         matchDate = [self regexTheString:htmlString pattern:basketPickupRegex];
         NSDate *pickupDate = [self getEventDate];
         
         //------------------find location address-------------------------
         //get location detail code
-        NSString *locationDetail = [self regexTheString:htmlString pattern:@";details=.{1,20}&"];
+        NSString *locationDetail = [self regexTheString:htmlString pattern:locationDetailPattern];
         locationDetail = [locationDetail stringByReplacingOccurrencesOfString:@";" withString:@"?"];
         locationDetail = [locationDetail stringByAppendingString:@"query=location_address"];
         
@@ -246,7 +249,6 @@
     [longDate setDateFormat:@"MMM dd, yyyy hh:mm a"];
     NSDate *pickupDate = [longDate dateFromString:dateString];
     return pickupDate;
-    
 }
 
 #pragma mark - alert time function

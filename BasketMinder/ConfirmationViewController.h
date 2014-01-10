@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (strong, nonatomic) IBOutlet UILabel *pickupDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *confirmationTitle;
+@property (weak, nonatomic) IBOutlet UILabel *dateTitle;
 
 @end
