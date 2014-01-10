@@ -8,6 +8,7 @@
 
 #import "BMAppDelegate.h"
 #import <Parse/Parse.h>
+#import "globals.h"
 
 @implementation BMAppDelegate
 

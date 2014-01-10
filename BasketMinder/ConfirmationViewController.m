@@ -8,6 +8,7 @@
 
 #import "ConfirmationViewController.h"
 #import "WebViewController.h"
+#import "globals.h"
 
 @interface ConfirmationViewController ()
 
@@ -18,6 +19,7 @@
 @synthesize confirmationLabel;
 @synthesize pickupDateLabel;
 @synthesize confirmationTitle;
+
 
 - (void)viewDidLoad
 {
@@ -39,9 +41,19 @@
 }
 - (void)customizePage{
     
+    globals *sharedData = [globals sharedData];
+    
     confirmationLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
     pickupDateLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
     confirmationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+   
+    confirmationLabel.layer.cornerRadius = 5;
+    confirmationLabel.layer.borderWidth = 1.5;
+    confirmationLabel.layer.borderColor = sharedData.redColor.CGColor;
+    
+    pickupDateLabel.layer.cornerRadius = 5;
+    pickupDateLabel.layer.borderWidth = 1.5;
+    pickupDateLabel.layer.borderColor = sharedData.redColor.CGColor;
 }
 
 @end

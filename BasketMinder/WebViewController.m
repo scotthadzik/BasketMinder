@@ -19,6 +19,16 @@
     NSDate *timeAppResignedActive; //for webview refresh
     NSDate *timeAppBecameActive;
     NSString *urlAddress;
+    
+    NSString *matchDate;
+    NSString *basketPickupRegex;
+    NSString *confirmationNumberRegex;
+    NSString *yearRegexPattern;
+    NSString *dayRegexPattern;
+    NSString *monthRegexPattern;
+    NSString *timeRegexPattern;
+    NSString *month,*day,*year,*time;
+    
 }
 
 @synthesize myWebView;
@@ -42,7 +52,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTheWebview) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeLeftActive) name:UIApplicationWillResignActiveNotification object:nil];
     
+    [self setPatternsForRegex];
+    
 }
+
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     [self.tabBarController.tabBar setHidden:NO];
@@ -91,6 +104,16 @@
     
 }
 
+-(void)setPatternsForRegex{
+    //patterns for regex
+    basketPickupRegex = @"Basket Pickup Week Ending \\w{1,20} \\d{1,2}, \\d\\d\\d\\d, \\d{1,2}:\\d\\d \\w\\w";
+    confirmationNumberRegex = @"Contribution confirmation number: \\d{10}";
+    yearRegexPattern = @"\\d\\d\\d\\d";
+    dayRegexPattern = @" \\d{1,2}, ";
+    monthRegexPattern = @"Ending \\w{1,20} ";
+    timeRegexPattern = @"\\d{1,2}:\\d\\d \\w\\w";
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
@@ -98,12 +121,10 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     NSError *error = NULL;
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"Contribution confirmation number: \\d{10}" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:confirmationNumberRegex options:NSRegularExpressionCaseInsensitive error:&error];
     //string of html page
     NSString *htmlString = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-    NSString *matchDate;
-    //NSString *confirmationNumber;
-    NSString *month,*day,*year,*time;
+
     //count the number of times key found on page
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:htmlString options:0 range:NSMakeRange(0, [htmlString length])];
     
@@ -114,52 +135,11 @@
         for (NSTextCheckingResult *ntcr in results) {
             confirmationNumber = [htmlString substringWithRange:ntcr.range];
         }
+        confirmationNumber = [confirmationNumber stringByReplacingOccurrencesOfString:@"Contribution confirmation number: " withString:@""];
         [[NSUserDefaults standardUserDefaults] setObject:confirmationNumber forKey:@"confirmationNumber"];
         //------------------------find the date of pickup---------------------------
-        matchDate = [self regexTheString:htmlString pattern:@"Basket Pickup Week Ending \\w{1,20}, (\\w{1,10}) (\\d{1,2}), (\\d\\d\\d\\d), (\\d{1,2}:\\d\\d)"];
-        
-        //----------find the year day month and time from the date matched----------
-        year = [self regexTheString:matchDate pattern:@"\\d\\d\\d\\d"];
-        day = [self regexTheString:matchDate pattern:@" \\d{1,2}, "];
-        month = [self regexTheString:matchDate pattern:@", \\w{1,10} "];
-        time = [self regexTheString:matchDate pattern:@"\\d{1,2}:\\d\\d"];
-        
-        //----------------------get the detail time for am or pm--------------------------------/
-        NSString *detailURL = [self regexTheString:htmlString pattern:@"href=.{1,200}location details"];
-        //trim URL
-        detailURL = [detailURL stringByReplacingOccurrencesOfString:@"\">location details" withString:@""];
-        detailURL = [detailURL stringByReplacingOccurrencesOfString:@"href=\"" withString:@""];
-        detailURL = [detailURL stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
-        //go to URL
-        NSError *error = nil;
-        NSURL *url = [NSURL URLWithString:detailURL];
-        NSString *webData= [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-        NSString *amORpm = [self regexTheString:webData pattern:@"Pickup Time:</span>\\d{1,2}:\\d\\d \\w{1,2}"];
-        amORpm = [amORpm substringFromIndex:amORpm.length - 2];
-
-        //-------------------trim the day and month-----------------------
-        day = [day stringByReplacingOccurrencesOfString:@" " withString:@""];//delete spaces and ,
-        day = [day stringByReplacingOccurrencesOfString:@"," withString:@""];
-        month = [month stringByReplacingOccurrencesOfString:@" " withString:@""]; //delete spaces and ,
-        month = [month stringByReplacingOccurrencesOfString:@"," withString:@""];
-        month = [month substringToIndex:3]; //only use the first 3 letters of month
-
-        //-------------------setup day string-----------------------------
-        NSString *dateString = month;
-        dateString = [dateString stringByAppendingString:@"-"];
-        dateString = [dateString stringByAppendingString:day];
-        dateString = [dateString stringByAppendingString:@"-"];
-        dateString = [dateString stringByAppendingString:year];
-        dateString = [dateString stringByAppendingString:@"-"];
-        dateString = [dateString stringByAppendingString:time];
-        dateString = [dateString stringByAppendingString:@" "];
-        dateString = [dateString stringByAppendingString:amORpm];
-        [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"pickupDate"];
-        
-        //------------------convert string to date------------------------
-        NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
-        [longDate setDateFormat:@"MMM-dd-yyyy-hh:mm a"];
-        NSDate *pickupDate = [longDate dateFromString:dateString];
+        matchDate = [self regexTheString:htmlString pattern:basketPickupRegex];
+        NSDate *pickupDate = [self getEventDate];
         
         //------------------find location address-------------------------
         //get location detail code
@@ -237,7 +217,35 @@
 }
 
 #pragma mark -get web data
--(void)readConfirmationNumber{
+-(NSDate *)getEventDate{
+    //----------find the year day month and time from the date matched----------
+    year = [self regexTheString:matchDate pattern:yearRegexPattern];
+    day = [self regexTheString:matchDate pattern:dayRegexPattern];
+    month = [self regexTheString:matchDate pattern:monthRegexPattern];
+    time = [self regexTheString:matchDate pattern:timeRegexPattern];
+    
+    //-------------------trim the day and month-----------------------
+    day = [day stringByReplacingOccurrencesOfString:@" " withString:@""];//delete spaces and ,
+    day = [day stringByReplacingOccurrencesOfString:@"," withString:@""];
+    month = [month stringByReplacingOccurrencesOfString:@"Ending " withString:@""];
+    month = [month stringByReplacingOccurrencesOfString:@" " withString:@""]; //delete spaces and ,
+    month = [month substringToIndex:3]; //only use the first 3 letters of month
+    
+    //-------------------setup day string-----------------------------
+    NSString *dateString = month;
+    dateString = [dateString stringByAppendingString:@" "];
+    dateString = [dateString stringByAppendingString:day];
+    dateString = [dateString stringByAppendingString:@", "];
+    dateString = [dateString stringByAppendingString:year];
+    dateString = [dateString stringByAppendingString:@" "];
+    dateString = [dateString stringByAppendingString:time];
+    [[NSUserDefaults standardUserDefaults] setObject:dateString forKey:@"pickupDate"];
+    
+    //------------------convert string to date------------------------
+    NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
+    [longDate setDateFormat:@"MMM dd, yyyy hh:mm a"];
+    NSDate *pickupDate = [longDate dateFromString:dateString];
+    return pickupDate;
     
 }
 

@@ -13,6 +13,7 @@
 		B54D3544187D1F17003824E1 /* IstokWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D353F187D1F17003824E1 /* IstokWeb-Italic.ttf */; };
 		B54D3545187D1F17003824E1 /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D3540187D1F17003824E1 /* IstokWeb-Regular.ttf */; };
 		B54D3546187D1F17003824E1 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B54D3541187D1F17003824E1 /* OFL.txt */; };
+		B553BDFD1880865F00E75AB7 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = B553BDFC1880865F00E75AB7 /* globals.m */; };
 		B55CC2F618625A1D009F1895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F518625A1D009F1895 /* Foundation.framework */; };
 		B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F718625A1D009F1895 /* CoreGraphics.framework */; };
 		B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F918625A1D009F1895 /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 		B54D353F187D1F17003824E1 /* IstokWeb-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Italic.ttf"; sourceTree = "<group>"; };
 		B54D3540187D1F17003824E1 /* IstokWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Regular.ttf"; sourceTree = "<group>"; };
 		B54D3541187D1F17003824E1 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		B553BDFB1880865F00E75AB7 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		B553BDFC1880865F00E75AB7 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
 		B55CC2F218625A1D009F1895 /* BasketMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55CC2F518625A1D009F1895 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B55CC2F718625A1D009F1895 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -206,6 +209,8 @@
 		B55CC2FB18625A1D009F1895 /* BasketMinder */ = {
 			isa = PBXGroup;
 			children = (
+				B553BDFB1880865F00E75AB7 /* globals.h */,
+				B553BDFC1880865F00E75AB7 /* globals.m */,
 				B55CC30718625A1D009F1895 /* Main.storyboard */,
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
@@ -441,6 +446,7 @@
 				B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */,
 				B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
+				B553BDFD1880865F00E75AB7 /* globals.m in Sources */,
 				B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */,
 				B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,

@@ -54,20 +54,32 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No pickup date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UES-R3-lL5">
+                                        <rect key="frame" x="20" y="207" width="280" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date of Pickup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4o5-S0-AWZ">
+                                        <rect key="frame" x="103" y="166" width="114" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Confirmation Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4va-Ew-mYx">
+                                        <rect key="frame" x="20" y="103" width="280" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.50196081399917603" green="0.0078431377187371254" blue="0.027450982481241226" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You have no confirmation numbers" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="267" translatesAutoresizingMaskIntoConstraints="NO" id="4va-Ew-mYx">
-                                <rect key="frame" x="33" y="78" width="267" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="0IT-HB-WD4"/>
-                                    <constraint firstAttribute="width" constant="267" id="fXN-o1-qbJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.50196081399917603" green="0.0078431377187371254" blue="0.027450982481241226" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="CONFIRMATION NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwB-YX-dTy">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONFIRMATION NUMBER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwB-YX-dTy">
                                 <rect key="frame" x="20" y="65" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -78,8 +90,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="578-0M-CRy" firstAttribute="top" secondItem="Wdu-W1-WhW" secondAttribute="top" id="DYK-QJ-LqG"/>
+                            <constraint firstItem="CwB-YX-dTy" firstAttribute="top" secondItem="kQ2-ei-hoh" secondAttribute="bottom" constant="45" id="OTp-G8-mOZ"/>
                             <constraint firstItem="YYD-pq-GVH" firstAttribute="top" secondItem="578-0M-CRy" secondAttribute="bottom" id="VEA-b2-Bp1"/>
                             <constraint firstItem="578-0M-CRy" firstAttribute="leading" secondItem="Wdu-W1-WhW" secondAttribute="leading" id="VJ6-se-dh9"/>
+                            <constraint firstItem="CwB-YX-dTy" firstAttribute="leading" secondItem="Wdu-W1-WhW" secondAttribute="leading" constant="20" symbolic="YES" id="aBA-GY-1Za"/>
                             <constraint firstItem="oRi-MN-wOf" firstAttribute="leading" secondItem="578-0M-CRy" secondAttribute="leading" id="c9Q-zY-Vgp"/>
                             <constraint firstAttribute="trailing" secondItem="578-0M-CRy" secondAttribute="trailing" id="eer-iM-qjn"/>
                             <constraint firstItem="oRi-MN-wOf" firstAttribute="centerX" secondItem="CwB-YX-dTy" secondAttribute="centerX" id="jnu-47-hNh"/>
@@ -95,7 +109,7 @@
                         <outlet property="backgroundImageView" destination="oRi-MN-wOf" id="pwj-iX-x57"/>
                         <outlet property="confirmationLabel" destination="4va-Ew-mYx" id="Eoz-yq-nIA"/>
                         <outlet property="confirmationTitle" destination="CwB-YX-dTy" id="S6k-FW-0ia"/>
-                        <outlet property="pickupDateLabel" destination="RmG-Oj-Hbe" id="T5p-q5-Bkm"/>
+                        <outlet property="pickupDateLabel" destination="UES-R3-lL5" id="N7S-iS-WvU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mK-p8-Mom" userLabel="First Responder" sceneMemberID="firstResponder"/>
