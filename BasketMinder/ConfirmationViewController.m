@@ -16,11 +16,9 @@
 
 @implementation ConfirmationViewController
 
-@synthesize confirmationLabel;
-@synthesize pickupDateLabel;
-@synthesize confirmationTitle;
-@synthesize dateTitle;
-
+@synthesize confirmationLabel, confirmationTitle;
+@synthesize pickupDateLabel, dateTitle;
+@synthesize pickupLocation, pickupLocationTitle;
 
 - (void)viewDidLoad
 {
@@ -35,9 +33,23 @@
 - (void)checkForConfirmationNumber{
     NSString *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"confirmationNumber"];
     NSString *date = [[NSUserDefaults standardUserDefaults] objectForKey:@"pickupDate"];
+    NSString *pickupLocationName = [[NSUserDefaults standardUserDefaults] objectForKey:@"pickupName"];
+    NSString *pickupLocationAddress = [[NSUserDefaults standardUserDefaults] objectForKey:@"pickupAddress"];
+    NSString *pickupLocationCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"pickupCity"];
+    NSString *pickupLocationState = [[NSUserDefaults standardUserDefaults] objectForKey:@"pickupState"];
+
+    pickupLocationName = [pickupLocationName stringByAppendingString:@"\n"];
+    pickupLocationName = [pickupLocationName stringByAppendingString:pickupLocationAddress];
+    pickupLocationName = [pickupLocationName stringByAppendingString:@"\n"];
+    pickupLocationName = [pickupLocationName stringByAppendingString:pickupLocationCity];
+    //pickupLocationName = [pickupLocationName stringByAppendingString:@", "];
+    pickupLocationName = [pickupLocationName stringByAppendingString:pickupLocationState];
+    
+    
     if (temp != NULL){
         self.confirmationLabel.text = temp;
         self.pickupDateLabel.text = date;
+        self.pickupLocation.text = pickupLocationName;
     }
 }
 - (void)customizePage{
@@ -48,6 +60,7 @@
     pickupDateLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
     confirmationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
     dateTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+    pickupLocationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
    
     confirmationLabel.layer.cornerRadius = 5;
     confirmationLabel.layer.borderWidth = 1.5;
@@ -56,6 +69,10 @@
     pickupDateLabel.layer.cornerRadius = 5;
     pickupDateLabel.layer.borderWidth = 1.5;
     pickupDateLabel.layer.borderColor = sharedData.redColor.CGColor;
+    
+    pickupLocation.layer.cornerRadius = 5;
+    pickupLocation.layer.borderWidth = 1.5;
+    pickupLocation.layer.borderColor = sharedData.redColor.CGColor;
 }
 
 @end

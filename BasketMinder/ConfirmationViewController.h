@@ -15,5 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *pickupDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *confirmationTitle;
 @property (weak, nonatomic) IBOutlet UILabel *dateTitle;
+@property (strong, nonatomic) IBOutlet UILabel *pickupLocationTitle;
+@property (strong, nonatomic) IBOutlet UILabel *pickupLocation;
 
 @end

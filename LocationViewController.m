@@ -36,7 +36,6 @@
     #if !(TARGET_IPHONE_SIMULATOR)
         //append the token to the urladdress
         NSString *token=  [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
-        NSLog(@"token %@", token);
         urlAddress = [urlAddress stringByAppendingString:token];
     #endif
     

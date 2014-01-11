@@ -30,7 +30,6 @@
     NSString *timeRegexPattern;
     NSString *locationDetailPattern;
     NSString *month,*day,*year,*time;
-    
 }
 
 @synthesize myWebView;
@@ -164,24 +163,31 @@
         addressURL = [addressURL stringByAppendingString:locationDetail];
         NSURL *urlForAddress = [NSURL URLWithString:addressURL];
         NSString *addressDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
-        addressDetail = [[addressDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "]; //trim off new line
+        addressDetail = [self trimTheNewLine:addressDetail replace:@" "];
+        [[NSUserDefaults standardUserDefaults] setObject:addressDetail forKey:@"pickupAddress"];
+        
         //get city
         addressURL = [addressURL stringByReplacingOccurrencesOfString:@"location_address" withString:@"city"];
         urlForAddress = [NSURL URLWithString:addressURL];
         NSString *cityDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
+        cityDetail = [self trimTheNewLine:cityDetail replace:@", "];
         addressDetail = [addressDetail stringByAppendingString:cityDetail];
-        addressDetail = [[addressDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@", "]; //trim off new line
+        [[NSUserDefaults standardUserDefaults] setObject:cityDetail forKey:@"pickupCity"];
+        
         //get state
         addressURL = [addressURL stringByReplacingOccurrencesOfString:@"city" withString:@"state"];
         urlForAddress = [NSURL URLWithString:addressURL];
         NSString *stateDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
+         stateDetail = [self trimTheNewLine:stateDetail replace:@" "];
         addressDetail = [addressDetail stringByAppendingString:stateDetail];
+        [[NSUserDefaults standardUserDefaults] setObject:stateDetail forKey:@"pickupState"];
         
         //get location name
         addressURL = [addressURL stringByReplacingOccurrencesOfString:@"state" withString:@"location_name"];
         urlForAddress = [NSURL URLWithString:addressURL];
         NSString *nameDetail = [NSString stringWithContentsOfURL:urlForAddress encoding:NSASCIIStringEncoding error:&error];
         nameDetail = [[nameDetail componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "]; //trim off new line
+        [[NSUserDefaults standardUserDefaults] setObject:nameDetail forKey:@"pickupName"];
         
         //-------------------store event----------------------------------
         EKEventStore *store = [[EKEventStore alloc] init];
@@ -225,6 +231,13 @@
             //NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
     }    
+}
+
+- (NSString *)trimTheNewLine:(NSString*)string replace:(NSString*)replace{
+    NSString *returnString = [[string componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:replace]; //trim off new line
+    
+    return returnString;
+    
 }
 
 #pragma mark -enter checkout data
