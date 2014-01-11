@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "User.h"
+#import "globals.h"
 
 @interface SettingsViewController () <UITextFieldDelegate, NSURLConnectionDelegate>
 
@@ -30,6 +31,8 @@
     [super viewDidLoad];
     
     [self.navigationController.navigationBar setHidden:YES];
+    [self customizeTabBar];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
@@ -63,6 +66,7 @@
 }
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    [self customizeTabBar];
     [self.tabBarController.tabBar setHidden:NO];
     if(setEventSwitch.on){
         [self changeCellColor:NO];
@@ -265,5 +269,24 @@
         gGlobalInstanceTabBar = [[UITabBarController alloc] init];
     }
     return gGlobalInstanceTabBar;
+}
+-(void)customizeTabBar{
+    
+    globals *sharedData = [globals sharedData];
+    NSLog(@"change background color");
+    //Customize the tab bar text color
+    //[[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.608 green:0.22 blue:0.22 alpha:1.0], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    
+    UITabBarController *tabBarController;
+    
+    UITabBar *tabBar = tabBarController.tabBar;
+    [tabBar setTranslucent:NO];
+    self.tabBarController.tabBar.backgroundColor = [UIColor whiteColor];
+    [tabBar setBarStyle:UIBarStyleDefault];
+    
+//    //  [tabBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    tabBar.shadowImage = [UIImage new];
+//    tabBar.translucent = NO;
+//    tabBar.backgroundColor = [UIColor blackColor];
 }
 @end
