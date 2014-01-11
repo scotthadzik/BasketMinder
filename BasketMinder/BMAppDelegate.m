@@ -17,7 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [NSThread sleepForTimeInterval:.75];
     //set up connection between parse and app
     [Parse setApplicationId:@"LuL3dTksNAoKQbXhnPZyIq6N8Tff6CqiR5UazWrK" clientKey:@"bHkEInMK85NssaKvfCGDW6AmZVgPdC0cgfri8cfi"];
     

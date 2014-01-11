@@ -30,25 +30,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setHidden:NO];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+
     self.cardNumber.delegate = self;
     self.nameOnCard.delegate = self;
     self.billingAddress.delegate = self;
     self.billingCity.delegate = self;
     self.billingZipCode.delegate = self;
     self.billingState.delegate = self;
-    
-    
-    
+
     [self keyboardCustomizer];
     [self checkForValuesStored];
+    
+   // UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonSystemItemDone target: self action: @selector(backBtnUserClick)];
+    UIBarButtonItem *backButton = self.navigationItem.backBarButtonItem;
+    [backButton setAction:@selector(backBtnUserClick:)];
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
     [self checkForValuesStored];
-   
-    
+
 }
 
 -(void)keyboardCustomizer{
@@ -88,7 +94,7 @@
 }
 //for password field done button added to toolbar
 -(void)done{
-    [self saveButton:self];
+    [self backBtnUserClick:self];
     [self performSegueWithIdentifier:@"saveButton" sender:self];
     
 }
@@ -102,10 +108,9 @@
     billingZipCode.text = [store stringForKey:@"billingZip"];
 }
 
-
-
-- (IBAction)saveButton:(id)sender {
+- (void)backBtnUserClick:(id)sender {
     
+    NSLog(@"back clicked");
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
     [store setString:nameOnCard.text forKey:@"nameOnCard"];
     [store setString:cardNumber.text forKey:@"cardNumber"];
@@ -116,4 +121,5 @@
     
     [store synchronize];
 }
+
 @end
