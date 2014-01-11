@@ -14,6 +14,7 @@
 		B54D3545187D1F17003824E1 /* IstokWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D3540187D1F17003824E1 /* IstokWeb-Regular.ttf */; };
 		B54D3546187D1F17003824E1 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = B54D3541187D1F17003824E1 /* OFL.txt */; };
 		B553BDFD1880865F00E75AB7 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = B553BDFC1880865F00E75AB7 /* globals.m */; };
+		B553BE071880DBF100E75AB7 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B553BE061880DBF100E75AB7 /* UICKeyChainStore.m */; };
 		B55CC2F618625A1D009F1895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F518625A1D009F1895 /* Foundation.framework */; };
 		B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F718625A1D009F1895 /* CoreGraphics.framework */; };
 		B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC2F918625A1D009F1895 /* UIKit.framework */; };
@@ -69,6 +70,8 @@
 		B54D3541187D1F17003824E1 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		B553BDFB1880865F00E75AB7 /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		B553BDFC1880865F00E75AB7 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
+		B553BE051880DBF100E75AB7 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		B553BE061880DBF100E75AB7 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
 		B55CC2F218625A1D009F1895 /* BasketMinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketMinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55CC2F518625A1D009F1895 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B55CC2F718625A1D009F1895 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,15 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
+		B553BDFE1880C82A00E75AB7 /* keyChain */ = {
+			isa = PBXGroup;
+			children = (
+				B553BE051880DBF100E75AB7 /* UICKeyChainStore.h */,
+				B553BE061880DBF100E75AB7 /* UICKeyChainStore.m */,
+			);
+			name = keyChain;
+			sourceTree = "<group>";
+		};
 		B55CC2E918625A1D009F1895 = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +240,7 @@
 		B55CC2FC18625A1D009F1895 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B553BDFE1880C82A00E75AB7 /* keyChain */,
 				B54D353C187D1EF1003824E1 /* Font */,
 				B55CC2FD18625A1D009F1895 /* BasketMinder-Info.plist */,
 				B55CC2FE18625A1D009F1895 /* InfoPlist.strings */,
@@ -447,6 +460,7 @@
 				B5CC44E4186E7D4700825593 /* SettingsViewController.m in Sources */,
 				B55CC30218625A1D009F1895 /* main.m in Sources */,
 				B553BDFD1880865F00E75AB7 /* globals.m in Sources */,
+				B553BE071880DBF100E75AB7 /* UICKeyChainStore.m in Sources */,
 				B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */,
 				B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,

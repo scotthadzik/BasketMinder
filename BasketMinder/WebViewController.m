@@ -10,6 +10,7 @@
 #import <EventKit/EventKit.h>
 #import "ConfirmationViewController.h"
 #import "SettingsViewController.h"
+#import "UICKeyChainStore.h"
 
 @interface WebViewController ()
 
@@ -132,6 +133,13 @@
     
     NSArray *results = [regex matchesInString:htmlString options: 0 range:NSMakeRange(0, [htmlString length])];
 
+    
+    //check for checkout webview
+    NSString *currentURL = myWebView.request.URL.absoluteString;
+    if (!([currentURL rangeOfString:@"checkout" ].location == NSNotFound)){
+        [self enterCheckoutData];
+    }
+    
     //Check for the reciept page showing
     if(numberOfMatches > 0){
         for (NSTextCheckingResult *ntcr in results) {
@@ -217,6 +225,18 @@
             //NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
     }    
+}
+
+#pragma mark -enter checkout data
+-(void)enterCheckoutData{
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+    //information for checkout
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('nameoncard')[0].value='%@'", [store stringForKey:@"nameOnCard"]]];
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('CardNumber')[0].value='%@'", [store stringForKey:@"cardNumber"]]];
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('address')[0].value='%@'", [store stringForKey:@"billingAddress"]]];
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('city')[0].value='%@'", [store stringForKey:@"billingCity"]]];
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('state')[0].value='%@'", [store stringForKey:@"billingState"]]];
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('postalcode')[0].value='%@'", [store stringForKey:@"billingZip"]]];
 }
 
 #pragma mark -get web data

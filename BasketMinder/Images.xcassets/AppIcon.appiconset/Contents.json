@@ -3,19 +3,19 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "basket_logo58.png",
+      "filename" : "ColorLogo58.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "basket_logo120.png",
+      "filename" : "ColorLogo120.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "basket_logo80.png",
+      "filename" : "ColorLogo80.png",
       "scale" : "2x"
     }
   ],

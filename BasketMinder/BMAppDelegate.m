@@ -9,8 +9,11 @@
 #import "BMAppDelegate.h"
 #import <Parse/Parse.h>
 #import "globals.h"
+#import "BillingInformationViewController.h"
 
 @implementation BMAppDelegate
+
+@synthesize passwordItem, accountNumberItem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,9 +28,11 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
     // Override point for customization after application launch.
     
-    
+    //customize the UI
     [self customizeUserInterface];
     
+    //for keychain
+	
     return YES;
 }
 
@@ -90,13 +95,20 @@
 
 #pragma mark - Helper methods
 -(void)customizeUserInterface{
-//    //Customize the Nav Bar
-//   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.553 green:0.435 blue:0.718 alpha:1.0]];
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navBarBackground"] forBarMetrics:UIBarMetricsDefault];
-//    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
-//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-//    
-//
+  
+    globals *sharedData = [globals sharedData];
+    //Customize the Nav Bar
+   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.553 green:0.435 blue:0.718 alpha:1.0]];
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    
+   // UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//    UINavigationBar *navigationBar = navigationController.navigationBar;
+
+//    [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    navigationController.navigationBar.shadowImage = [UIImage new];
+//    navigationController.navigationBar.translucent = YES;
+//    navigationController.view.backgroundColor = [UIColor clearColor];
+    
     [self customizeTabBar];
     //for pageview tutorial
     UIPageControl *pageControl = [UIPageControl appearance];
@@ -110,8 +122,16 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.608 green:0.22 blue:0.22 alpha:1.0], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    
     UITabBar *tabBar = tabBarController.tabBar;
-    [tabBar setTranslucent:NO];
+    //[tabBar setTranslucent:NO];
+    //[self.tabBarController.tabBar.backgroundColor = [UIColor clearColor];
+    [tabBar setBarStyle:UIBarStyleDefault];
+    
+  //  [tabBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    tabBar.shadowImage = [UIImage new];
+    tabBar.translucent = YES;
+    tabBar.backgroundColor = [UIColor clearColor];
     
     UITabBarItem *tabBasket = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];
