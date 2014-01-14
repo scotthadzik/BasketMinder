@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "BillingInformationViewController.h"
 #import "User.h"
 #import "globals.h"
 
@@ -117,8 +118,7 @@
     }
     
     if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
-        
-        
+
         //[self checkForValidLogin];
         [[NSUserDefaults standardUserDefaults] setObject:@"validLogin" forKey:@"validLogin"];
         
@@ -127,34 +127,34 @@
 }
 
 - (void)checkForValidLogin{
-    NSLog(@"checking for valid login");
-    
-     NSString *post = @"email=sgthad@gmail.com&password=";
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    
-    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://accounts.google.com/ServiceLogin?"]]];
-    [request setHTTPMethod:@"POST"];
-    NSString *json = @"{}";
-    NSMutableData *body = [[NSMutableData alloc] init];
-    
-     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
-     [request setHTTPBody:postData];
-     //get response
-     NSHTTPURLResponse* urlResponse = nil;
-     NSError *error = [[NSError alloc] init];
-     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-     NSLog(@"Response Code: %ld", (long)[urlResponse statusCode]);
-     
-     if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300)
-    {
-        NSLog(@"Response: %@", result);
-    }
-    
-
+//    NSLog(@"checking for valid login");
+//    
+//     NSString *post = @"email=sgthad@gmail.com&password=";
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//    
+//    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://accounts.google.com/ServiceLogin?"]]];
+//    [request setHTTPMethod:@"POST"];
+//    NSString *json = @"{}";
+//    NSMutableData *body = [[NSMutableData alloc] init];
+//    
+//     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
+//     [request setHTTPBody:postData];
+//     //get response
+//     NSHTTPURLResponse* urlResponse = nil;
+//     NSError *error = [[NSError alloc] init];
+//     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+//     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+//     NSLog(@"Response Code: %ld", (long)[urlResponse statusCode]);
+//     
+//     if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300)
+//    {
+//        NSLog(@"Response: %@", result);
+//    }
+//    
+//
 }
 
 #pragma mark - First and Second Alert Settings
@@ -179,6 +179,8 @@
 
 - (void)changeCellColor:(BOOL) grey{
     
+    globals *sharedData = [globals sharedData];
+    
     firstAlertTimeLabel.backgroundColor = [UIColor clearColor];
     firstAlertCell.contentView.backgroundColor = [UIColor clearColor];
     firstAlertTimeLabel.textColor = [UIColor clearColor];
@@ -191,7 +193,7 @@
         firstAlertCell.accessoryView.backgroundColor = [UIColor colorWithWhite:.5 alpha:.1];
     }
     else{
-        firstAlertTimeLabel.textColor = [UIColor colorWithWhite:0 alpha:1.0];
+        firstAlertTimeLabel.textColor = sharedData.redColor;
     }
     [self.tableView reloadData];
 }

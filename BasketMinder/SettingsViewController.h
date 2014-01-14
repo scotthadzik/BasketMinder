@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FirstAlertViewController.h"
+#import "BillingInformationViewController.h"
 
 static id gGlobalInstanceTabBar = nil;
 

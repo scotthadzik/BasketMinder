@@ -11,6 +11,7 @@
 #import "ConfirmationViewController.h"
 #import "SettingsViewController.h"
 #import "UICKeyChainStore.h"
+#import "BMAppDelegate.h"
 
 @interface WebViewController ()
 
@@ -39,7 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setHidden:YES];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self customizeViewController];
     
     //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
@@ -59,7 +61,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    [self.tabBarController.tabBar setHidden:NO];
+    [self customizeViewController];
     BOOL initailSetup = [[NSUserDefaults standardUserDefaults] boolForKey:@"initialSetup"];
     if (!initailSetup) {
         UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
@@ -71,16 +73,15 @@
         [self displayWebView:urlAddress];
     }
 }
+//used or testing purposes
 -(void)checkForTestLogin{
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:@"preferEmail"];
     if ([email isEqualToString:@"tester1234"]) {
         urlAddress = @"http://hadzik.dyndns.org/bb/livepurchase/1.htm";
     }
     else{
-        urlAddress = @"http://contributions4.bountifulbaskets.org";
+        urlAddress = @"http://contributions.bountifulbaskets.org/";
     }
-
-    
 }
 
 //see when the app left active
@@ -245,7 +246,7 @@
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
     //information for checkout
     [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('nameoncard')[0].value='%@'", [store stringForKey:@"nameOnCard"]]];
-    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('CardNumber')[0].value='%@'", [store stringForKey:@"cardNumber"]]];
+    [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('cardnumber')[0].value='%@'", [store stringForKey:@"cardNumber"]]];
     [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('address')[0].value='%@'", [store stringForKey:@"billingAddress"]]];
     [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('city')[0].value='%@'", [store stringForKey:@"billingCity"]]];
     [myWebView stringByEvaluatingJavaScriptFromString:[NSString  stringWithFormat:@"document.getElementsByName('state')[0].value='%@'", [store stringForKey:@"billingState"]]];
@@ -424,4 +425,47 @@
 {
 
 }
+-(void)customizeViewController{
+   
+    [self.navigationController.navigationBar setHidden:YES];
+    [self.tabBarController.tabBar setHidden:NO];
+    [self.tabBarController.tabBar setTranslucent:NO];
+    self.tabBarController.delegate = self;
+    
+    
+    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    
+    UITabBar *tabBar = self.tabBarController.tabBar;
+   // [tabBar setBarStyle:UIBarStyleDefault];
+    
+    //tabBar.shadowImage = [UIImage new];
+    tabBar.translucent = NO;
+    //tabBar.backgroundColor = [UIColor clearColor];
+    
+    UITabBarItem *tabBasket = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabSettings= [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabBlog= [tabBar.items objectAtIndex:3];
+    //Basket
+    tabBasket.selectedImage = [[UIImage imageNamed:@"basket_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBasket.image = [[UIImage imageNamed:@"basket"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBasket.title = @"Basket";
+    //Confirmation
+    tabConfirmation.selectedImage = [[UIImage imageNamed:@"confirmation_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabConfirmation.image = [[UIImage imageNamed:@"confirmation"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabConfirmation.title = @"Confirmation";
+    //Settings
+    tabSettings.selectedImage = [[UIImage imageNamed:@"settings_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabSettings.image = [[UIImage imageNamed:@"settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabSettings.title = @"Settings";
+    //Blog
+    tabBlog.selectedImage = [[UIImage imageNamed:@"moreInfo_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBlog.image = [[UIImage imageNamed:@"moreInfo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBlog.title = @"Blog";
+
+}
+
+
 @end

@@ -44,17 +44,11 @@
                 @"2 days before",
                 @"1 week before"];
     _selectedIndex = [_alerts indexOfObject:self.alert];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
     return 1;
 }

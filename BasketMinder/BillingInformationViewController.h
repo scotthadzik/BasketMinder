@@ -18,7 +18,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *billingCity;
 @property (strong, nonatomic) IBOutlet UITextField *billingState;
 @property (strong, nonatomic) IBOutlet UITextField *billingZipCode;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveText;
 
+- (IBAction)saveButton:(id)sender;
 
 
 @end

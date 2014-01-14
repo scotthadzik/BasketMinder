@@ -41,12 +41,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)doneWalkThrough:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"initialSetup"]; //the initial setup is complete
     UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"rootViewController"];//go to the rootview controller

@@ -8,6 +8,8 @@
 
 #import "BillingInformationViewController.h"
 #import "UICKeyChainStore.h"
+#import "SettingsViewController.h"
+#import "globals.h"
 
 
 @interface BillingInformationViewController () <UITextFieldDelegate>
@@ -17,6 +19,7 @@
 @implementation BillingInformationViewController
 
 @synthesize cardNumber,nameOnCard,billingAddress, billingCity, billingState, billingZipCode;
+@synthesize saveText;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,6 +34,8 @@
 {
     [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:NO];
+    [self.tabBarController.tabBar setHidden:YES];
+    [self.navigationItem setHidesBackButton:YES animated:NO];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
 
     self.cardNumber.delegate = self;
@@ -39,13 +44,12 @@
     self.billingCity.delegate = self;
     self.billingZipCode.delegate = self;
     self.billingState.delegate = self;
+    
+    globals *sharedData = [globals sharedData];
+    [self.saveText setTintColor:(sharedData.redColor)];
 
     [self keyboardCustomizer];
     [self checkForValuesStored];
-    
-   // UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonSystemItemDone target: self action: @selector(backBtnUserClick)];
-    UIBarButtonItem *backButton = self.navigationItem.backBarButtonItem;
-    [backButton setAction:@selector(backBtnUserClick:)];
 }
 
 
@@ -64,7 +68,7 @@
     doneToolbar.items = [NSArray arrayWithObjects:
                          [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                          [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                         [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)],
+                         [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(saveButton:)],
                          nil];
     [doneToolbar sizeToFit];
     billingZipCode.inputAccessoryView = doneToolbar;
@@ -92,12 +96,6 @@
     }
     return YES;
 }
-//for password field done button added to toolbar
--(void)done{
-    [self backBtnUserClick:self];
-    [self performSegueWithIdentifier:@"saveButton" sender:self];
-    
-}
 -(void)checkForValuesStored{
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
     nameOnCard.text = [store stringForKey:@"nameOnCard"];
@@ -108,9 +106,7 @@
     billingZipCode.text = [store stringForKey:@"billingZip"];
 }
 
-- (void)backBtnUserClick:(id)sender {
-    
-    NSLog(@"back clicked");
+- (IBAction)saveButton:(id)sender {
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
     [store setString:nameOnCard.text forKey:@"nameOnCard"];
     [store setString:cardNumber.text forKey:@"cardNumber"];
@@ -120,6 +116,6 @@
     [store setString:billingZipCode.text forKey:@"billingZip"];
     
     [store synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 @end

@@ -108,29 +108,35 @@
 //    navigationController.navigationBar.translucent = YES;
 //    navigationController.view.backgroundColor = [UIColor clearColor];
     
-    [self customizeTabBar];
+    
     //for pageview tutorial
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
+    [self customizeTabBar];
 }
 
 -(void)customizeTabBar{
+    
     //Customize the tab bar text color
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.608 green:0.22 blue:0.22 alpha:1.0], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     
     UITabBar *tabBar = tabBarController.tabBar;
+    
+    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
     //[tabBar setTranslucent:NO];
     //[self.tabBarController.tabBar.backgroundColor = [UIColor clearColor];
-    [tabBar setBarStyle:UIBarStyleDefault];
+   // [tabBar setBarStyle:UIBarStyleDefault];
     
   //  [tabBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    tabBar.shadowImage = [UIImage new];
-    tabBar.translucent = YES;
-    tabBar.backgroundColor = [UIColor clearColor];
+    //tabBar.shadowImage = [UIImage new];
+    tabBar.translucent = NO;
+    //tabBar.backgroundColor = [UIColor clearColor];
     
     UITabBarItem *tabBasket = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];
