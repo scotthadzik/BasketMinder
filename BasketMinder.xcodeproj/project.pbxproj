@@ -37,6 +37,7 @@
 		B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC3371864C921009F1895 /* SystemConfiguration.framework */; };
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
+		B5AC51A518850DBF006A39A4 /* BlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC51A418850DBF006A39A4 /* BlogViewController.m */; };
 		B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5EF1875E9C800337716 /* PageContentViewController.m */; };
 		B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F21875EAF600337716 /* LoginViewController.m */; };
 		B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F51875EC8400337716 /* PageRootViewController.m */; };
@@ -101,6 +102,8 @@
 		B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationViewController.m; sourceTree = "<group>"; };
 		B5721C70186E2CA80028B9A5 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationViewController.h; path = ../LocationViewController.h; sourceTree = "<group>"; };
 		B5721C71186E2CA80028B9A5 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationViewController.m; path = ../LocationViewController.m; sourceTree = "<group>"; };
+		B5AC51A318850DBF006A39A4 /* BlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogViewController.h; sourceTree = "<group>"; };
+		B5AC51A418850DBF006A39A4 /* BlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogViewController.m; sourceTree = "<group>"; };
 		B5ADD5EE1875E9C800337716 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = ../PageContentViewController.h; sourceTree = "<group>"; };
 		B5ADD5EF1875E9C800337716 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = ../PageContentViewController.m; sourceTree = "<group>"; };
 		B5ADD5F11875EAF600337716 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -223,14 +226,15 @@
 			children = (
 				B553BDFB1880865F00E75AB7 /* globals.h */,
 				B553BDFC1880865F00E75AB7 /* globals.m */,
-				B55CC30718625A1D009F1895 /* Main.storyboard */,
 				B55CC30418625A1D009F1895 /* BMAppDelegate.h */,
 				B55CC30518625A1D009F1895 /* BMAppDelegate.m */,
-				B5AFEC1918787FD3001BD16D /* Feedback */,
+				B55CC30718625A1D009F1895 /* Main.storyboard */,
 				B5ADD5F71875FAB700337716 /* Initial Setup */,
-				B5CC44EB186F64BD00825593 /* Settings */,
-				B5CC44EC186F64DC00825593 /* Confirmation Page */,
 				B5CC44ED186F64EB00825593 /* Basket WebView */,
+				B5CC44EC186F64DC00825593 /* Confirmation Page */,
+				B5CC44EB186F64BD00825593 /* Settings */,
+				B5AC51A718850E46006A39A4 /* Blog */,
+				B5AFEC1918787FD3001BD16D /* Feedback */,
 				B54D3534187CF7BA003824E1 /* Images.xcassets */,
 				B55CC2FC18625A1D009F1895 /* Supporting Files */,
 			);
@@ -270,6 +274,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B5AC51A618850E2F006A39A4 /* SettingsSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				B5D3330D1878F69F000D5FFF /* BillingInformationViewController.h */,
+				B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */,
+				B5CC44E8186F64AC00825593 /* FirstAlertViewController.h */,
+				B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */,
+				B5721C70186E2CA80028B9A5 /* LocationViewController.h */,
+				B5721C71186E2CA80028B9A5 /* LocationViewController.m */,
+			);
+			name = SettingsSubviews;
+			sourceTree = "<group>";
+		};
+		B5AC51A718850E46006A39A4 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				B5AC51A318850DBF006A39A4 /* BlogViewController.h */,
+				B5AC51A418850DBF006A39A4 /* BlogViewController.m */,
+			);
+			name = Blog;
+			sourceTree = "<group>";
+		};
 		B5ADD5ED1875E79E00337716 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,16 +331,11 @@
 		B5CC44EB186F64BD00825593 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B5D3330D1878F69F000D5FFF /* BillingInformationViewController.h */,
-				B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */,
+				B5AC51A618850E2F006A39A4 /* SettingsSubviews */,
 				B5DCE9F11868B15500F7197C /* User.m */,
 				B5DCE9F01868B15500F7197C /* User.h */,
-				B5CC44E8186F64AC00825593 /* FirstAlertViewController.h */,
-				B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */,
 				B5CC44E2186E7D4700825593 /* SettingsViewController.h */,
 				B5CC44E3186E7D4700825593 /* SettingsViewController.m */,
-				B5721C70186E2CA80028B9A5 /* LocationViewController.h */,
-				B5721C71186E2CA80028B9A5 /* LocationViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -465,6 +486,7 @@
 				B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */,
 				B55CC30618625A1D009F1895 /* BMAppDelegate.m in Sources */,
 				B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */,
+				B5AC51A518850DBF006A39A4 /* BlogViewController.m in Sources */,
 				B5D3330F1878F69F000D5FFF /* BillingInformationViewController.m in Sources */,
 				B5ADD5FD187611E700337716 /* SignupViewController.m in Sources */,
 				B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */,

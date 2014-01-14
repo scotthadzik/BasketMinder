@@ -126,17 +126,12 @@
     
     UITabBar *tabBar = tabBarController.tabBar;
     
+    tabBarController.customizableViewControllers = nil;
+    
     [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
     [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    //[tabBar setTranslucent:NO];
-    //[self.tabBarController.tabBar.backgroundColor = [UIColor clearColor];
-   // [tabBar setBarStyle:UIBarStyleDefault];
-    
-  //  [tabBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    //tabBar.shadowImage = [UIImage new];
     tabBar.translucent = NO;
-    //tabBar.backgroundColor = [UIColor clearColor];
     
     UITabBarItem *tabBasket = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];

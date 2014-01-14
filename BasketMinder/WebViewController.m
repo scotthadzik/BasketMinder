@@ -46,8 +46,8 @@
     //--------------webView  start -----------------//
     self.myWebView.delegate = self;//allows for call of webViewDidFinishLoad
     
-    [self checkForTestLogin];
-    [self displayWebView:urlAddress];
+    [self checkForTestLogin];//check for tester1234 for test site
+    [self displayWebView:urlAddress];//load the url
     
     //--------------webView  end -----------------//
     
@@ -432,17 +432,11 @@
     [self.tabBarController.tabBar setTranslucent:NO];
     self.tabBarController.delegate = self;
     
-    
     [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
     [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    
     UITabBar *tabBar = self.tabBarController.tabBar;
-   // [tabBar setBarStyle:UIBarStyleDefault];
-    
-    //tabBar.shadowImage = [UIImage new];
     tabBar.translucent = NO;
-    //tabBar.backgroundColor = [UIColor clearColor];
     
     UITabBarItem *tabBasket = [tabBar.items objectAtIndex:0];
     UITabBarItem *tabConfirmation= [tabBar.items objectAtIndex:1];

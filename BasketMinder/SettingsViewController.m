@@ -30,14 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    [self.navigationController.navigationBar setHidden:YES];
-    
-    
-    
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
-    
+    [self customizeView];
     
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
@@ -72,8 +65,7 @@
 }
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    
-    [self.tabBarController.tabBar setHidden:NO];
+    [self customizeView];
     if(setEventSwitch.on){
         [self changeCellColor:NO];
     }else{
@@ -268,14 +260,9 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-+ (UITabBarController *) tabBarController
-{
-    if (!gGlobalInstanceTabBar)
-    {
-        gGlobalInstanceTabBar = [[UITabBarController alloc] init];
-    }
-    return gGlobalInstanceTabBar;
+-(void)customizeView{
+    [self.navigationController.navigationBar setHidden:YES];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+    [self.tabBarController.tabBar setHidden:NO];
 }
-
 @end

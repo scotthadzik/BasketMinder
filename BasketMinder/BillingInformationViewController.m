@@ -21,22 +21,11 @@
 @synthesize cardNumber,nameOnCard,billingAddress, billingCity, billingState, billingZipCode;
 @synthesize saveText;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setHidden:NO];
-    [self.tabBarController.tabBar setHidden:YES];
-    [self.navigationItem setHidesBackButton:YES animated:NO];
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+    [self customizeView];
 
     self.cardNumber.delegate = self;
     self.nameOnCard.delegate = self;
@@ -57,6 +46,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
+    [self customizeView];
     [self checkForValuesStored];
 
 }
@@ -117,5 +107,11 @@
     
     [store synchronize];
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)customizeView{
+    [self.navigationController.navigationBar setHidden:NO];
+    [self.tabBarController.tabBar setHidden:NO];
+    [self.navigationItem setHidesBackButton:YES animated:NO];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
 }
 @end
