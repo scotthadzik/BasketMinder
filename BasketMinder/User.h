@@ -18,7 +18,7 @@
 - (id) initWithEmail:(NSString *)email;
 
 //Convienance constructor
-+ (id) userWithEmail:(NSString *) email;
++ (id) emailWithPassword:(NSString *) password;
 
 
 @end
