@@ -12,6 +12,7 @@
 #import "SettingsViewController.h"
 #import "UICKeyChainStore.h"
 #import "BMAppDelegate.h"
+#import "UICKeyChainStore.h"
 
 @interface WebViewController ()
 
@@ -69,6 +70,7 @@
     }
     BOOL newLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
     if(newLogin){
+        NSLog(@"newLogin");
         [self checkForTestLogin];
         [self displayWebView:urlAddress];
     }
@@ -119,8 +121,11 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
-    [self sendLogin]; //call the login for the first load of the site
+    BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
+    if (validLogin) {
+        [self sendLogin];
+    }
+     //call the login for the first load of the site
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     NSError *error = NULL;
@@ -371,15 +376,19 @@
 
 - (void) sendLogin{
     
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+
     NSString *emailString   =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
-    NSString *passwordString =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
+    BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
+    NSLog(validLogin ? @"Yes" : @"No");
     
     //Check to see if a value has been set for userEmail and password
-    if(emailString != nil && passwordString != nil){
+    if(validLogin){
+        NSLog(@"validLogin");
             //username is the id for username field in Login form
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", emailString];
             //here password is the id for password field in Login Form
-        NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", passwordString];
+        NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", [store stringForKey:@"password"]];
             //Call The Javascript for entring these Credential in login Form
         [myWebView stringByEvaluatingJavaScriptFromString:jScriptString1];
         [myWebView stringByEvaluatingJavaScriptFromString:jScriptString2];

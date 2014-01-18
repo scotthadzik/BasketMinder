@@ -920,7 +920,7 @@
                                     <constraint firstItem="afW-aj-4Py" firstAttribute="top" secondItem="YlC-2F-m2v" secondAttribute="bottom" constant="8" id="yGM-BV-kp7"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Fn-4JF">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Fn-4JF">
                                 <rect key="frame" x="55" y="524" width="152" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Gp-HN-RaY"/>
@@ -930,7 +930,7 @@
                                 <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrR-8J-vuk">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrR-8J-vuk">
                                 <rect key="frame" x="192" y="524" width="73" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="73" id="9Q6-aC-JcX"/>

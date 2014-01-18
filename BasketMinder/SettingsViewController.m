@@ -8,8 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "BillingInformationViewController.h"
-#import "User.h"
 #import "globals.h"
+#import "UICKeyChainStore.h"
 
 @interface SettingsViewController () <UITextFieldDelegate, NSURLConnectionDelegate>
 
@@ -21,6 +21,7 @@
     NSString *_password;
     NSString *_loggedIn;
     NSString *_setAlertEvent;
+    NSUInteger validLogin;
 }
 
 @synthesize emailField, passwordField, setEventSwitch;
@@ -35,9 +36,12 @@
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
+    //get the stored password
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+    
     //prefill text field with users information
     self.emailField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
-    self.passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"preferPassword"];
+    self.passwordField.text = [store stringForKey:@"password"];
     
     //preselect the Set Event Alert Switch
     NSString *setEventAlertSwitch = [[NSUserDefaults standardUserDefaults] stringForKey:@"setAlertEvent"];
@@ -91,62 +95,111 @@
     passwordField.text = @"";
 }
 -(void)doneWithPassword{
-    [self textFieldDidEndEditing:passwordField];
+    //[self textFieldDidEndEditing:passwordField];
     [passwordField resignFirstResponder];
 }
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField{
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+    [store setString:@"" forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];
+    [store synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 //for saving the data to NSUserDefaults entered into the textFields
 -(void) textFieldDidEndEditing:(UITextField *)textField{
     
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+   // _email = self.emailField.text;
+   // _email = [_email lowercaseString];
+    [[NSUserDefaults standardUserDefaults] setObject:self.emailField.text forKey:@"preferEmail"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     if(textField == emailField){
-        _email = self.emailField.text;
-        _email = [_email lowercaseString];
-        [[NSUserDefaults standardUserDefaults] setObject:_email forKey:@"preferEmail"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        //clear the password field
+        passwordField.text = @"";
     }
     if(textField == passwordField){
-        _password = self.passwordField.text;
-        [[NSUserDefaults standardUserDefaults] setObject:_password forKey:@"preferPassword"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [store setString:passwordField.text forKey:@"password"];
+        [store synchronize];
+        if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
+            NSLog(@"checking for valid Login valid login #, %lu", (unsigned long)validLogin);
+            validLogin = [self checkForValidLogin:self.emailField.text];
+            NSLog(validLogin ? @"Yes": @"No");
+            if (validLogin > 0) {
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
+                NSLog(@"valid Login");
+            }
+            else{
+                NSLog(@"invalid Login");
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Login or Password"
+                                                                    message:@"Use your Bountiful Baskets Login"
+                                                                   delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:@"Continue Anyway",nil];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+                [alertView show];
+            }
+            
+        }
+        else{
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+        }
     }
-    
-    if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
-
-        //[self checkForValidLogin];
-        [[NSUserDefaults standardUserDefaults] setObject:@"validLogin" forKey:@"validLogin"];
-        
-    }
+    validLogin = 0;
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];
+    
 }
 
-- (void)checkForValidLogin{
-//    NSLog(@"checking for valid login");
-//    
-//     NSString *post = @"email=sgthad@gmail.com&password=";
-//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//    
-//    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://accounts.google.com/ServiceLogin?"]]];
-//    [request setHTTPMethod:@"POST"];
-//    NSString *json = @"{}";
-//    NSMutableData *body = [[NSMutableData alloc] init];
-//    
-//     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
-//     [request setHTTPBody:postData];
-//     //get response
-//     NSHTTPURLResponse* urlResponse = nil;
-//     NSError *error = [[NSError alloc] init];
-//     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-//     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//     NSLog(@"Response Code: %ld", (long)[urlResponse statusCode]);
-//     
-//     if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300)
-//    {
-//        NSLog(@"Response: %@", result);
-//    }
-//    
-//
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex ==  1){
+        NSLog(@"Don't Save");
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"]; //the login information is invalid do not log into website automatically
+        //clear login information
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];
+        UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+        [store setString:@"" forKey:@"password"];
+        [store synchronize];
+    }
+}
+
+-(NSUInteger)checkForValidLogin:(NSString *) email{
+   
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+
+    
+    NSString *post =[[NSString alloc] initWithFormat:@"c=login&m=__login&email=%@&password=%@&login=Login", email, [store stringForKey:@"password"]];
+    NSLog(@"login %@", post);
+    
+    NSURL *url=[NSURL URLWithString:@"http://contributions3.bountifulbaskets.org/index.php?"];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *response = nil;
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+   // NSLog(@"responseData %@", responseData);
+    error = NULL;
+    NSString *loggedInIndication = @"<h2>My Account</h2>[^/]+?Welcome";
+    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:loggedInIndication options:NSRegularExpressionCaseInsensitive error:&error];
+    //string of html page
+    
+    //count the number of times key found on page
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:responseData options:0 range:NSMakeRange(0, [responseData length])];
+    NSLog(@"numberOfMatches %lu", (unsigned long)numberOfMatches);
+    return numberOfMatches;
 }
 
 #pragma mark - First and Second Alert Settings

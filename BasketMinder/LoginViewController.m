@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "globals.h"
+#import "UICKeyChainStore.h"
 
 @interface LoginViewController ()
 
@@ -15,6 +16,10 @@
 
 
 @implementation LoginViewController
+    
+
+    
+
 
 @synthesize loginButton;
 @synthesize passwordField;
@@ -27,17 +32,68 @@
     [self customizeLoginScreen];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setHidden:YES];
+    BOOL initialSetup = [[NSUserDefaults standardUserDefaults] boolForKey:@"initialSetup"];
+    if (initialSetup) {//check to see if this is the first time the user has opened the app
+        [self gotoLoginViewController];
+    }
+}
+
+#pragma -mark login validation check
+- (IBAction)login:(id)sender {
+    //SAVE username and password
+    NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+    [store setString:passwordField.text forKey:@"password"];
+    [store synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"preferEmail"];
+    
+    //check for entry of username and password
+    if ([username length] == 0 || [passwordField.text length] == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                            message:@"Make sure you enter a username and password!"
+                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Continue Anyway",nil];
+        [alertView show];
+    }
+    else{ //data has been entered in both fields check for valid login
+        NSUInteger validLogin = [self checkForValidLogin:username];
+        
+        if (validLogin > 0) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
+            [self gotoLoginViewController];//valid login go to tutorial page
+        }
+        else{
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Login or Password"
+                                                                message:@"Use your Bountiful Baskets Login"
+                                                               delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:@"Continue Anyway",nil];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+            [alertView show];
+        }
+    }
+}
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex ==  1){
+        NSLog(@"Don't Save");
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"]; //the login information is invalid do not log into website automatically
+        //clear login information
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];
+        UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+        [store setString:@"" forKey:@"password"];
+        [store synchronize];
+        [self gotoLoginViewController];
+    }
+}
 -(NSUInteger)checkForValidLogin:(NSString *) email{
     
-    
-    NSString *post =[[NSString alloc] initWithFormat:@"c=login&m=__login&email=%@&password=password&login=Login", email];
-    
+    UICKeyChainStore *store = [UICKeyChainStore keyChainStore]; //get password stored value
+    //SETUP THE POST
+    NSString *post =[[NSString alloc] initWithFormat:@"c=login&m=__login&email=%@&password=%@&login=Login", email, [store stringForKey:@"password"]];
     NSURL *url=[NSURL URLWithString:@"http://contributions3.bountifulbaskets.org/index.php?"];
-    
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-    
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:url];
     [request setHTTPMethod:@"POST"];
@@ -49,62 +105,25 @@
     NSHTTPURLResponse *response = nil;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-   // NSLog(@"response %@", response);
-   // NSLog(@"responseData %@", responseData);
     
+    //check for the logged in screen
     error = NULL;
     NSString *loggedInIndication = @"<h2>My Account</h2>[^/]+?Welcome";
     NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:loggedInIndication options:NSRegularExpressionCaseInsensitive error:&error];
-    //string of html page
-    
     //count the number of times key found on page
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:responseData options:0 range:NSMakeRange(0, [responseData length])];
+    //returning a 1 indicates that the logged in screen was found
     
     return numberOfMatches;
-    
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setHidden:YES];
-    BOOL initialSetup = [[NSUserDefaults standardUserDefaults] boolForKey:@"initialSetup"];
-    if (initialSetup) {//check to see if this is the first time the user has opened the app
-        [self gotoLoginViewController];
-    }
-}
-
-- (IBAction)login:(id)sender {
-    NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"preferEmail"];
-    [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"preferPassword"];
-    
-    NSUInteger validLogin = [self checkForValidLogin:username];
-    
-    if (validLogin > 0) {
-        NSLog(@"valid Login");
-    }
-    else{
-        NSLog(@"invalid Login");
-    }
-    
-    if ([username length] == 0 || [password length] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                                            message:@"Make sure you enter a username and password!"
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
-    else{
-        [self gotoLoginViewController];//valid login go to tutorial page
-    }
-    
-}
+#pragma -mark go to the tutorial pages
 -(void)gotoLoginViewController{
-    UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageRootViewController"];
+    UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageRootViewController"]; //tutorial page
     [self presentViewController:loginViewController animated:YES completion:nil];
 }
 
+#pragma -mark customize this view
 -(void)customizeLoginScreen{
     globals *sharedData = [globals sharedData];
     

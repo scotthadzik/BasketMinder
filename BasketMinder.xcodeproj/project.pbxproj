@@ -48,7 +48,6 @@
 		B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */; };
 		B5D3330F1878F69F000D5FFF /* BillingInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
-		B5DCE9F21868B15500F7197C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9F11868B15500F7197C /* User.m */; };
 		F4A440E0187DC4A700941E64 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,8 +123,6 @@
 		B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillingInformationViewController.m; sourceTree = "<group>"; };
 		B5DCE9EA1868A92F00F7197C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B5DCE9EB1868A92F00F7197C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		B5DCE9F01868B15500F7197C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		B5DCE9F11868B15500F7197C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,8 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				B5AC51A618850E2F006A39A4 /* SettingsSubviews */,
-				B5DCE9F11868B15500F7197C /* User.m */,
-				B5DCE9F01868B15500F7197C /* User.h */,
 				B5CC44E2186E7D4700825593 /* SettingsViewController.h */,
 				B5CC44E3186E7D4700825593 /* SettingsViewController.m */,
 			);
@@ -474,7 +469,6 @@
 			files = (
 				B5ADD5FA1876116800337716 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
-				B5DCE9F21868B15500F7197C /* User.m in Sources */,
 				B5AFEC1818787FC9001BD16D /* FeedbackViewController.m in Sources */,
 				B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */,
 				B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */,
