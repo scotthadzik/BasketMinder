@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     //set up connection between parse and app
     [Parse setApplicationId:@"LuL3dTksNAoKQbXhnPZyIq6N8Tff6CqiR5UazWrK" clientKey:@"bHkEInMK85NssaKvfCGDW6AmZVgPdC0cgfri8cfi"];
     
@@ -30,7 +31,8 @@
     //customize the UI
     [self customizeUserInterface];
     
-    //for keychain
+    //for initial login
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];
 	
     return YES;
 }
@@ -57,7 +59,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  
+  [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     
 }
 
@@ -94,20 +96,6 @@
 
 #pragma mark - Helper methods
 -(void)customizeUserInterface{
-  
-    globals *sharedData = [globals sharedData];
-    //Customize the Nav Bar
-   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.553 green:0.435 blue:0.718 alpha:1.0]];
-//    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    
-   // UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//    UINavigationBar *navigationBar = navigationController.navigationBar;
-
-//    [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    navigationController.navigationBar.shadowImage = [UIImage new];
-//    navigationController.navigationBar.translucent = YES;
-//    navigationController.view.backgroundColor = [UIColor clearColor];
-    
     
     //for pageview tutorial
     UIPageControl *pageControl = [UIPageControl appearance];

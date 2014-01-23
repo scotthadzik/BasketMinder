@@ -196,7 +196,7 @@
                                             <action selector="goBack" destination="CmA-sk-00a" id="AkT-QX-4pW"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="73" style="plain" systemItem="fixedSpace" id="93Z-4E-xdn"/>
+                                    <barButtonItem width="73" systemItem="fixedSpace" id="93Z-4E-xdn"/>
                                     <barButtonItem systemItem="refresh" id="WIS-pq-Vy5">
                                         <inset key="imageInsets" minX="-13" minY="0.0" maxX="0.0" maxY="-17"/>
                                         <color key="tintColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
@@ -404,7 +404,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Billing Information" id="uNY-lZ-G9f">
-                        <barButtonItem key="leftBarButtonItem" title="Save" style="plain" id="H8E-Sv-h21">
+                        <barButtonItem key="leftBarButtonItem" title="Save" id="H8E-Sv-h21">
                             <connections>
                                 <action selector="saveButton:" destination="Jz2-BX-Udd" id="pgv-dl-aGm"/>
                             </connections>
@@ -459,17 +459,30 @@
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ooL-XZ-teL">
-                                                    <rect key="frame" x="15" y="7" width="290" height="30"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ok-qb-t05">
+                                                    <rect key="frame" x="-5" y="-13" width="330" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                                                    <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                                                </textField>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ooL-XZ-teL">
+                                                            <rect key="frame" x="20" y="20" width="290" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="O26-2K-4F2" id="1wg-HV-g74"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ooL-XZ-teL" firstAttribute="top" secondItem="pOm-tK-sYi" secondAttribute="top" constant="7" id="bLk-hg-rjM"/>
+                                                <constraint firstAttribute="bottom" secondItem="6ok-qb-t05" secondAttribute="bottom" constant="-14" id="8St-iT-Z5m"/>
+                                                <constraint firstItem="6ok-qb-t05" firstAttribute="centerX" secondItem="pOm-tK-sYi" secondAttribute="centerX" id="UI3-sF-5U6"/>
+                                                <constraint firstItem="6ok-qb-t05" firstAttribute="leading" secondItem="pOm-tK-sYi" secondAttribute="leading" constant="-5" id="ZTG-Tn-9RZ"/>
+                                                <constraint firstItem="6ok-qb-t05" firstAttribute="top" secondItem="pOm-tK-sYi" secondAttribute="top" constant="-13" id="gWe-Lr-GbN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -495,17 +508,30 @@
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-O9-xLA">
-                                                    <rect key="frame" x="15" y="7" width="290" height="30"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qpd-rj-KaJ">
+                                                    <rect key="frame" x="-5" y="-13" width="330" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
-                                                    <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
-                                                </textField>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-O9-xLA">
+                                                            <rect key="frame" x="20" y="20" width="290" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.90980398650000005" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="textColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="m34-E6-MXb" id="06S-pO-H9F"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NDX-O9-xLA" firstAttribute="top" secondItem="i6j-DG-JbK" secondAttribute="top" constant="7" id="gQx-Y2-Lh3"/>
+                                                <constraint firstItem="Qpd-rj-KaJ" firstAttribute="leading" secondItem="i6j-DG-JbK" secondAttribute="leading" constant="-5" id="9Xt-qK-5la"/>
+                                                <constraint firstItem="Qpd-rj-KaJ" firstAttribute="top" secondItem="i6j-DG-JbK" secondAttribute="top" constant="-13" id="ATi-FY-7yg"/>
+                                                <constraint firstAttribute="bottom" secondItem="Qpd-rj-KaJ" secondAttribute="bottom" constant="-14" id="KsN-0u-P36"/>
+                                                <constraint firstItem="Qpd-rj-KaJ" firstAttribute="centerX" secondItem="i6j-DG-JbK" secondAttribute="centerX" id="Nb0-Cj-aal"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -851,7 +877,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-gb-cfb" customClass="TPKeyboardAvoidingScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2f-gb-cfb" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -907,16 +933,17 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="eqQ-vT-MRM" firstAttribute="top" secondItem="zST-jN-lYz" secondAttribute="bottom" constant="5" id="1Hb-Zc-AQx"/>
-                                    <constraint firstItem="zST-jN-lYz" firstAttribute="top" secondItem="afW-aj-4Py" secondAttribute="bottom" constant="7" id="1ka-zd-WDy"/>
                                     <constraint firstItem="CmL-ku-flm" firstAttribute="top" secondItem="w2f-gb-cfb" secondAttribute="top" constant="20" id="5jj-H8-Xxy"/>
-                                    <constraint firstAttribute="bottom" secondItem="eqQ-vT-MRM" secondAttribute="bottom" priority="1" constant="4" id="8Ar-d0-FTg"/>
+                                    <constraint firstItem="zST-jN-lYz" firstAttribute="top" secondItem="afW-aj-4Py" secondAttribute="bottom" constant="7" id="8rC-gE-ObH"/>
+                                    <constraint firstAttribute="bottom" secondItem="eqQ-vT-MRM" secondAttribute="bottom" priority="1" constant="4" id="BAX-oA-LsP"/>
+                                    <constraint firstAttribute="trailing" secondItem="afW-aj-4Py" secondAttribute="trailing" constant="20" symbolic="YES" id="DKS-tw-MmV"/>
                                     <constraint firstAttribute="centerX" secondItem="zST-jN-lYz" secondAttribute="centerX" id="HWT-hh-m1R"/>
                                     <constraint firstAttribute="centerX" secondItem="YlC-2F-m2v" secondAttribute="centerX" id="Mo0-eR-zoq"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eqQ-vT-MRM" secondAttribute="bottom" constant="4" id="SDI-xD-yxl"/>
                                     <constraint firstAttribute="centerX" secondItem="eqQ-vT-MRM" secondAttribute="centerX" id="SMS-Eq-PxV"/>
                                     <constraint firstAttribute="centerX" secondItem="afW-aj-4Py" secondAttribute="centerX" id="XKU-VS-YRx"/>
                                     <constraint firstAttribute="centerX" secondItem="CmL-ku-flm" secondAttribute="centerX" id="aGQ-iw-0ih"/>
                                     <constraint firstAttribute="centerY" secondItem="zST-jN-lYz" secondAttribute="centerY" id="aZ5-68-mMu"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eqQ-vT-MRM" secondAttribute="bottom" constant="4" id="h6h-i1-JKm"/>
                                     <constraint firstItem="afW-aj-4Py" firstAttribute="top" secondItem="YlC-2F-m2v" secondAttribute="bottom" constant="8" id="yGM-BV-kp7"/>
                                 </constraints>
                             </scrollView>
@@ -1166,7 +1193,7 @@
                                             <action selector="goBack" destination="FXH-X6-P1t" id="JAL-Go-jNF"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="73" style="plain" systemItem="fixedSpace" id="bRw-jQ-eXg"/>
+                                    <barButtonItem width="73" systemItem="fixedSpace" id="bRw-jQ-eXg"/>
                                     <barButtonItem systemItem="refresh" id="lZ4-h3-R0Q">
                                         <inset key="imageInsets" minX="-13" minY="0.0" maxX="0.0" maxY="-17"/>
                                         <color key="tintColor" red="0.58039218189999997" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
@@ -1262,6 +1289,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="X72-0Y-QNz"/>
-        <segue reference="X8w-B0-VLn"/>
+        <segue reference="ai3-CO-25i"/>
     </inferredMetricsTieBreakers>
 </document>

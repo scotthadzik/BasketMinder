@@ -11,7 +11,7 @@
 #import "globals.h"
 #import "UICKeyChainStore.h"
 
-@interface SettingsViewController () <UITextFieldDelegate, NSURLConnectionDelegate>
+@interface SettingsViewController () <UITextFieldDelegate, NSURLConnectionDelegate, UIAlertViewDelegate>
 
 @end
 
@@ -113,8 +113,6 @@
 -(void) textFieldDidEndEditing:(UITextField *)textField{
     
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
-   // _email = self.emailField.text;
-   // _email = [_email lowercaseString];
     [[NSUserDefaults standardUserDefaults] setObject:self.emailField.text forKey:@"preferEmail"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     if(textField == emailField){
@@ -125,15 +123,11 @@
         [store setString:passwordField.text forKey:@"password"];
         [store synchronize];
         if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
-            NSLog(@"checking for valid Login valid login #, %lu", (unsigned long)validLogin);
             validLogin = [self checkForValidLogin:self.emailField.text];
-            NSLog(validLogin ? @"Yes": @"No");
             if (validLogin > 0) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
-                NSLog(@"valid Login");
             }
             else{
-                NSLog(@"invalid Login");
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Login or Password"
                                                                     message:@"Use your Bountiful Baskets Login"
                                                                    delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:@"Continue Anyway",nil];
@@ -153,7 +147,6 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex ==  1){
-        NSLog(@"Don't Save");
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"]; //the login information is invalid do not log into website automatically
         //clear login information
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];
@@ -169,7 +162,6 @@
 
     
     NSString *post =[[NSString alloc] initWithFormat:@"c=login&m=__login&email=%@&password=%@&login=Login", email, [store stringForKey:@"password"]];
-    NSLog(@"login %@", post);
     
     NSURL *url=[NSURL URLWithString:@"http://contributions3.bountifulbaskets.org/index.php?"];
     
@@ -190,7 +182,6 @@
     NSHTTPURLResponse *response = nil;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-   // NSLog(@"responseData %@", responseData);
     error = NULL;
     NSString *loggedInIndication = @"<h2>My Account</h2>[^/]+?Welcome";
     NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:loggedInIndication options:NSRegularExpressionCaseInsensitive error:&error];
@@ -198,7 +189,6 @@
     
     //count the number of times key found on page
     NSUInteger numberOfMatches = [regex numberOfMatchesInString:responseData options:0 range:NSMakeRange(0, [responseData length])];
-    NSLog(@"numberOfMatches %lu", (unsigned long)numberOfMatches);
     return numberOfMatches;
 }
 
@@ -259,9 +249,6 @@
         return indexPath;
     }
     
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert{

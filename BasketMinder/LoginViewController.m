@@ -64,6 +64,7 @@
         if (validLogin > 0) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
             [self gotoLoginViewController];//valid login go to tutorial page
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];
         }
         else{
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Login or Password"
@@ -73,10 +74,10 @@
             [alertView show];
         }
     }
+    
 }
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex ==  1){
-        NSLog(@"Don't Save");
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"]; //the login information is invalid do not log into website automatically
         //clear login information
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];

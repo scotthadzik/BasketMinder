@@ -14,7 +14,7 @@
 #import "BMAppDelegate.h"
 #import "UICKeyChainStore.h"
 
-@interface WebViewController ()
+@interface WebViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -32,6 +32,7 @@
     NSString *timeRegexPattern;
     NSString *locationDetailPattern;
     NSString *month,*day,*year,*time;
+    NSDate *pickupDate;
 }
 
 @synthesize myWebView;
@@ -70,7 +71,6 @@
     }
     BOOL newLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
     if(newLogin){
-        NSLog(@"newLogin");
         [self checkForTestLogin];
         [self displayWebView:urlAddress];
     }
@@ -122,8 +122,10 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
-    if (validLogin) {
+    BOOL changedLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
+    if (validLogin && changedLogin) {
         [self sendLogin];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"newLogin"];
     }
      //call the login for the first load of the site
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -155,7 +157,7 @@
         
         //------------------------find the date of pickup---------------------------
         matchDate = [self regexTheString:htmlString pattern:basketPickupRegex];
-        NSDate *pickupDate = [self getEventDate];
+        pickupDate = [self getEventDate];
         
         //------------------find location address-------------------------
         //get location detail code
@@ -203,6 +205,13 @@
             if (!granted || [setEventAlert isEqualToString:@"no"]) { //check for popu permission granted and setting view permissions granted
                 return;
             }
+            
+            //alert the user an event has been created
+            BOOL dontShowAlert = [[NSUserDefaults standardUserDefaults] boolForKey:@"turnOffAlertViewNotify"];
+            if (!dontShowAlert){
+                [self performSelectorOnMainThread:@selector(alertSetNotify) withObject:nil waitUntilDone:YES];
+            }
+            //set up the event title
             NSString *titleString = @"Basket Pickup at ";
             titleString = [titleString stringByAppendingString:nameDetail];
             EKEvent *event = [EKEvent eventWithEventStore:store];
@@ -237,6 +246,31 @@
             //NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
     }    
+}
+-(void)alertSetNotify{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM DD, yyyy, hh:mm a"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:pickupDate];
+    
+    NSString *message = @"A pickup event has been sent to your calendar for ";
+    message = [message stringByAppendingString:stringFromDate];
+    message = [message stringByAppendingString:@"\n"];
+    message = [message stringByAppendingString:@"Your confirmation number "];
+    message = [message stringByAppendingString:confirmationNumber];
+    message = [message stringByAppendingString:@" has been saved in the confirmation tab found below"];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Event and Confirmation"
+                                                        message:message
+                                                       delegate:self cancelButtonTitle:@"Don't Show This Again" otherButtonTitles:@"OK",nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex ==  0){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"turnOffAlertViewNotify"]; //the login information is invalid do not log into website automatically
+    }
 }
 
 - (NSString *)trimTheNewLine:(NSString*)string replace:(NSString*)replace{
@@ -286,8 +320,8 @@
     //------------------convert string to date------------------------
     NSDateFormatter *longDate = [[NSDateFormatter alloc] init];
     [longDate setDateFormat:@"MMM dd, yyyy hh:mm a"];
-    NSDate *pickupDate = [longDate dateFromString:dateString];
-    return pickupDate;
+    NSDate *pickupDateReturn = [longDate dateFromString:dateString];
+    return pickupDateReturn;
 }
 
 #pragma mark - alert time function
@@ -380,11 +414,9 @@
 
     NSString *emailString   =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
     BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
-    NSLog(validLogin ? @"Yes" : @"No");
     
     //Check to see if a value has been set for userEmail and password
     if(validLogin){
-        NSLog(@"validLogin");
             //username is the id for username field in Login form
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", emailString];
             //here password is the id for password field in Login Form

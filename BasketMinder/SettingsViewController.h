@@ -23,10 +23,8 @@ static id gGlobalInstanceTabBar = nil;
 @property (weak, nonatomic) IBOutlet UILabel *firstAlertTimeLabel;
 
 - (void)checkForDefaultSet:(UILabel*)label setLabel:(NSString*)string alertDefault:(NSString*)alert;
-- (void)checkForValidLogin;
 - (void)changeCellColor:(BOOL) grey;
 
 - (IBAction)setEventSwitch:(id)sender;
-+ (UITabBarController *) tabBarController;
 
 @end
