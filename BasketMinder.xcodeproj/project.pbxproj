@@ -38,7 +38,6 @@
 		B5721C69186E12B60028B9A5 /* ConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C68186E12B60028B9A5 /* ConfirmationViewController.m */; };
 		B5721C72186E2CA80028B9A5 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5721C71186E2CA80028B9A5 /* LocationViewController.m */; };
 		B5AC51A518850DBF006A39A4 /* BlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC51A418850DBF006A39A4 /* BlogViewController.m */; };
-		B5AC8B2F188CD4010046E4BF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
 		B5ADD5F01875E9C800337716 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5EF1875E9C800337716 /* PageContentViewController.m */; };
 		B5ADD5F31875EAF600337716 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F21875EAF600337716 /* LoginViewController.m */; };
 		B5ADD5F61875EC8400337716 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADD5F51875EC8400337716 /* PageRootViewController.m */; };
@@ -49,6 +48,7 @@
 		B5CC44EA186F64AC00825593 /* FirstAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC44E9186F64AC00825593 /* FirstAlertViewController.m */; };
 		B5D3330F1878F69F000D5FFF /* BillingInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D3330E1878F69F000D5FFF /* BillingInformationViewController.m */; };
 		B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DCE9EB1868A92F00F7197C /* WebViewController.m */; };
+		F41B976D18982EFD00D7D93D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +140,7 @@
 				B55CC3401864C921009F1895 /* SystemConfiguration.framework in Frameworks */,
 				B55CC2F818625A1D009F1895 /* CoreGraphics.framework in Frameworks */,
 				B55CC2FA18625A1D009F1895 /* UIKit.framework in Frameworks */,
-				B5AC8B2F188CD4010046E4BF /* Parse.framework in Frameworks */,
+				F41B976D18982EFD00D7D93D /* Parse.framework in Frameworks */,
 				B55CC2F618625A1D009F1895 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +617,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/bryanhadzik/Desktop/Applications/BasketMinder,
+					"$(SYSTEM_APPS_DIR)/BasketMinder",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
@@ -639,6 +640,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/bryanhadzik/Desktop/Applications/BasketMinder,
+					"$(SYSTEM_APPS_DIR)/BasketMinder",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BasketMinder/BasketMinder-Prefix.pch";
