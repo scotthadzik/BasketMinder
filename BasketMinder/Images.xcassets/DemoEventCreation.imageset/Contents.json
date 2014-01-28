@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Demo 1 Event Creation-2.png"
     },
     {
       "idiom" : "universal",

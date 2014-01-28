@@ -18,8 +18,8 @@
 {
     [super viewDidLoad];
 	// Create the data model
-    _pageTitles = @[@"Order your basket", @"Set alert event", @"Get your confirmation #", @"Much More"];
-    _pageImages = @[@"page1.png", @"page2.png", @"page3.png", @"page4.png"];
+    _pageTitles = @[@"Notify me when baskets available", @"Billing info automatically filled", @"Add Calendar event enabled", @"We save your confirmation number"];
+    _pageImages = @[@"DemoLocations.png", @"DemoBilling.png",@"DemoEventCreation.png", @"DemoConfirmation.png", ];
     
     [self.tabBarController.tabBar setHidden:YES];
 
@@ -53,6 +53,9 @@
         return nil;
     }
     
+    CGRect frame = self.view.frame;
+    frame.origin.x = 10;
+    self.view.frame = frame;
     // Create a new view controller and pass suitable data.
     PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     pageContentViewController.imageFile = self.pageImages[index];
