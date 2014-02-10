@@ -98,6 +98,7 @@
     NSInteger timeAway = timeDifferenceBetweenDates;
     if (timeAway < -86400 ) {  //refresh the webview when inactive for more than 24 hours
         [self checkForTestLogin];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];//reset the new login bool
         [self displayWebView:urlAddress];
     }
 }
@@ -253,6 +254,7 @@
     [formatter setDateFormat:@"MMM DD, yyyy, hh:mm a"];
     
     NSString *stringFromDate = [formatter stringFromDate:pickupDate];
+    NSLog(@"stringFromDate %@", stringFromDate);	
     
     NSString *message = @"A pickup event has been sent to your calendar for ";
     message = [message stringByAppendingString:stringFromDate];

@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
 	// Create the data model
-    _pageTitles = @[@"Notify me when baskets are available", @"Billing info automatically filled", @"Calendar Event automatically created to remind you to pickup", @"We save your confirmation number"];
+    _pageTitles = @[@"Notify me when baskets are available in my area", @"Billing information can be automatically filled", @"Calendar Event automatically created to remind you to pickup", @"We save your confirmation number"];
     _pageImages = @[@"DemoLocations.png", @"DemoBilling.png",@"DemoEventCreation.png", @"DemoConfirmation.png", ];
     
     [self.tabBarController.tabBar setHidden:YES];

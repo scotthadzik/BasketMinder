@@ -16,10 +16,6 @@
 
 
 @implementation LoginViewController
-    
-
-    
-
 
 @synthesize loginButton;
 @synthesize passwordField;
