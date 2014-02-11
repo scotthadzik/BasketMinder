@@ -250,10 +250,7 @@
 }
 -(void)alertSetNotify{
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM DD, yyyy, hh:mm a"];
-    
-    NSString *stringFromDate = [formatter stringFromDate:pickupDate];
+    NSString *stringFromDate = [[NSUserDefaults standardUserDefaults] stringForKey:@"pickupDate"];
     NSLog(@"stringFromDate %@", stringFromDate);	
     
     NSString *message = @"A pickup event has been sent to your calendar for ";
@@ -503,6 +500,5 @@
     tabBlog.title = @"Blog";
 
 }
-
 
 @end
