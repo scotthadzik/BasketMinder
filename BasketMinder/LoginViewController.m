@@ -31,9 +31,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"Use your Bountiful Baskets login and password on this page. If you need to make any changes later, go to settings" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
     BOOL initialSetup = [[NSUserDefaults standardUserDefaults] boolForKey:@"initialSetup"];
     if (initialSetup) {//check to see if this is the first time the user has opened the app
-        [self gotoLoginViewController];
+        [self gotoPrefferedLocationsController];
     }
 }
 
@@ -59,7 +61,7 @@
         
         if (validLogin > 0) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
-            [self gotoLoginViewController];//valid login go to tutorial page
+            [self gotoPrefferedLocationsController];//valid login go to tutorial page
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];
         }
         else{
@@ -80,7 +82,7 @@
         UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
         [store setString:@"" forKey:@"password"];
         [store synchronize];
-        [self gotoLoginViewController];
+        [self gotoPrefferedLocationsController];
     }
 }
 -(NSUInteger)checkForValidLogin:(NSString *) email{
@@ -115,9 +117,12 @@
 }
 
 #pragma -mark go to the tutorial pages
--(void)gotoLoginViewController{
-    UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageRootViewController"]; //tutorial page
+-(void)gotoPrefferedLocationsController{
+    NSLog(@"gotoLoginViewController");
+    UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InitialLocationViewController"]; //preffered locations viewcontroller
     [self presentViewController:loginViewController animated:YES completion:nil];
+    
+
 }
 
 #pragma -mark customize this view

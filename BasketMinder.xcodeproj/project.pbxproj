@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B51BEF6818A87EF400987199 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55CC32D1864C898009F1895 /* Parse.framework */; };
+		B51BEF7118BC4BAD00987199 /* InitialLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51BEF7018BC4BAD00987199 /* InitialLocationViewController.m */; };
 		B54D3535187CF7BA003824E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54D3534187CF7BA003824E1 /* Images.xcassets */; };
 		B54D3542187D1F17003824E1 /* IstokWeb-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D353D187D1F17003824E1 /* IstokWeb-Bold.ttf */; };
 		B54D3543187D1F17003824E1 /* IstokWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54D353E187D1F17003824E1 /* IstokWeb-BoldItalic.ttf */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B51BEF6F18BC4BAD00987199 /* InitialLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialLocationViewController.h; path = ../InitialLocationViewController.h; sourceTree = "<group>"; };
+		B51BEF7018BC4BAD00987199 /* InitialLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitialLocationViewController.m; path = ../InitialLocationViewController.m; sourceTree = "<group>"; };
 		B54D3534187CF7BA003824E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B54D353D187D1F17003824E1 /* IstokWeb-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-Bold.ttf"; sourceTree = "<group>"; };
 		B54D353E187D1F17003824E1 /* IstokWeb-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IstokWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				B5ADD5F21875EAF600337716 /* LoginViewController.m */,
 				B5ADD5FB187611E700337716 /* SignupViewController.h */,
 				B5ADD5FC187611E700337716 /* SignupViewController.m */,
+				B51BEF6F18BC4BAD00987199 /* InitialLocationViewController.h */,
+				B51BEF7018BC4BAD00987199 /* InitialLocationViewController.m */,
 			);
 			name = "Initial Setup";
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51BEF7118BC4BAD00987199 /* InitialLocationViewController.m in Sources */,
 				B5ADD5FA1876116800337716 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				B5DCE9EC1868A92F00F7197C /* WebViewController.m in Sources */,
 				B5AFEC1818787FC9001BD16D /* FeedbackViewController.m in Sources */,

@@ -21,13 +21,10 @@
 
 @synthesize locationWebView;
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:NO];
-    
     self.locationWebView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self checkForTestLogin];
@@ -43,17 +40,6 @@
     NSURL *locationsURL = [NSURL URLWithString:urlAddress]; //start at this website
     NSURLRequest *webRequest = [NSURLRequest requestWithURL:locationsURL];
     [self.locationWebView loadRequest:webRequest]; //load the webview
-    //self.locationWebView.scalesPageToFit = YES;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    
-    
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:YES];
-    [self checkForTestLogin];
 }
 - (void)checkForTestLogin{
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:@"preferEmail"];
@@ -64,6 +50,4 @@
         urlAddress = @"http://www.tankjig.com/locations.php?phoneid=";
     }
 }
-
-
 @end
