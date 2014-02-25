@@ -33,6 +33,7 @@
     NSString *locationDetailPattern;
     NSString *month,*day,*year,*time;
     NSDate *pickupDate;
+    NSUInteger count;
 }
 
 @synthesize myWebView;
@@ -99,6 +100,7 @@
     if (timeAway < -86400 ) {  //refresh the webview when inactive for more than 24 hours
         [self checkForTestLogin];
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];//reset the new login bool
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self displayWebView:urlAddress];
     }
 }
@@ -128,6 +130,7 @@
         [self sendLogin];
         [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"newLogin"];
     }
+    [[NSUserDefaults standardUserDefaults] synchronize];
      //call the login for the first load of the site
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
@@ -246,12 +249,37 @@
             [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
             //NSString *savedEventId = event.eventIdentifier;  //this is so you can access this event later
         }];
+        
+        //Volunteer Reminder
+        [self volunteerCounter];
     }    
 }
+#pragma -mark Alert for Volunteer Reminder
+-(void)volunteerCounter{
+    count = [[NSUserDefaults standardUserDefaults] integerForKey:@"volunteerCount"];
+    ++count;
+    [[NSUserDefaults standardUserDefaults] setInteger:count forKey:@"volunteerCount"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (count > 7){
+        [self alertForVolunteer];
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"volunteerCount"];
+    }
+}
+-(void)alertForVolunteer{
+    
+    NSString *message = @"This is a volunteer organization, have you considered volunteering at your local sight";
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Volunteer"
+                                                    message:message
+                                                       delegate:self cancelButtonTitle:@"Thanks for the Reminder" otherButtonTitles:@"Learn More",nil];
+    [alertView setTag:2];
+    [alertView show];
+}
+
+
+#pragma -mark Alert for Confirmation Number Set
 -(void)alertSetNotify{
     
     NSString *stringFromDate = [[NSUserDefaults standardUserDefaults] stringForKey:@"pickupDate"];
-    NSLog(@"stringFromDate %@", stringFromDate);	
     
     NSString *message = @"A pickup event has been sent to your calendar for ";
     message = [message stringByAppendingString:stringFromDate];
@@ -263,12 +291,23 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Event and Confirmation"
                                                         message:message
                                                        delegate:self cancelButtonTitle:@"Don't Show This Again" otherButtonTitles:@"OK",nil];
+    [alertView setTag:1];
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex ==  0){
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"turnOffAlertViewNotify"]; //the login information is invalid do not log into website automatically
+    
+    
+    if ([alertView tag] == 1){//confirmation alert
+        if (buttonIndex ==  0){
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"turnOffAlertViewNotify"]; //the login information is invalid do not log into website automatically
+        }
+    }
+    if ([alertView tag] == 2){  //volunteer alert
+        if (buttonIndex == 1){
+            UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewParticipantViewController"]; //tutorial page
+            [self presentViewController:loginViewController animated:YES completion:nil];
+        }
     }
 }
 

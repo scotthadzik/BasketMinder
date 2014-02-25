@@ -11,6 +11,7 @@
 #import "globals.h"
 #import "UICKeyChainStore.h"
 
+
 @interface SettingsViewController () <UITextFieldDelegate, NSURLConnectionDelegate, UIAlertViewDelegate>
 
 @end
@@ -32,6 +33,8 @@
 {
     [super viewDidLoad];
     [self customizeView];
+    
+    //self.tabBarController.moreNavigationController.navigationBar.delegate = self;
     
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
@@ -67,6 +70,7 @@
     [doneToolbar sizeToFit];
     passwordField.inputAccessoryView = doneToolbar;
 }
+
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self customizeView];
@@ -305,4 +309,16 @@
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
     [self.tabBarController.tabBar setHidden:NO];
 }
+#pragma mark - for modifying the more tabbar
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated {
+    
+    UINavigationBar *morenavbar = navigationController.navigationBar;
+    UINavigationItem *morenavitem = morenavbar.topItem;
+    /* We don't need Edit button in More screen. */
+    morenavitem.rightBarButtonItem = nil;
+}
+
+
 @end

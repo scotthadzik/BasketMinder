@@ -22,6 +22,7 @@
     _pageImages = @[@"DemoLocations.png", @"DemoBilling.png",@"DemoEventCreation.png", @"DemoConfirmation.png", ];
     
     [self.tabBarController.tabBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
 
     
     // Create page view controller
@@ -39,6 +40,12 @@
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.tabBarController.tabBar setHidden:YES];
+    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (IBAction)doneWalkThrough:(id)sender {

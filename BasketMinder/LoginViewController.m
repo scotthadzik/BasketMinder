@@ -118,7 +118,6 @@
 
 #pragma -mark go to the tutorial pages
 -(void)gotoPrefferedLocationsController{
-    NSLog(@"gotoLoginViewController");
     UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InitialLocationViewController"]; //preffered locations viewcontroller
     [self presentViewController:loginViewController animated:YES completion:nil];
     
