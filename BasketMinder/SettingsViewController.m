@@ -302,6 +302,12 @@
     [[NSUserDefaults standardUserDefaults] setObject:_1stAlert forKey:@"1stAlert"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    //set alert message
+    NSString *message = @"The new alert time will be set for the next time you order a basket. If you want to change the time on a basket already ordered do so in your calendar application";
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert Time Set"
+                                                        message:message
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)customizeView{
