@@ -416,7 +416,7 @@
 				ORGANIZATIONNAME = "Bryan Hadzik";
 				TargetAttributes = {
 					B55CC2F118625A1D009F1895 = {
-						DevelopmentTeam = APZDN9T94Q;
+						DevelopmentTeam = JPFYCW6K9C;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -565,8 +565,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TANK JIG STUDIOS, LLC (JPFYCW6K9C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TANK JIG STUDIOS, LLC (JPFYCW6K9C)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -584,6 +584,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1C9518F4-C658-4643-AAB7-5993A02C8801";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -604,8 +605,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.TankJig.BasketMinder";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: TANK JIG STUDIOS, LLC (JPFYCW6K9C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: TANK JIG STUDIOS, LLC (JPFYCW6K9C)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -616,6 +617,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "1C9518F4-C658-4643-AAB7-5993A02C8801";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

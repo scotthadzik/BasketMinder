@@ -37,7 +37,6 @@
 }
 
 @synthesize myWebView;
-
 @synthesize confirmationNumber,navigationToolBar;
 
 - (void)viewDidLoad
@@ -59,7 +58,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeLeftActive) name:UIApplicationWillResignActiveNotification object:nil];
     
     [self setPatternsForRegex];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -72,8 +70,11 @@
     }
     BOOL newLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
     if(newLogin){
+        NSLog(@"newlogin in view did appear");
         [self checkForTestLogin];
+        [self sendLogin];
         [self displayWebView:urlAddress];
+      //  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"newLogin"];
     }
 }
 //used or testing purposes
@@ -124,9 +125,10 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
+ //   BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
     BOOL changedLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
-    if (validLogin && changedLogin) {
+    if (changedLogin) {
+        NSLog(@"in changed login webviewdidfinishload");
         [self sendLogin];
         [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"newLogin"];
     }
@@ -451,10 +453,10 @@
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
 
     NSString *emailString   =  [[NSUserDefaults standardUserDefaults] stringForKey:@"preferEmail"];
-    BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
+  //  BOOL validLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"validLogin"];
     
     //Check to see if a value has been set for userEmail and password
-    if(validLogin){
+//    if(validLogin){
             //username is the id for username field in Login form
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementsByName('email')[0].value='%@'", emailString];
             //here password is the id for password field in Login Form
@@ -465,7 +467,7 @@
         
         //Submit the form automatically 'login_form' is the id name of LoginForm
         [myWebView stringByEvaluatingJavaScriptFromString:@"document.forms['frm_login_form'].submit();"];
-    }
+  //  }
 }
 
 #pragma mark NSURLConnection Delegate Methods

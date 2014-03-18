@@ -105,7 +105,7 @@
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField{
     UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+   // [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
     [store setString:@"" forKey:@"password"];
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];
     [store synchronize];
@@ -126,25 +126,25 @@
     if(textField == passwordField){
         [store setString:passwordField.text forKey:@"password"];
         [store synchronize];
-        if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
-            validLogin = [self checkForValidLogin:self.emailField.text];
-            if (validLogin > 0) {
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
-            }
-            else{
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Login or Password"
-                                                                    message:@"Use your Bountiful Baskets Login"
-                                                                   delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:@"Continue Anyway",nil];
-                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
-                [alertView show];
-            }
-            
-        }
-        else{
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
-        }
+//        if(self.passwordField.text.length != 0 && self.emailField.text.length != 0){
+////            validLogin = [self checkForValidLogin:self.emailField.text];
+////            if (validLogin > 0) {
+////                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"validLogin"]; //The login information is valid login to website
+////            }
+////            else{
+////                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Login or Password"
+////                                                                    message:@"Use your Bountiful Baskets Login"
+////                                                                   delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:@"Continue Anyway",nil];
+////                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+////                [alertView show];
+////            }
+//            
+//        }
+//        else{
+//            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"];
+//        }
     }
-    validLogin = 0;
+ //   validLogin = 0;
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"newLogin"];
     
 }
@@ -160,41 +160,41 @@
     }
 }
 
--(NSUInteger)checkForValidLogin:(NSString *) email{
-   
-    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
-
-    
-    NSString *post =[[NSString alloc] initWithFormat:@"c=login&m=__login&email=%@&password=%@&login=Login", email, [store stringForKey:@"password"]];
-    
-    NSURL *url=[NSURL URLWithString:@"http://contributions3.bountifulbaskets.org/index.php?"];
-    
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
-    [request setURL:url];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *response = nil;
-    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    error = NULL;
-    NSString *loggedInIndication = @"<h2>My Account</h2>[^/]+?Welcome";
-    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:loggedInIndication options:NSRegularExpressionCaseInsensitive error:&error];
-    //string of html page
-    
-    //count the number of times key found on page
-    NSUInteger numberOfMatches = [regex numberOfMatchesInString:responseData options:0 range:NSMakeRange(0, [responseData length])];
-    return numberOfMatches;
-}
+//-(NSUInteger)checkForValidLogin:(NSString *) email{
+//   
+//    UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
+//
+//    
+//    NSString *post =[[NSString alloc] initWithFormat:@"c=login&m=__login&email=%@&password=%@&login=Login", email, [store stringForKey:@"password"]];
+//    
+//    NSURL *url=[NSURL URLWithString:@"http://contributions3.bountifulbaskets.org/index.php?"];
+//    
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+//    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+//    [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+//    [request setURL:url];
+//    [request setHTTPMethod:@"POST"];
+//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//    [request setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
+//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPBody:postData];
+//    
+//    NSError *error = [[NSError alloc] init];
+//    NSHTTPURLResponse *response = nil;
+//    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//    NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+//    error = NULL;
+//    NSString *loggedInIndication = @"<h2>My Account</h2>[^/]+?Welcome";
+//    NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:loggedInIndication options:NSRegularExpressionCaseInsensitive error:&error];
+//    //string of html page
+//    
+//    //count the number of times key found on page
+//    NSUInteger numberOfMatches = [regex numberOfMatchesInString:responseData options:0 range:NSMakeRange(0, [responseData length])];
+//    return numberOfMatches;
+//}
 
 #pragma mark - First and Second Alert Settings
 //switch Event alert
