@@ -129,8 +129,8 @@
 -(void)customizeLoginScreen{
     globals *sharedData = [globals sharedData];
     
-    loginButton.titleLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
-    bbTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+  //  loginButton.titleLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+ //   bbTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
     
     passwordField.layer.cornerRadius = 5;
     passwordField.layer.borderWidth = 1.5;

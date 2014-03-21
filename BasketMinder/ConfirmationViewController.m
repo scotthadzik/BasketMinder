@@ -56,11 +56,11 @@
     
     globals *sharedData = [globals sharedData];
     
-    confirmationLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
-    pickupDateLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
-    confirmationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
-    dateTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
-    pickupLocationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+ //   confirmationLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+ //   pickupDateLabel.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+ //   confirmationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+ //   dateTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
+ //   pickupLocationTitle.font = [UIFont fontWithName:@"IstokWeb-Regular" size:18];
    
     confirmationLabel.layer.cornerRadius = 5;
     confirmationLabel.layer.borderWidth = 1.5;

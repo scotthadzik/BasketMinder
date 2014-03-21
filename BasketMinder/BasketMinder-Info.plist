@@ -41,13 +41,6 @@
 	<string>BasketMinder</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>IstokWeb-Bold.ttf</string>
-		<string>IstokWeb-BoldItalic.ttf</string>
-		<string>IstokWeb-Italic.ttf</string>
-		<string>IstokWeb-Regular.ttf</string>
-	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

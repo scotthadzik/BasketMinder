@@ -22,7 +22,6 @@
     NSString *_password;
     NSString *_loggedIn;
     NSString *_setAlertEvent;
-    NSUInteger validLogin;
 }
 
 @synthesize emailField, passwordField, setEventSwitch;
@@ -151,7 +150,7 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex ==  1){
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"]; //the login information is invalid do not log into website automatically
+       // [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"validLogin"]; //the login information is invalid do not log into website automatically
         //clear login information
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"preferEmail"];
         UICKeyChainStore *store = [UICKeyChainStore keyChainStore];
