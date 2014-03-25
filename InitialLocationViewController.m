@@ -8,6 +8,10 @@
 
 #import "InitialLocationViewController.h"
 
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#endif
+
 @interface InitialLocationViewController ()
 
 @end
@@ -30,7 +34,12 @@
 #if !(TARGET_IPHONE_SIMULATOR)
     //append the token to the urladdress
     NSString *token=  [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
-    urlAddress = [urlAddress stringByAppendingString:token];
+    if (token != nil){
+        urlAddress = [urlAddress stringByAppendingString:token];
+    }
+    NSLog(@"Device Token = %@", token);
+    NSLog(@"urlAddress = %@", urlAddress);
+    
 #endif
     
     //go to location view website

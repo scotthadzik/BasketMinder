@@ -33,7 +33,9 @@
     #if !(TARGET_IPHONE_SIMULATOR)
         //append the token to the urladdress
         NSString *token=  [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
+    if (token != nil){
         urlAddress = [urlAddress stringByAppendingString:token];
+    }
     #endif
     
     //go to location view website
