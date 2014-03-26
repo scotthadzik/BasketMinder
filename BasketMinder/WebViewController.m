@@ -34,6 +34,7 @@
     NSString *month,*day,*year,*time;
     NSDate *pickupDate;
     NSUInteger count;
+    
 }
 
 @synthesize myWebView;
@@ -60,6 +61,11 @@
     [self setPatternsForRegex];
 }
 
+- (void)showDisclaimer{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"DISCLAIMER" message:@"This application is intended to assist you in placing an order with the Bountiful Baskets Food Co-op. We are not affiliated in anyway with Bountiful Baskets.\n\n Any problems or questions regarding orders, refunds, or site information should be directed to Bountiful Baskets Food Co-op" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
+}
+
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     [self customizeViewController];
@@ -70,11 +76,14 @@
     }
     BOOL newLogin = [[NSUserDefaults standardUserDefaults] boolForKey:@"newLogin"];
     if(newLogin){
-        NSLog(@"newlogin in view did appear");
         [self checkForTestLogin];
         [self sendLogin];
         [self displayWebView:urlAddress];
-      //  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"newLogin"];
+    }
+    BOOL disclaimerShown = [[NSUserDefaults standardUserDefaults] boolForKey:@"disclaimerShown"];
+    if (!disclaimerShown) {
+        [self showDisclaimer];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"disclaimerShown"];
     }
 }
 //used or testing purposes

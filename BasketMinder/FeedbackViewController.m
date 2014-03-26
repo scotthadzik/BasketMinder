@@ -22,6 +22,12 @@
     [self.tabBarController.tabBar setHidden:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Contacting Tank Jig Studios" message:@"The feedback link on this page is intended for providing feedback to TankJig Studios in regards to the BasketMinder application. If you are experiencing any problems with the functionality of the app please provide us with feedback. \n\n Any problems or questions regarding orders, refunds, or site information should be directed to Bountiful Baskets Food Co-op" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
+}
+
 - (IBAction)sendFeedback:(id)sender {
   
     // Email Subject

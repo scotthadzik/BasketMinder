@@ -48,6 +48,14 @@
     [super viewDidAppear:YES];
     [self customizeView];
     [self checkForValuesStored];
+    
+    BOOL disclaimerShown = [[NSUserDefaults standardUserDefaults] boolForKey:@"recomendationsShown"];
+    if (!disclaimerShown) {
+        [self showRecomendations];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"recomendationsShown"];
+    }
+    
+    
 
 }
 
@@ -62,6 +70,11 @@
                          nil];
     [doneToolbar sizeToFit];
     billingZipCode.inputAccessoryView = doneToolbar;
+}
+
+- (void)showRecomendations{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"The information on this page is securely stored on your device’s keychain. As an added security feature we recommend that you set a passcode for your device." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alertView show];
 }
 
 //for moving to the next textfield when return pressed on keyboard
